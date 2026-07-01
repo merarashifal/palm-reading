@@ -1,0 +1,10 @@
+[
+  {
+    "code": "palm",
+    "name_en": "Palm Reading",
+    "name_hi": "हस्तरेखा ज्ञान",
+    "description": "AI powered palmistry analysis.",
+    "icon": "palm-icon.png",
+    "sort_order": 1
+  }
+]
