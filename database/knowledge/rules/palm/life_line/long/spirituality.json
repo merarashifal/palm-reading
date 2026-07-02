@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-02",
+    "modified": "2026-07-02",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "8d9e644b-149a-4c88-8867-bc2e00658d65",
+      "rule_uid": "PALM_LIFE_LONG_SPIRITUALITY",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "spirituality",
+      "priority": 1000,
+      "weight": 100,
+      "importance": "Medium",
+      "minimum_confidence": 0.8,
+      "visibility": "free",
+      "rule_type": "prediction",
+      "tone": "positive",
+      "emotion": "reflective",
+      "applicability": "all",
+      "reading_time": "15 sec",
+      "quality_score": 100,
+      "editor_notes": "Approved by Editorial Team",
+      "source": "TIP001",
+      "keywords": [
+        "spirituality",
+        "growth",
+        "grounded",
+        "energy"
+      ],
+      "translations": {
+        "en": "Traditional palmistry often associates this feature with a long Life Line suggests a grounded energy that supports steady and lifelong spiritual growth. This reflects a patient and enduring journey toward inner peace. A broader study of your palm may reveal important life phases and hidden influences explored in your comprehensive analysis.",
+        "hi": "हस्तरेखा शास्त्र में इस लक्षण को आमतौर पर लंबी जीवन रेखा एक ऐसी स्थिर ऊर्जा का संकेत देती है जो आजीवन आध्यात्मिक विकास का समर्थन करती है। यह आंतरिक शांति की दिशा में एक धैर्यवान और स्थायी यात्रा को दर्शाता है। आपकी हथेली की अन्य रेखाएँ जीवन के महत्वपूर्ण चरणों और छिपे हुए प्रभावों के बारे में अधिक विस्तृत जानकारी दे सकती हैं।"
+      }
+    }
+  ]
+}

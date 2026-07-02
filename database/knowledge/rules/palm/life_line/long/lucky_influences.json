@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-02",
+    "modified": "2026-07-02",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "a232d388-26b3-4f1a-bd77-9e4a6123ba15",
+      "rule_uid": "PALM_LIFE_LONG_LUCKY_INFLUENCES",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "lucky_influences",
+      "priority": 1000,
+      "weight": 100,
+      "importance": "Medium",
+      "minimum_confidence": 0.8,
+      "visibility": "free",
+      "rule_type": "prediction",
+      "tone": "positive",
+      "emotion": "positive",
+      "applicability": "all",
+      "reading_time": "15 sec",
+      "quality_score": 100,
+      "editor_notes": "Approved by Editorial Team",
+      "source": "TIP001",
+      "keywords": [
+        "lucky",
+        "influences",
+        "favourable",
+        "circumstances"
+      ],
+      "translations": {
+        "en": "According to traditional palmistry, a strong Life Line is often associated with favourable circumstances and enduring positive energy during important phases of life. This feature acts as a supportive foundation. More details await in your complete analysis.",
+        "hi": "पारंपरिक हस्तरेखा शास्त्र के अनुसार, एक मजबूत जीवन रेखा को अक्सर जीवन के महत्वपूर्ण चरणों में अनुकूल परिस्थितियों और स्थायी सकारात्मक ऊर्जा से जोड़ा जाता है। यह विशेषता एक सहायक आधार के रूप में कार्य करती है। अधिक विस्तृत जानकारी आपके संपूर्ण विश्लेषण में है।"
+      }
+    }
+  ]
+}

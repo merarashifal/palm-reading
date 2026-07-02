@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-02",
+    "modified": "2026-07-02",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "8b776041-df7c-418f-b4af-88719087f516",
+      "rule_uid": "PALM_LIFE_LONG_REMEDIES",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "remedies",
+      "priority": 1000,
+      "weight": 100,
+      "importance": "Medium",
+      "minimum_confidence": 0.8,
+      "visibility": "free",
+      "rule_type": "prediction",
+      "tone": "positive",
+      "emotion": "reflective",
+      "applicability": "all",
+      "reading_time": "15 sec",
+      "quality_score": 100,
+      "editor_notes": "Approved by Editorial Team",
+      "source": "TIP001",
+      "keywords": [
+        "remedies",
+        "mindfulness",
+        "routine",
+        "balance"
+      ],
+      "translations": {
+        "en": "A long Life Line indicates strong baseline energy, but maintaining a balanced routine is essential to protect this vitality. Practices like mindfulness and gratitude are highly recommended. More details await in your complete analysis.",
+        "hi": "लंबी जीवन रेखा मजबूत ऊर्जा का संकेत देती है, लेकिन इसे बनाए रखने के लिए संतुलित दिनचर्या आवश्यक है। ध्यान और कृतज्ञता जैसी प्रथाओं की अत्यधिक अनुशंसा की जाती है। अधिक विस्तृत जानकारी आपके संपूर्ण विश्लेषण में है।"
+      }
+    }
+  ]
+}

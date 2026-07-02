@@ -62,21 +62,46 @@ CREATE TABLE IF NOT EXISTS wp_ai_report_sections (
 -- 5. wp_ai_analysis_rules
 CREATE TABLE IF NOT EXISTS wp_ai_analysis_rules (
     id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    rule_uid varchar(120) NOT NULL,
+    language varchar(10) DEFAULT 'en' NOT NULL,
+    prediction text NOT NULL,
     analysis_type_id int(11) unsigned NOT NULL,
     feature_id bigint(20) unsigned NOT NULL,
     feature_value_id bigint(20) unsigned NOT NULL,
     section_id bigint(20) unsigned DEFAULT NULL,
-    prediction_en text NOT NULL,
-    prediction_hi text DEFAULT NULL,
-    priority int(11) DEFAULT 0,
+    priority int(11) DEFAULT 1000,
+    weight int(11) DEFAULT 100,
+    importance varchar(50) DEFAULT 'Medium', -- Critical, High, Medium, Low
     confidence_weight decimal(5,2) DEFAULT 1.00,
-    report_type varchar(50) DEFAULT 'free', -- 'free' or 'premium'
+    minimum_confidence decimal(5,2) DEFAULT 0.80,
+    visibility varchar(50) DEFAULT 'free', -- free, premium, internal
+    rule_type varchar(50) DEFAULT 'prediction', -- prediction, remedy, warning, guidance, combination
+    tone varchar(50) DEFAULT 'neutral', -- positive, neutral, caution
+    emotion varchar(50) DEFAULT 'neutral', -- positive, neutral, reflective, caution
+    applicability varchar(50) DEFAULT 'all', -- all, male, female
+    source varchar(100) DEFAULT 'System',
+    keywords text DEFAULT NULL,
+    reading_time varchar(20) DEFAULT '15 sec',
+    quality_score int(11) DEFAULT 100,
+    status varchar(50) DEFAULT 'draft', -- draft, review, approved, published, deprecated
     is_active tinyint(1) DEFAULT 1,
     PRIMARY KEY (id),
+    UNIQUE KEY uid_lang (rule_uid, language),
     FOREIGN KEY (analysis_type_id) REFERENCES wp_ai_analysis_types(id) ON DELETE CASCADE,
     FOREIGN KEY (feature_id) REFERENCES wp_ai_features(id) ON DELETE CASCADE,
     FOREIGN KEY (feature_value_id) REFERENCES wp_ai_feature_values(id) ON DELETE CASCADE,
     FOREIGN KEY (section_id) REFERENCES wp_ai_report_sections(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 5b. wp_ai_rule_relations
+CREATE TABLE IF NOT EXISTS wp_ai_rule_relations (
+    id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    parent_rule_uid varchar(120) NOT NULL,
+    child_rule_uid varchar(120) NOT NULL,
+    relation_type varchar(50) DEFAULT 'next_rule',
+    priority int(11) DEFAULT 0,
+    PRIMARY KEY (id),
+    UNIQUE KEY parent_child (parent_rule_uid, child_rule_uid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- 6. wp_ai_uploads

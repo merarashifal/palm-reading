@@ -3,8 +3,9 @@
     "code": "palm",
     "name_en": "Palm Reading",
     "name_hi": "हस्तरेखा ज्ञान",
-    "description": "AI powered palmistry analysis.",
+    "description": "AI powered palmistry analysis mapping key lines and mounts.",
     "icon": "palm-icon.png",
+    "status": 1,
     "sort_order": 1
   }
 ]

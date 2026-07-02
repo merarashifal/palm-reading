@@ -1,0 +1,16 @@
+{
+  "en": [
+    { "style": "traditional", "text": "According to traditional palmistry, " },
+    { "style": "direct", "text": "" },
+    { "style": "interpretive", "text": "Traditional palmistry often associates this feature with " },
+    { "style": "reader_focused", "text": "Your Life Line reflects qualities that traditional palmistry links with " },
+    { "style": "educational", "text": "Palm readers have traditionally considered this a sign of " }
+  ],
+  "hi": [
+    { "style": "traditional", "text": "पारंपरिक हस्तरेखा शास्त्र के अनुसार, " },
+    { "style": "direct", "text": "" },
+    { "style": "interpretive", "text": "हस्तरेखा शास्त्र में इस लक्षण को आमतौर पर " },
+    { "style": "reader_focused", "text": "आपकी जीवन रेखा उन गुणों को दर्शाती है जिन्हें पारंपरिक मान्यताओं में " },
+    { "style": "educational", "text": "हस्तरेखा विशेषज्ञों ने पारंपरिक रूप से इसे " }
+  ]
+}

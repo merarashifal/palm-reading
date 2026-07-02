@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-02",
+    "modified": "2026-07-02",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "0022d746-0d2a-4865-be23-654b8057fe55",
+      "rule_uid": "PALM_LIFE_LONG_CHALLENGES",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "challenges",
+      "priority": 1000,
+      "weight": 100,
+      "importance": "Medium",
+      "minimum_confidence": 0.8,
+      "visibility": "free",
+      "rule_type": "prediction",
+      "tone": "caution",
+      "emotion": "caution",
+      "applicability": "all",
+      "reading_time": "15 sec",
+      "quality_score": 100,
+      "editor_notes": "Approved by Editorial Team",
+      "source": "TIP001",
+      "keywords": [
+        "challenges",
+        "balance",
+        "overextend",
+        "rest"
+      ],
+      "translations": {
+        "en": "Palm readers have traditionally considered this a sign of a long Life Line suggests you may sometimes overextend yourself, requiring you to balance your abundant energy with proper rest. Learning to pace yourself is an important constructive step. More details await in your complete analysis.",
+        "hi": "हस्तरेखा विशेषज्ञों ने पारंपरिक रूप से इसे लंबी जीवन रेखा बताती है कि आप कभी-कभी अपनी क्षमता से अधिक कार्य कर सकते हैं, इसलिए विश्राम आवश्यक है। स्वयं को संतुलित करना एक महत्वपूर्ण और रचनात्मक कदम है। अधिक विस्तृत जानकारी आपके संपूर्ण विश्लेषण में है।"
+      }
+    }
+  ]
+}

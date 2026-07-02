@@ -1,0 +1,23 @@
+[
+  {
+    "analysis_type_code": "palm",
+    "section_code": "personality",
+    "title_en": "Core Personality",
+    "title_hi": "मुख्य व्यक्तित्व",
+    "sort_order": 1
+  },
+  {
+    "analysis_type_code": "palm",
+    "section_code": "career",
+    "title_en": "Career & Success",
+    "title_hi": "करियर और सफलता",
+    "sort_order": 2
+  },
+  {
+    "analysis_type_code": "palm",
+    "section_code": "love",
+    "title_en": "Love & Relationships",
+    "title_hi": "प्यार और रिश्ते",
+    "sort_order": 3
+  }
+]

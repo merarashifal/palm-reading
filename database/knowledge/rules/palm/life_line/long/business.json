@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-02",
+    "modified": "2026-07-02",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "bbcca0cd-a3fb-46c8-83de-54368837cb7e",
+      "rule_uid": "PALM_LIFE_LONG_BUSINESS",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "business",
+      "priority": 1000,
+      "weight": 100,
+      "importance": "High",
+      "minimum_confidence": 0.8,
+      "visibility": "free",
+      "rule_type": "prediction",
+      "tone": "positive",
+      "emotion": "positive",
+      "applicability": "all",
+      "reading_time": "15 sec",
+      "quality_score": 100,
+      "editor_notes": "Approved by Editorial Team",
+      "source": "TIP001",
+      "keywords": [
+        "business",
+        "entrepreneurship",
+        "resilience",
+        "success"
+      ],
+      "translations": {
+        "en": "A deep, long Life Line reflects the sustained stamina and entrepreneurial endurance required to overcome long-term challenges. This reveals a strong foundation for taking calculated risks and building an enterprise. A broader study of your palm may reveal important life phases and hidden influences explored in your comprehensive analysis.",
+        "hi": "गहरी और लंबी जीवन रेखा दीर्घकालिक व्यावसायिक चुनौतियों को पार करने के लिए आवश्यक निरंतर ऊर्जा और उद्यमशीलता को दर्शाती है। यह उद्यम स्थापित करने और सोच-समझकर जोखिम लेने के लिए एक मजबूत आधार को प्रकट करता है। आपकी हथेली की अन्य रेखाएँ जीवन के महत्वपूर्ण चरणों और छिपे हुए प्रभावों के बारे में अधिक विस्तृत जानकारी दे सकती हैं।"
+      }
+    }
+  ]
+}

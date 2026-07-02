@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-02",
+    "modified": "2026-07-02",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "0b55ab78-0750-4da8-81b1-2243e5c3e223",
+      "rule_uid": "PALM_LIFE_LONG_LOVE",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "love",
+      "priority": 1000,
+      "weight": 100,
+      "importance": "High",
+      "minimum_confidence": 0.8,
+      "visibility": "free",
+      "rule_type": "prediction",
+      "tone": "positive",
+      "emotion": "positive",
+      "applicability": "all",
+      "reading_time": "15 sec",
+      "quality_score": 100,
+      "editor_notes": "Approved by Editorial Team",
+      "source": "TIP001",
+      "keywords": [
+        "love",
+        "romance",
+        "steady",
+        "bonds"
+      ],
+      "translations": {
+        "en": "Traditional palmistry often associates this feature with a long Life Line is generally connected to a steady, grounded approach to emotional expression and the stamina to nurture lasting bonds. This observation focuses on your capacity for deep connection and emotional resilience over time. The interaction between your major lines may uncover unique traits and hidden strengths explored in your detailed assessment.",
+        "hi": "हस्तरेखा शास्त्र में इस लक्षण को आमतौर पर लंबी जीवन रेखा भावनाओं की अभिव्यक्ति में एक स्थिर दृष्टिकोण और लंबे समय तक चलने वाले संबंधों को निभाने की क्षमता से जुड़ी है। यह आपके भावनात्मक धैर्य और समय के साथ गहरे संबंध बनाने की आपकी क्षमता पर केंद्रित है। विभिन्न पर्वतों और रेखाओं का संयुक्त विश्लेषण आपके अद्वितीय गुणों और शक्तियों के बारे में महत्वपूर्ण जानकारी उजागर कर सकता है।"
+      }
+    }
+  ]
+}

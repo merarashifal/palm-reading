@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AI Analysis Rule Schema",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "version": { "type": "string" },
+        "created": { "type": "string" },
+        "modified": { "type": "string" },
+        "author": { "type": "string" },
+        "status": { "type": "string", "enum": ["draft", "review", "approved", "published", "deprecated"] }
+      },
+      "required": ["version", "status"]
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "uuid": { "type": "string" },
+          "rule_uid": { "type": "string" },
+          "analysis": { "type": "string" },
+          "feature": { "type": "string" },
+          "value": { "type": "string" },
+          "section": { "type": "string" },
+          "priority": { "type": "integer" },
+          "weight": { "type": "integer" },
+          "importance": { "type": "string", "enum": ["Critical", "High", "Medium", "Low"] },
+          "confidence_weight": { "type": "number" },
+          "minimum_confidence": { "type": "number" },
+          "visibility": { "type": "string", "enum": ["free", "premium", "internal"] },
+          "rule_type": { "type": "string", "enum": ["prediction", "remedy", "warning", "guidance", "combination"] },
+          "tone": { "type": "string", "enum": ["positive", "neutral", "caution"] },
+          "emotion": { "type": "string", "enum": ["positive", "neutral", "reflective", "caution"] },
+          "applicability": { "type": "string", "enum": ["all", "male", "female"] },
+          "reading_time": { "type": "string" },
+          "quality_score": { "type": "integer" },
+          "editor_notes": { "type": "string" },
+          "source": { "type": "string" },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "translations": {
+            "type": "object",
+            "patternProperties": {
+              "^[a-z]{2}$": { "type": "string" }
+            }
+          }
+        },
+        "required": ["uuid", "rule_uid", "analysis", "feature", "value", "section", "translations"]
+      }
+    }
+  },
+  "required": ["metadata", "rules"]
+}

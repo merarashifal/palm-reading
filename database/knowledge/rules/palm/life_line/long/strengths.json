@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-02",
+    "modified": "2026-07-02",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "6e65797a-3e17-45d9-9e0b-f1ee54a9204b",
+      "rule_uid": "PALM_LIFE_LONG_STRENGTHS",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "strengths",
+      "priority": 1000,
+      "weight": 100,
+      "importance": "Medium",
+      "minimum_confidence": 0.8,
+      "visibility": "free",
+      "rule_type": "prediction",
+      "tone": "positive",
+      "emotion": "positive",
+      "applicability": "all",
+      "reading_time": "15 sec",
+      "quality_score": 100,
+      "editor_notes": "Approved by Editorial Team",
+      "source": "TIP001",
+      "keywords": [
+        "strengths",
+        "resilience",
+        "endurance",
+        "vitality"
+      ],
+      "translations": {
+        "en": "Traditional palmistry often associates this feature with a long Life Line highlights your natural resilience, steady energy, and ability to endure life's challenges. Your core strength is your lasting stamina. More details await in your complete analysis.",
+        "hi": "हस्तरेखा शास्त्र में इस लक्षण को आमतौर पर लंबी जीवन रेखा आपके प्राकृतिक लचीलेपन, स्थिर ऊर्जा और जीवन की चुनौतियों को सहने की क्षमता को उजागर करती है। आपकी मूल ताकत आपकी स्थायी सहनशक्ति है। अधिक विस्तृत जानकारी आपके संपूर्ण विश्लेषण में है।"
+      }
+    }
+  ]
+}

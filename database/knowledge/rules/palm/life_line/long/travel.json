@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-02",
+    "modified": "2026-07-02",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "5a6407b6-e680-4f0c-82ca-0fe7c4e61aaa",
+      "rule_uid": "PALM_LIFE_LONG_TRAVEL",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "travel",
+      "priority": 1000,
+      "weight": 100,
+      "importance": "Medium",
+      "minimum_confidence": 0.8,
+      "visibility": "free",
+      "rule_type": "prediction",
+      "tone": "positive",
+      "emotion": "positive",
+      "applicability": "all",
+      "reading_time": "15 sec",
+      "quality_score": 100,
+      "editor_notes": "Approved by Editorial Team",
+      "source": "TIP001",
+      "keywords": [
+        "travel",
+        "exploration",
+        "vitality",
+        "journeys"
+      ],
+      "translations": {
+        "en": "According to traditional palmistry, a long Life Line indicates the physical vitality and stamina to enjoy extended journeys and worldly exploration. This points to an enduring curiosity and the energy needed to explore new horizons. The interaction between your major lines may uncover unique traits and hidden strengths explored in your detailed assessment.",
+        "hi": "पारंपरिक हस्तरेखा शास्त्र के अनुसार, लंबी जीवन रेखा विस्तारित यात्राओं का आनंद लेने के लिए आवश्यक शारीरिक जीवन शक्ति का संकेत देती है। यह नई दिशाओं का पता लगाने के लिए आवश्यक ऊर्जा और स्थायी जिज्ञासा की ओर इशारा करता है। विभिन्न पर्वतों और रेखाओं का संयुक्त विश्लेषण आपके अद्वितीय गुणों और शक्तियों के बारे में महत्वपूर्ण जानकारी उजागर कर सकता है।"
+      }
+    }
+  ]
+}

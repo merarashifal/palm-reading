@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-02",
+    "modified": "2026-07-02",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "04ef8951-8915-4bca-84d6-35efbed1e4fd",
+      "rule_uid": "PALM_LIFE_LONG_EDUCATION",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "education",
+      "priority": 1000,
+      "weight": 100,
+      "importance": "Medium",
+      "minimum_confidence": 0.8,
+      "visibility": "free",
+      "rule_type": "prediction",
+      "tone": "positive",
+      "emotion": "reflective",
+      "applicability": "all",
+      "reading_time": "15 sec",
+      "quality_score": 100,
+      "editor_notes": "Approved by Editorial Team",
+      "source": "TIP001",
+      "keywords": [
+        "education",
+        "learning",
+        "patience",
+        "focus"
+      ],
+      "translations": {
+        "en": "Traditional palmistry often associates this feature with a long Life Line suggests the mental stamina and patience required for continuous learning and long-term academic pursuits. This highlights a steady dedication to expanding your knowledge base over time. The interaction between your major lines may uncover unique traits and hidden strengths explored in your detailed assessment.",
+        "hi": "हस्तरेखा शास्त्र में इस लक्षण को आमतौर पर लंबी जीवन रेखा निरंतर सीखने और दीर्घकालिक शैक्षणिक गतिविधियों के लिए आवश्यक धैर्य का संकेत देती है। यह समय के साथ अपने ज्ञान का विस्तार करने के प्रति आपके स्थिर समर्पण को उजागर करता है। विभिन्न पर्वतों और रेखाओं का संयुक्त विश्लेषण आपके अद्वितीय गुणों और शक्तियों के बारे में महत्वपूर्ण जानकारी उजागर कर सकता है।"
+      }
+    }
+  ]
+}

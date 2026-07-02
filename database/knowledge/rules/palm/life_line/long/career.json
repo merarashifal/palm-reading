@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-02",
+    "modified": "2026-07-02",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "be8e3219-957e-44fc-aaa5-b99433710370",
+      "rule_uid": "PALM_LIFE_LONG_CAREER",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "career",
+      "priority": 1000,
+      "weight": 100,
+      "importance": "High",
+      "minimum_confidence": 0.8,
+      "visibility": "free",
+      "rule_type": "prediction",
+      "tone": "positive",
+      "emotion": "positive",
+      "applicability": "all",
+      "reading_time": "15 sec",
+      "quality_score": 100,
+      "editor_notes": "Approved by Editorial Team",
+      "source": "TIP001",
+      "keywords": [
+        "career",
+        "patience",
+        "progression",
+        "stamina"
+      ],
+      "translations": {
+        "en": "Palm readers have traditionally considered this a sign of a long Life Line indicates a steady approach to career progression, suggesting patience and long-term stamina in professional pursuits. This highlights a strong professional foundation and the ability to build lasting success through consistent effort. Other palm features can provide deeper context regarding your future opportunities and challenges in your advanced palm insights.",
+        "hi": "हस्तरेखा विशेषज्ञों ने पारंपरिक रूप से इसे लंबी जीवन रेखा करियर में स्थिर प्रगति, धैर्य और दीर्घकालिक सहनशक्ति का संकेत देती है। यह आपके मजबूत पेशेवर आधार और निरंतर प्रयास के माध्यम से स्थायी सफलता प्राप्त करने की क्षमता को दर्शाता है। आपकी हथेली में उपस्थित विशेष चिन्ह भविष्य की संभावनाओं और चुनौतियों के संबंध में अधिक स्पष्ट दृष्टिकोण प्रदान कर सकते हैं।"
+      }
+    }
+  ]
+}

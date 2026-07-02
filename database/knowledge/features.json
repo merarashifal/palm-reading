@@ -1,0 +1,20 @@
+[
+  {
+    "analysis_type_code": "palm",
+    "feature_code": "life_line",
+    "feature_name_en": "Life Line",
+    "feature_name_hi": "जीवन रेखा",
+    "description": "Indicates physical vitality and life energy.",
+    "display_order": 1,
+    "status": 1
+  },
+  {
+    "analysis_type_code": "palm",
+    "feature_code": "heart_line",
+    "feature_name_en": "Heart Line",
+    "feature_name_hi": "हृदय रेखा",
+    "description": "Indicates emotional stability and romantic perspectives.",
+    "display_order": 2,
+    "status": 1
+  }
+]

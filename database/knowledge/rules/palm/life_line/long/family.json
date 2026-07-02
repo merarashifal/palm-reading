@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-02",
+    "modified": "2026-07-02",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "4873d2b0-6015-4119-ba0e-e8c431f6bac2",
+      "rule_uid": "PALM_LIFE_LONG_FAMILY",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "family",
+      "priority": 1000,
+      "weight": 100,
+      "importance": "Medium",
+      "minimum_confidence": 0.8,
+      "visibility": "free",
+      "rule_type": "prediction",
+      "tone": "positive",
+      "emotion": "positive",
+      "applicability": "all",
+      "reading_time": "15 sec",
+      "quality_score": 100,
+      "editor_notes": "Approved by Editorial Team",
+      "source": "TIP001",
+      "keywords": [
+        "family",
+        "support",
+        "bonds",
+        "connection"
+      ],
+      "translations": {
+        "en": "According to traditional palmistry, a strong Life Line indicates a deep-rooted sense of family connection and the vitality to support loved ones. This reflects your enduring commitment to maintaining family harmony. The interaction between your major lines may uncover unique traits and hidden strengths explored in your detailed assessment.",
+        "hi": "पारंपरिक हस्तरेखा शास्त्र के अनुसार, एक मजबूत जीवन रेखा पारिवारिक जुड़ाव और प्रियजनों का समर्थन करने की क्षमता का संकेत देती है। यह पारिवारिक सद्भाव बनाए रखने के प्रति आपकी स्थायी प्रतिबद्धता को दर्शाता है। विभिन्न पर्वतों और रेखाओं का संयुक्त विश्लेषण आपके अद्वितीय गुणों और शक्तियों के बारे में महत्वपूर्ण जानकारी उजागर कर सकता है।"
+      }
+    }
+  ]
+}

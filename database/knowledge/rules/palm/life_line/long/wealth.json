@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-02",
+    "modified": "2026-07-02",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "54488213-3792-4708-9abf-136650edf449",
+      "rule_uid": "PALM_LIFE_LONG_WEALTH",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "wealth",
+      "priority": 1000,
+      "weight": 100,
+      "importance": "High",
+      "minimum_confidence": 0.8,
+      "visibility": "free",
+      "rule_type": "prediction",
+      "tone": "positive",
+      "emotion": "positive",
+      "applicability": "all",
+      "reading_time": "15 sec",
+      "quality_score": 100,
+      "editor_notes": "Approved by Editorial Team",
+      "source": "TIP001",
+      "keywords": [
+        "wealth",
+        "financial management",
+        "resources",
+        "stamina"
+      ],
+      "translations": {
+        "en": "According to traditional palmistry, a long Life Line reflects the consistent effort and endurance necessary for the steady accumulation and management of financial resources. This points toward a practical approach to financial stability and long-term security. The interaction between your major lines may uncover unique traits and hidden strengths explored in your detailed assessment.",
+        "hi": "पारंपरिक हस्तरेखा शास्त्र के अनुसार, लंबी जीवन रेखा समय के साथ धन के स्थिर संचय और प्रबंधन के लिए आवश्यक निरंतर प्रयास और सहनशक्ति को दर्शाती है। यह वित्तीय स्थिरता और दीर्घकालिक सुरक्षा के प्रति एक व्यावहारिक और सुरक्षित दृष्टिकोण की ओर इशारा करता है। विभिन्न पर्वतों और रेखाओं का संयुक्त विश्लेषण आपके अद्वितीय गुणों और शक्तियों के बारे में महत्वपूर्ण जानकारी उजागर कर सकता है।"
+      }
+    }
+  ]
+}

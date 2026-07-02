@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-02",
+    "modified": "2026-07-02",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "1f8674fa-207b-4c62-8e3c-6bd1b465ecd4",
+      "rule_uid": "PALM_LIFE_LONG_LEADERSHIP",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "leadership",
+      "priority": 1000,
+      "weight": 100,
+      "importance": "Medium",
+      "minimum_confidence": 0.8,
+      "visibility": "free",
+      "rule_type": "prediction",
+      "tone": "positive",
+      "emotion": "positive",
+      "applicability": "all",
+      "reading_time": "15 sec",
+      "quality_score": 100,
+      "editor_notes": "Approved by Editorial Team",
+      "source": "TIP001",
+      "keywords": [
+        "leadership",
+        "reliability",
+        "endurance",
+        "guidance"
+      ],
+      "translations": {
+        "en": "Traditional palmistry often associates this feature with a long Life Line reflects the enduring energy and resilience often found in steady, reliable leaders. This suggests you have the stamina to guide others through challenging situations. The interaction between your major lines may uncover unique traits and hidden strengths explored in your detailed assessment.",
+        "hi": "हस्तरेखा शास्त्र में इस लक्षण को आमतौर पर लंबी जीवन रेखा स्थिर और विश्वसनीय नेताओं में पाई जाने वाली स्थायी ऊर्जा को दर्शाती है। यह बताता है कि आप चुनौतीपूर्ण परिस्थितियों में दूसरों का मार्गदर्शन करने की क्षमता रखते हैं। विभिन्न पर्वतों और रेखाओं का संयुक्त विश्लेषण आपके अद्वितीय गुणों और शक्तियों के बारे में महत्वपूर्ण जानकारी उजागर कर सकता है।"
+      }
+    }
+  ]
+}

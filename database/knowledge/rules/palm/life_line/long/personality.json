@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-02",
+    "modified": "2026-07-02",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "61a20a4d-4f97-4182-8d6a-2d6eb1e20ee4",
+      "rule_uid": "PALM_LIFE_LONG_PERSONALITY",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "personality",
+      "priority": 1000,
+      "weight": 100,
+      "importance": "High",
+      "minimum_confidence": 0.8,
+      "visibility": "free",
+      "rule_type": "prediction",
+      "tone": "positive",
+      "emotion": "reflective",
+      "applicability": "all",
+      "reading_time": "15 sec",
+      "quality_score": 100,
+      "editor_notes": "Approved by Editorial Team",
+      "source": "TIP001",
+      "keywords": [
+        "personality",
+        "resilience",
+        "grounded",
+        "steady"
+      ],
+      "translations": {
+        "en": "Palm readers have traditionally considered this a sign of a long and clearly defined Life Line is generally seen as a sign of grounded character, deep inner resilience, and steady emotional energy. This reflects an innate ability to remain composed during challenging situations and a reliable core nature. Additional markings on your palm may highlight favourable periods and important turning points discussed in your complete interpretation.",
+        "hi": "हस्तरेखा विशेषज्ञों ने पारंपरिक रूप से इसे लंबी और स्पष्ट जीवन रेखा एक स्थिर व्यक्तित्व, गहरी आंतरिक शक्ति और संतुलित भावनात्मक ऊर्जा का प्रतीक मानी जाती है। यह आपके मूल स्वभाव की स्थिरता और कठिन परिस्थितियों में शांत रहने की सहज क्षमता को दर्शाता है। अन्य प्रमुख रेखाओं का अध्ययन आपके जीवन में आने वाले महत्वपूर्ण अवसरों और बदलावों के बारे में गहराई से बता सकता है।"
+      }
+    }
+  ]
+}

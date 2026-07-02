@@ -1,0 +1,29 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "created": "2026-07-01",
+    "modified": "2026-07-01",
+    "author": "MeraRashifal",
+    "status": "draft"
+  },
+  "rules": [
+    {
+      "uuid": "8b9a2c3f-d1e5-4f6c-8a2e-5c4b1a3d8f7e",
+      "rule_uid": "PALM_LIFE_LONG_HEALTH_NORMAL",
+      "analysis": "palm",
+      "feature": "life_line",
+      "value": "long",
+      "section": "health",
+      "priority": 1000,
+      "weight": 100,
+      "confidence_weight": 1.0,
+      "report_type": "normal",
+      "source": "Traditional Indian Palmistry",
+      "tags": ["health", "vitality", "longevity"],
+      "translations": {
+        "en": "A long and deep life line indicates strong physical vitality and a robust immune system.",
+        "hi": "एक लंबी और गहरी जीवन रेखा मजबूत शारीरिक शक्ति और एक मजबूत प्रतिरक्षा प्रणाली को दर्शाती है।"
+      }
+    }
+  ]
+}

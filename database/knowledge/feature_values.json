@@ -1,0 +1,29 @@
+[
+  {
+    "feature_code": "life_line",
+    "value_code": "long",
+    "value_name_en": "Long and Deep",
+    "value_name_hi": "लंबी और गहरी",
+    "description": "Indicates excellent health and stamina.",
+    "display_order": 1,
+    "status": 1
+  },
+  {
+    "feature_code": "life_line",
+    "value_code": "short",
+    "value_name_en": "Short",
+    "value_name_hi": "छोटी",
+    "description": "Indicates a life full of sudden changes.",
+    "display_order": 2,
+    "status": 1
+  },
+  {
+    "feature_code": "heart_line",
+    "value_code": "curved",
+    "value_code_name_en": "Curved upwards",
+    "value_name_hi": "ऊपर की ओर घुमावदार",
+    "description": "Warm, open, and emotionally expressive.",
+    "display_order": 1,
+    "status": 1
+  }
+]
