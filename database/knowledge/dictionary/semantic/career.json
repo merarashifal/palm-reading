@@ -1,0 +1,16 @@
+{
+    "required": [
+        "career",
+        "profession",
+        "work",
+        "job",
+        "success",
+        "business"
+    ],
+    "forbidden": [
+        "marriage",
+        "children",
+        "spouse",
+        "divorce"
+    ]
+}

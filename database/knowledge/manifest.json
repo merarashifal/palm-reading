@@ -1,15 +1,12 @@
 {
-  "metadata": {
-    "version": "1.0",
-    "created": "2026-07-01",
-    "modified": "2026-07-01",
-    "author": "MeraRashifal",
-    "status": "draft"
-  },
-  "statistics": {
-    "rules": 16,
-    "languages": 2,
-    "features": 1,
-    "sections": 16
-  }
+  "knowledge_pack": "Palm Reading",
+  "version": "1.0.0",
+  "analysis_type": "palm",
+  "languages": ["en", "hi"],
+  "features": [
+    "life_line"
+  ],
+  "entry_points": [
+    "rules/palm/life_line"
+  ]
 }

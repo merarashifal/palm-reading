@@ -1,0 +1,68 @@
+#!/usr/bin/env php
+<?php
+
+spl_autoload_register(function ($class) {
+    $prefix = 'AIAnalysisEngine\\';
+    $base_dir = dirname(__DIR__) . '/src/';
+    $len = strlen($prefix);
+    if (strncmp($prefix, $class, $len) !== 0) {
+        return;
+    }
+    $relative_class = substr($class, $len);
+    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+    if (file_exists($file)) {
+        require $file;
+    }
+});
+
+$config = require dirname(__DIR__) . '/config/knowledge.php';
+
+$command = $argv[1] ?? null;
+
+if (!$command) {
+    echo "Usage: php engine/bin/knowledge [command]\n";
+    echo "Commands:\n";
+    echo "  validate    Run validators\n";
+    echo "  compile     Compile knowledge packs\n";
+    echo "  generate    Generate artifacts\n";
+    exit(1);
+}
+
+switch ($command) {
+    case 'validate':
+        echo "Starting validation...\n";
+        
+        $registry = new \AIAnalysisEngine\Knowledge\Registry\KnowledgeRegistry();
+        $manifestPath = $config['paths']['manifest'];
+        
+        try {
+            $manifest = $registry->loadManifest($manifestPath);
+            $context = new \AIAnalysisEngine\Knowledge\Context\KnowledgeContext(
+                $manifest,
+                $config,
+                dirname($manifestPath), // Root path is where manifest is
+                'production',
+                '1.0.0',
+                $manifest['version'] ?? '1.0.0',
+                'en'
+            );
+            
+            $validators = [
+                new \AIAnalysisEngine\Knowledge\Validator\ManifestValidator(),
+                new \AIAnalysisEngine\Knowledge\Validator\SchemaValidator()
+            ];
+            
+            $results = [];
+            foreach ($validators as $validator) {
+                $result = $validator->validate($context);
+                $results[] = $result;
+                echo json_encode($result, JSON_PRETTY_PRINT) . "\n";
+            }
+            
+        } catch (\Exception $e) {
+            echo "Error during validation: " . $e->getMessage() . "\n";
+            exit(1);
+        }
+        
+        break;
+}

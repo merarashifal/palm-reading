@@ -1,0 +1,8 @@
+{
+  "tier": 1,
+  "required_sections": ["observation", "interpretation", "curiosity"],
+  "word_count_min": 40,
+  "word_count_max": 45,
+  "reading_time_sec": 15,
+  "tone": ["positive", "neutral", "reflective"]
+}

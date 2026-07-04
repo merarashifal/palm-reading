@@ -1,0 +1,8 @@
+{
+  "tier": 3,
+  "required_sections": ["observation", "curiosity"],
+  "word_count_min": 25,
+  "word_count_max": 30,
+  "reading_time_sec": 8,
+  "tone": ["caution", "reflective"]
+}
