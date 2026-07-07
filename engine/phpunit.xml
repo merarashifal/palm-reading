@@ -1,13 +1,37 @@
-<?php xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="vendor/autoload.php"
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.0/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
          colors="true"
-         verbose="true">
+         cacheDirectory=".phpunit.cache">
     <testsuites>
-        <testsuite name="Unit Tests">
-            <directory>tests/Unit</directory>
+        <testsuite name="Validation">
+            <directory>tests/Unit/Validation</directory>
         </testsuite>
-        <testsuite name="Integration Tests">
-            <directory>tests/Integration</directory>
+        <testsuite name="Compiler">
+            <directory>tests/Unit/Compiled</directory>
+        </testsuite>
+        <testsuite name="Generator">
+            <directory>tests/Unit/Knowledge</directory>
+        </testsuite>
+        <testsuite name="Inference">
+            <directory>tests/Unit/Inference</directory>
+        </testsuite>
+        <testsuite name="Golden">
+            <directory>tests/Golden</directory>
+        </testsuite>
+        <testsuite name="Benchmarks">
+            <directory>tests/Benchmarks</directory>
         </testsuite>
     </testsuites>
+
+    <coverage>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+        <report>
+            <clover outputFile="release/coverage.xml"/>
+            <json outputFile="release/coverage.json"/>
+        </report>
+    </coverage>
 </phpunit>

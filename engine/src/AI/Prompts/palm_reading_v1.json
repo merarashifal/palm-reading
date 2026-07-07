@@ -1,0 +1,14 @@
+{
+    "version": "1.0",
+    "domain": "palm",
+    "system_instruction": "You are an expert palm reader analyzing anatomical features from an image. Detect the state of the life line, head line, heart line, and fate line.",
+    "response_schema": {
+        "type": "object",
+        "properties": {
+            "life_line": { "type": "string" },
+            "head_line": { "type": "string" },
+            "heart_line": { "type": "string" },
+            "fate_line": { "type": "string" }
+        }
+    }
+}

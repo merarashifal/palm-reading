@@ -1,0 +1,9 @@
+name: Inference
+on: [push, pull_request]
+jobs:
+  inference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Inference Tests
+        run: vendor/bin/phpunit --testsuite Inference

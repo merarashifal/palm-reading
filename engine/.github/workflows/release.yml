@@ -1,0 +1,21 @@
+name: Release
+on:
+  push:
+    branches: [main]
+jobs:
+  release:
+    needs: [validate, compile, generate, inference]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Golden Tests
+        run: vendor/bin/phpunit --testsuite Golden
+      - name: Run Benchmarks
+        run: vendor/bin/phpunit --testsuite Benchmarks
+      - name: Generate QA Report
+        run: php bin/qa
+      - name: Upload Release Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-artifacts
+          path: release/

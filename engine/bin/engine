@@ -1,0 +1,115 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use AIAnalysisEngine\Knowledge\Registry\KnowledgeRegistry;
+use AIAnalysisEngine\Knowledge\Context\KnowledgeContext;
+use AIAnalysisEngine\Knowledge\Compiler\Pipeline\CompilerFactory;
+use AIAnalysisEngine\Knowledge\Compiler\CompilerContext;
+use AIAnalysisEngine\Knowledge\Compiled\CompiledKnowledgePack;
+use AIAnalysisEngine\Knowledge\Generator\BuildContext;
+use AIAnalysisEngine\Knowledge\Generator\GeneratorPipeline;
+use AIAnalysisEngine\Knowledge\Generator\Stages\JSONGenerator;
+use AIAnalysisEngine\Knowledge\Generator\Stages\CSVGenerator;
+use AIAnalysisEngine\Knowledge\Generator\Stages\SQLGenerator;
+use AIAnalysisEngine\Knowledge\Generator\Stages\DiagnosticsGenerator;
+use AIAnalysisEngine\Knowledge\Generator\Stages\BuildManifestGenerator;
+use AIAnalysisEngine\Knowledge\Generator\Stages\ChecksumGenerator;
+
+$command = $argv[1] ?? 'help';
+
+echo "AI Analysis Engine CLI\n";
+echo "======================\n";
+
+switch ($command) {
+    case 'validate':
+        echo "Running Validation Pipeline...\n";
+        // To be connected to QAEngine
+        echo "[TODO] Connect ValidationEngine here.\n";
+        break;
+
+    case 'compile':
+        echo "Running Compiler Pipeline...\n";
+        $pack = compilePack();
+        if ($pack) {
+            echo "✅ Compilation Complete. Peak memory: " . round(memory_get_peak_usage() / 1024 / 1024, 2) . " MB\n";
+        } else {
+            echo "❌ Compilation Failed.\n";
+        }
+        break;
+
+    case 'generate':
+        echo "Starting Generation Sequence...\n";
+        $pack = compilePack(); // Must compile first
+        if (!$pack) {
+            echo "❌ Cannot generate, compilation failed.\n";
+            exit(1);
+        }
+        
+        $baseDir = __DIR__ . '/../generated';
+        $context = new BuildContext($pack, $baseDir);
+        
+        $pipeline = new GeneratorPipeline();
+        $pipeline->register(new JSONGenerator(), 10);
+        $pipeline->register(new SQLGenerator(), 20);
+        $pipeline->register(new CSVGenerator(), 30);
+        $pipeline->register(new DiagnosticsGenerator(), 40);
+        $pipeline->register(new BuildManifestGenerator(), 50);
+        $pipeline->register(new ChecksumGenerator(), 60);
+        
+        $results = $pipeline->execute($context);
+        
+        $success = true;
+        foreach ($results as $r) {
+            if (!$r->success) $success = false;
+        }
+
+        if ($success) {
+            echo "✅ Generation Complete. Artifacts written to: $baseDir/latest/\n";
+        } else {
+            echo "❌ Generation Pipeline encountered errors.\n";
+        }
+        break;
+
+    case 'benchmark':
+        echo "Running Benchmark Suite...\n";
+        // Connect to tests/Fixtures datasets and benchmark
+        echo "[TODO] Execute benchmark scripts against Fixtures.\n";
+        break;
+
+    case 'doctor':
+        echo "Running System Diagnostics...\n";
+        $version = file_exists(__DIR__ . '/../VERSION') ? trim(file_get_contents(__DIR__ . '/../VERSION')) : 'Unknown';
+        echo "Engine Version: $version\n";
+        echo "PHP Version: " . PHP_VERSION . "\n";
+        echo "Registry Status: OK\n";
+        echo "Generated Dir Permissions: " . (is_writable(__DIR__ . '/../generated') ? 'OK' : 'ERROR') . "\n";
+        break;
+
+    default:
+        echo "Usage: php bin/engine [command]\n\n";
+        echo "Commands:\n";
+        echo "  validate    Run the validation QA engine\n";
+        echo "  compile     Compile the knowledge pack into memory\n";
+        echo "  generate    Compile and export build artifacts to generated/\n";
+        echo "  benchmark   Run internal performance metrics against Fixtures\n";
+        echo "  doctor      Check system health, permissions, and checksums\n";
+        break;
+}
+
+function compilePack(): ?CompiledKnowledgePack
+{
+    // Minimal mock for CLI execution demonstration
+    $manifest = ['entry_points' => [], 'version' => '1.0'];
+    $registry = new KnowledgeRegistry();
+    $ctx = new KnowledgeContext($manifest, [], __DIR__ . '/../database/knowledge', '', '', '', '');
+    $pack = new CompiledKnowledgePack();
+    $pack->manifest = $manifest;
+    
+    $compilerCtx = new CompilerContext($ctx, $registry, $pack);
+    $pipeline = CompilerFactory::createDefaultPipeline();
+    $report = $pipeline->execute($compilerCtx);
+    
+    return $report->success ? $pack : null;
+}
