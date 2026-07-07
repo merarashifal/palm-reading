@@ -12,6 +12,10 @@ The commercial success of the AI Knowledge Platform is built on a simple premise
 
 The Inference Engine computes the full `InferenceResult` containing every rule match, confidence score, and relationship. Visibility is controlled at the rendering layer via rule visibility tags.
 
+### Highlight
+- **Goal**: Ensure the user remembers the most impactful insights immediately.
+- **Content**: The engine marks the Top 5 most impactful insights. These appear in the free report as key takeaways.
+
 ### Public (Free)
 - **Goal**: Build trust, generate curiosity, and prove the engine's capability.
 - **Content**: Basic information, a high-level score, and the three strongest traits.
