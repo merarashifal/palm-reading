@@ -1,0 +1,74 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use AIAnalysisEngine\Config\EnvLoader;
+use AIAnalysisEngine\AI\Providers\Gemini\GeminiClient;
+
+EnvLoader::load(__DIR__ . '/../.env');
+
+$apiKey = getenv('GEMINI_API_KEY');
+$model = getenv('GEMINI_MODEL') ?: 'gemini-2.5-flash';
+$endpoint = getenv('GEMINI_ENDPOINT') ?: 'https://generativelanguage.googleapis.com/v1beta/models/' . $model . ':generateContent';
+$storageDir = __DIR__ . '/../storage/provider';
+
+if (!$apiKey) {
+    die("Error: GEMINI_API_KEY is not set in .env\n");
+}
+
+if ($argc < 3) {
+    die("Usage: php bin/prompt-test <image_path> <prompt_path>\nExample: php bin/prompt-test samples/palms/test.jpg src/AI/Prompts/Palm/Vision/2.5-flash/v1.txt\n");
+}
+
+$imagePath = $argv[1];
+$promptPath = $argv[2];
+
+echo "Testing Prompt: $promptPath\n";
+echo "Image: $imagePath\n";
+echo "Model: $model\n";
+echo "Sending request to Gemini...\n";
+
+$client = new GeminiClient($apiKey, $model, $endpoint, $storageDir);
+
+try {
+    $rawResponse = $client->analyzeImage($imagePath, $promptPath);
+    echo "\n=== Raw Response ===\n";
+    echo $rawResponse . "\n";
+    echo "====================\n";
+    
+    // Check if it's actually valid JSON returned in the 'text' field of the Gemini response
+    $decoded = json_decode($rawResponse, true);
+    
+    if (isset($decoded['candidates'][0]['content']['parts'][0]['text'])) {
+        $extractedText = $decoded['candidates'][0]['content']['parts'][0]['text'];
+        // Remove markdown formatting if Gemini ignored the instruction
+        $extractedText = preg_replace('/```json\s*/', '', $extractedText);
+        $extractedText = preg_replace('/```\s*/', '', $extractedText);
+        
+        echo "\n=== Extracted JSON ===\n";
+        echo $extractedText . "\n";
+        
+        $finalJson = json_decode($extractedText, true);
+        if (json_last_error() === JSON_ERROR_NONE) {
+            echo "\nJSON Valid: YES\n";
+            $detectedCount = 0;
+            if (isset($finalJson['lines'])) $detectedCount += count($finalJson['lines']);
+            if (isset($finalJson['mounts'])) $detectedCount += count($finalJson['mounts']);
+            if (isset($finalJson['signs'])) $detectedCount += count($finalJson['signs']);
+            echo "Detected Features: $detectedCount\n";
+            
+            if (isset($finalJson['image_quality'])) {
+                echo "Image Quality Score: " . ($finalJson['image_quality']['score'] ?? 'N/A') . "\n";
+            }
+        } else {
+            echo "\nJSON Valid: NO\n";
+            echo "Error: " . json_last_error_msg() . "\n";
+        }
+    } else {
+         echo "\nJSON Valid: NO (Unexpected response structure)\n";
+    }
+
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage() . "\n";
+}

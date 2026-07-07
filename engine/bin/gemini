@@ -1,0 +1,72 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use AIAnalysisEngine\Config\EnvLoader;
+use AIAnalysisEngine\AI\Providers\Gemini\GeminiClient;
+use AIAnalysisEngine\AI\Providers\Gemini\GeminiProviderPipeline;
+use AIAnalysisEngine\Inference\Pipeline\InferenceFactory;
+use AIAnalysisEngine\Inference\InferenceContext;
+
+EnvLoader::load(__DIR__ . '/../.env');
+
+$apiKey = getenv('GEMINI_API_KEY');
+$model = getenv('GEMINI_MODEL') ?: 'gemini-2.5-flash';
+$endpoint = getenv('GEMINI_ENDPOINT') ?: 'https://generativelanguage.googleapis.com/v1beta/models/' . $model . ':generateContent';
+$storageDir = __DIR__ . '/../storage/provider';
+$promptPath = __DIR__ . '/../src/AI/Prompts/Palm/Vision/2.5-flash/v1.txt';
+
+if (!$apiKey) {
+    die("Error: GEMINI_API_KEY is not set in .env\n");
+}
+
+if ($argc < 2) {
+    die("Usage: php bin/gemini <image_path>\nExample: php bin/gemini samples/palms/test.jpg\n");
+}
+
+$imagePath = $argv[1];
+
+if (!file_exists($imagePath)) {
+    die("Error: Image not found at $imagePath\n");
+}
+
+echo "Image: $imagePath\n";
+echo "Model: $model\n";
+echo "Extracting features via Gemini API...\n";
+
+try {
+    $client = new GeminiClient($apiKey, $model, $endpoint, $storageDir);
+    $providerPipeline = new GeminiProviderPipeline($client);
+    
+    // 1. Run Provider Pipeline
+    $normalizedFeatures = $providerPipeline->run($imagePath, $promptPath);
+    echo "Extracted " . count($normalizedFeatures->features) . " normalized features.\n";
+    
+    // 2. Mocking a compiled knowledge pack for testing
+    // In reality, this would load the compiled SQLite or JSON RuleIndex.
+    // We will pass an empty array to context just to see if the pipeline succeeds without crashing.
+    echo "Running Inference Engine...\n";
+    $inferencePipeline = InferenceFactory::createPipeline();
+    $context = new InferenceContext($normalizedFeatures, []); // Empty array for compiled index for now
+    
+    $result = $inferencePipeline->execute($context);
+    
+    $resultJson = json_encode([
+        'execution_time' => microtime(true) - $_SERVER['REQUEST_TIME_FLOAT'],
+        'features_count' => count($normalizedFeatures->features),
+        // Since we don't have a real compiled index loaded, inference will probably yield empty stages
+        'inference_status' => 'success',
+        'raw_features' => $normalizedFeatures->features
+    ], JSON_PRETTY_PRINT);
+    
+    $outputFile = $storageDir . '/InferenceResult_' . date('Ymd_His') . '.json';
+    file_put_contents($outputFile, $resultJson);
+    
+    echo "\n=== Pipeline Complete ===\n";
+    echo "InferenceResult saved to: $outputFile\n";
+    
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage() . "\n";
+    exit(1);
+}
