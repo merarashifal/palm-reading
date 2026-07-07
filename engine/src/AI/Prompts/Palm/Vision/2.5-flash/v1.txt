@@ -19,7 +19,8 @@ Expected JSON format:
     "score": <0-100 integer>,
     "blur": <0.0-1.0 float>,
     "lighting": "good|poor|overexposed|underexposed",
-    "occlusion": <boolean>
+    "occlusion": <boolean>,
+    "recommendations": ["<string, e.g. 'Take the photo in daylight'>"]
   },
   "lines": [
     {

@@ -81,19 +81,40 @@ class GeminiClient
 
         $url = sprintf("%s?key=%s", $this->endpoint, $this->apiKey);
 
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $requestJson);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/json'
-        ]);
-        
-        $startTime = microtime(true);
-        $response = curl_exec($ch);
-        $latency = microtime(true) - $startTime;
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
+        $maxRetries = 3;
+        $attempt = 0;
+        $response = false;
+        $httpCode = 0;
+        $latency = 0;
+
+        while ($attempt < $maxRetries) {
+            $attempt++;
+            
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $requestJson);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Content-Type: application/json'
+            ]);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10); // 10 seconds to connect
+            curl_setopt($ch, CURLOPT_TIMEOUT, 45); // 45 seconds overall timeout
+            
+            $startTime = microtime(true);
+            $response = curl_exec($ch);
+            $latency = microtime(true) - $startTime;
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            // Retry only on specific transient errors
+            if ($response === false || in_array($httpCode, [429, 500, 503])) {
+                if ($attempt < $maxRetries) {
+                    sleep((int)pow(2, $attempt)); // Exponential backoff: 2s, 4s
+                    continue;
+                }
+            }
+            break;
+        }
 
         if ($response === false || $httpCode >= 400) {
             $errorDir = $this->storageDir . '/failed/' . $dateFolder;
@@ -108,15 +129,30 @@ class GeminiClient
         file_put_contents($saveDir . '/response.json', $response);
         
         // Check if JSON is valid
-        json_decode($response);
+        $decoded = json_decode($response, true);
         $jsonValid = (json_last_error() === JSON_ERROR_NONE);
+
+        // Extract metrics if valid
+        $promptTokens = $decoded['usageMetadata']['promptTokenCount'] ?? 0;
+        $completionTokens = $decoded['usageMetadata']['candidatesTokenCount'] ?? 0;
+        
+        // Approximate cost for 2.5-flash: 
+        // $0.075 / 1M prompt tokens, $0.30 / 1M completion tokens
+        $costUsd = ($promptTokens / 1000000) * 0.075 + ($completionTokens / 1000000) * 0.30;
+        $costInr = $costUsd * 83.5; // Approx INR conversion
+
+        $promptVersion = basename($promptPath, '.txt');
 
         file_put_contents($saveDir . '/metrics.json', json_encode([
             'model' => $this->model,
+            'prompt_version' => $promptVersion,
             'prompt_path' => $promptPath,
             'latency_seconds' => $latency,
             'image_hash' => $imageHash,
-            'json_valid' => $jsonValid
+            'json_valid' => $jsonValid,
+            'prompt_tokens' => $promptTokens,
+            'completion_tokens' => $completionTokens,
+            'estimated_cost_inr' => round($costInr, 4)
         ], JSON_PRETTY_PRINT));
 
         if (!$jsonValid) {
