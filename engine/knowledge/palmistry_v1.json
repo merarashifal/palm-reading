@@ -4,102 +4,244 @@
     "domain": "palm",
     "rules": [
         {
-            "id": "rule_life_line_strong",
+            "rule_id": "life_line_long",
             "category": "vitality",
-            "condition": {
+            "visibility": "free",
+            "importance": 85,
+            "priority": 90,
+            "score_impact": 15,
+            "tags": ["vitality", "health"],
+            "conditions": {
                 "type": "AND",
                 "conditions": [
-                    {
-                        "feature_type": "life_line",
-                        "operator": "exists"
-                    },
-                    {
-                        "feature_type": "life_line",
-                        "attribute": "depth",
-                        "operator": "equals",
-                        "value": "deep"
-                    }
+                    { "feature_type": "life_line", "operator": "exists" },
+                    { "feature_type": "life_line", "attribute": "length", "operator": "equals", "value": "long" }
                 ]
             },
-            "insight": {
-                "title": "Strong Vitality",
-                "description": "A deep and clear life line indicates robust physical health, strong vitality, and high resilience to stress.",
-                "score_impact": {"vitality": 10},
-                "tags": ["health", "energy"]
-            }
+            "outputs": [
+                {
+                    "type": "insight",
+                    "title": "Strong Vitality",
+                    "description": "A long and unbroken life line indicates excellent physical health, a strong constitution, and high energy reserves."
+                }
+            ]
         },
         {
-            "id": "rule_heart_line_broken",
+            "rule_id": "life_line_broken",
+            "category": "vitality",
+            "visibility": "premium",
+            "importance": 90,
+            "priority": 95,
+            "score_impact": -10,
+            "tags": ["health", "transition"],
+            "conditions": {
+                "type": "AND",
+                "conditions": [
+                    { "feature_type": "life_line", "operator": "exists" },
+                    { "feature_type": "life_line", "evidence": "broken_segments", "operator": "contains" }
+                ]
+            },
+            "outputs": [
+                {
+                    "type": "insight",
+                    "title": "Major Life Transition",
+                    "description": "Breaks in the life line often correspond to significant changes in lifestyle, location, or health status that require adaptation.",
+                    "unlock_reason": "Detailed timeline of transition events available"
+                }
+            ]
+        },
+        {
+            "rule_id": "heart_line_deep",
             "category": "relationships",
-            "condition": {
+            "visibility": "free",
+            "importance": 70,
+            "priority": 80,
+            "score_impact": 10,
+            "tags": ["love", "emotion"],
+            "conditions": {
                 "type": "AND",
                 "conditions": [
-                    {
-                        "feature_type": "heart_line",
-                        "operator": "exists"
-                    },
-                    {
-                        "feature_type": "heart_line",
-                        "evidence": "broken_segments",
-                        "operator": "contains"
-                    }
+                    { "feature_type": "heart_line", "operator": "exists" },
+                    { "feature_type": "heart_line", "attribute": "depth", "operator": "equals", "value": "deep" }
                 ]
             },
-            "insight": {
-                "title": "Emotional Fluctuations",
-                "description": "Breaks in the heart line suggest periods of emotional transition or significant changes in relationships.",
-                "score_impact": {"relationships": -5},
-                "tags": ["emotions", "love"]
-            }
+            "outputs": [
+                {
+                    "type": "insight",
+                    "title": "Deep Emotional Capacity",
+                    "description": "A deep heart line suggests you experience emotions intensely and form strong, lasting attachments to others."
+                }
+            ]
         },
         {
-            "id": "rule_head_line_forked",
+            "rule_id": "heart_line_broken",
+            "category": "relationships",
+            "visibility": "premium",
+            "importance": 85,
+            "priority": 85,
+            "score_impact": -5,
+            "tags": ["love", "challenges"],
+            "conditions": {
+                "type": "AND",
+                "conditions": [
+                    { "feature_type": "heart_line", "operator": "exists" },
+                    { "feature_type": "heart_line", "evidence": "broken_segments", "operator": "contains" }
+                ]
+            },
+            "outputs": [
+                {
+                    "type": "insight",
+                    "title": "Emotional Fluctuations",
+                    "description": "Breaks indicate periods of emotional recalibration or significant relationship transitions in your life.",
+                    "unlock_reason": "Relationship compatibility and healing remedies available"
+                }
+            ]
+        },
+        {
+            "rule_id": "head_line_forked",
             "category": "career",
-            "condition": {
+            "visibility": "free",
+            "importance": 80,
+            "priority": 85,
+            "score_impact": 12,
+            "tags": ["intellect", "business"],
+            "conditions": {
                 "type": "AND",
                 "conditions": [
-                    {
-                        "feature_type": "head_line",
-                        "operator": "exists"
-                    },
-                    {
-                        "feature_type": "head_line",
-                        "evidence": "fork_endpoint",
-                        "operator": "contains"
-                    }
+                    { "feature_type": "head_line", "operator": "exists" },
+                    { "feature_type": "head_line", "evidence": "fork_endpoint", "operator": "contains" }
                 ]
             },
-            "insight": {
-                "title": "Analytical & Creative Thinking",
-                "description": "A forked head line (writer's fork) indicates a balance between practical logic and creative imagination, highly beneficial for entrepreneurial or writing careers.",
-                "score_impact": {"career": 8},
-                "tags": ["intellect", "business"]
-            }
+            "outputs": [
+                {
+                    "type": "insight",
+                    "title": "Creative & Analytical Thinker",
+                    "description": "The 'writer's fork' shows a dual ability to think logically while maintaining strong creative imagination."
+                },
+                {
+                    "type": "recommendation",
+                    "product": "career_analysis",
+                    "reason": "Strong entrepreneurial indicators detected"
+                }
+            ]
         },
         {
-            "id": "rule_rare_star_jupiter",
-            "category": "rare",
-            "condition": {
+            "rule_id": "fate_line_strong",
+            "category": "career",
+            "visibility": "premium",
+            "importance": 90,
+            "priority": 90,
+            "score_impact": 20,
+            "tags": ["career", "success"],
+            "conditions": {
                 "type": "AND",
                 "conditions": [
-                    {
-                        "feature_type": "star",
-                        "operator": "exists"
-                    },
-                    {
-                        "feature_type": "star",
-                        "attribute": "location",
-                        "operator": "equals",
-                        "value": "mount_jupiter"
-                    }
+                    { "feature_type": "fate_line", "operator": "exists" },
+                    { "feature_type": "fate_line", "attribute": "depth", "operator": "equals", "value": "deep" }
                 ]
             },
-            "insight": {
-                "title": "Rare Star of Leadership",
-                "description": "A star on the Mount of Jupiter is an extremely auspicious mark indicating sudden success, honor, and elevated social standing.",
-                "score_impact": {"career": 15, "leadership": 20},
-                "tags": ["rare", "success"]
-            }
+            "outputs": [
+                {
+                    "type": "insight",
+                    "title": "Strong Career Trajectory",
+                    "description": "A deep fate line indicates a clear sense of purpose and consistent forward momentum in professional endeavors.",
+                    "unlock_reason": "Professional success timeline available"
+                }
+            ]
+        },
+        {
+            "rule_id": "fate_line_weak",
+            "category": "career",
+            "visibility": "free",
+            "importance": 60,
+            "priority": 70,
+            "score_impact": -5,
+            "tags": ["career", "flexibility"],
+            "conditions": {
+                "type": "AND",
+                "conditions": [
+                    { "feature_type": "fate_line", "operator": "exists" },
+                    { "feature_type": "fate_line", "attribute": "depth", "operator": "equals", "value": "faint" }
+                ]
+            },
+            "outputs": [
+                {
+                    "type": "insight",
+                    "title": "Flexible Career Path",
+                    "description": "A faint fate line suggests you prefer flexibility over a rigid corporate ladder, often changing professional interests."
+                }
+            ]
+        },
+        {
+            "rule_id": "star_sign_jupiter",
+            "category": "rare",
+            "visibility": "premium",
+            "importance": 95,
+            "priority": 100,
+            "score_impact": 15,
+            "tags": ["rare", "leadership"],
+            "conditions": {
+                "type": "AND",
+                "conditions": [
+                    { "feature_type": "star", "operator": "exists" },
+                    { "feature_type": "star", "attribute": "location", "operator": "equals", "value": "mount_jupiter" }
+                ]
+            },
+            "outputs": [
+                {
+                    "type": "insight",
+                    "title": "Star of Leadership",
+                    "description": "A star on the Mount of Jupiter is an extremely auspicious mark indicating sudden success, honor, and elevated social standing.",
+                    "unlock_reason": "Rare astrological alignment insights available"
+                }
+            ]
+        },
+        {
+            "rule_id": "cross_sign_mystic",
+            "category": "rare",
+            "visibility": "premium",
+            "importance": 92,
+            "priority": 95,
+            "score_impact": 10,
+            "tags": ["rare", "intuition"],
+            "conditions": {
+                "type": "AND",
+                "conditions": [
+                    { "feature_type": "cross", "operator": "exists" },
+                    { "feature_type": "cross", "attribute": "location", "operator": "equals", "value": "between_head_and_heart" }
+                ]
+            },
+            "outputs": [
+                {
+                    "type": "insight",
+                    "title": "Mystic Cross",
+                    "description": "This rare mark indicates a natural affinity for the occult, strong intuition, and an analytical approach to spiritual matters.",
+                    "unlock_reason": "Hidden intuition and spiritual path insights available"
+                }
+            ]
+        },
+        {
+            "rule_id": "strong_venus_mount",
+            "category": "vitality",
+            "visibility": "free",
+            "importance": 75,
+            "priority": 80,
+            "score_impact": 10,
+            "tags": ["passion", "energy"],
+            "conditions": {
+                "type": "AND",
+                "conditions": [
+                    { "feature_type": "mount_venus", "operator": "exists" },
+                    { "feature_type": "mount_venus", "attribute": "prominence", "operator": "equals", "value": "prominent" }
+                ]
+            },
+            "outputs": [
+                {
+                    "type": "insight",
+                    "title": "High Passion & Energy",
+                    "description": "A well-developed Mount of Venus indicates a deep love for life, strong passions, and appreciation for beauty and comfort."
+                }
+            ]
         }
     ]
 }

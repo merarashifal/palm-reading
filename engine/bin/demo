@@ -1,0 +1,80 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use AIAnalysisEngine\AI\Providers\DTO\NormalizedFeatureCollection;
+use AIAnalysisEngine\AI\Providers\DTO\NormalizedFeature;
+use AIAnalysisEngine\Inference\Runtime\InferenceRuntime;
+use AIAnalysisEngine\Presentation\PresentationEngine;
+use AIAnalysisEngine\Renderer\HtmlRenderer;
+
+// Mock the NormalizedFeatures that Gemini WOULD return to avoid an actual API call slowing us down today
+// We will generate the 10 features corresponding to our Knowledge Pack to test the rule matcher.
+
+$startTime = microtime(true);
+$runId = 'run-' . date('Ymd-His') . '-' . substr(md5(uniqid()), 0, 6);
+$storageDir = __DIR__ . "/../storage/demo/$runId";
+if (!is_dir($storageDir)) {
+    mkdir($storageDir, 0777, true);
+}
+
+echo "Running Demo Pipeline for run: $runId\n";
+
+// 1. Mock Extraction & Normalization
+$features = new NormalizedFeatureCollection();
+$features->addFeature(new NormalizedFeature('life_line', 0.95, ['length' => 'long', 'depth' => 'deep'], []));
+$features->addFeature(new NormalizedFeature('heart_line', 0.90, ['depth' => 'deep'], ['broken_segments']));
+$features->addFeature(new NormalizedFeature('head_line', 0.88, [], ['fork_endpoint']));
+$features->addFeature(new NormalizedFeature('fate_line', 0.85, ['depth' => 'deep'], []));
+$features->addFeature(new NormalizedFeature('star', 0.99, ['location' => 'mount_jupiter'], []));
+$features->addFeature(new NormalizedFeature('mount_venus', 0.92, ['prominence' => 'prominent'], []));
+
+file_put_contents("$storageDir/normalized.json", json_encode($features->toArray(), JSON_PRETTY_PRINT));
+$normTime = microtime(true) - $startTime;
+echo "✔ Extraction & Normalization Completed\n";
+
+// 2. Inference
+$inferenceStart = microtime(true);
+$runtime = new InferenceRuntime();
+$knowledgePackPath = __DIR__ . '/../knowledge/palmistry_v1.json';
+$inferenceResult = $runtime->run($knowledgePackPath, $features);
+
+$inferenceArray = [
+    'insights' => array_map(fn($i) => $i->toArray(), $inferenceResult->insights),
+    'recommendations' => array_map(fn($r) => (array)$r, $inferenceResult->recommendations),
+    'scores' => $inferenceResult->scores,
+    'statistics' => $inferenceResult->statistics
+];
+file_put_contents("$storageDir/inference.json", json_encode($inferenceArray, JSON_PRETTY_PRINT));
+$infTime = microtime(true) - $inferenceStart;
+echo "✔ " . count($features->getAllFeatures()) . " Features Detected\n";
+echo "✔ " . count($inferenceResult->insights) . " Insights Generated\n";
+
+// 3. Presentation
+$presStart = microtime(true);
+$presentationEngine = new PresentationEngine();
+$reportModel = $presentationEngine->buildReport($inferenceResult);
+file_put_contents("$storageDir/report.json", json_encode((array)$reportModel, JSON_PRETTY_PRINT));
+$presTime = microtime(true) - $presStart;
+
+// 4. Rendering
+$renStart = microtime(true);
+$renderer = new HtmlRenderer();
+$html = $renderer->render($reportModel);
+file_put_contents("$storageDir/report.html", $html);
+$renTime = microtime(true) - $renStart;
+echo "✔ HTML Report Created\n";
+
+$totalTime = microtime(true) - $startTime;
+
+$metrics = [
+    'normalization_ms' => round($normTime * 1000),
+    'inference_ms' => round($infTime * 1000),
+    'presentation_ms' => round($presTime * 1000),
+    'render_ms' => round($renTime * 1000),
+    'total_ms' => round($totalTime * 1000)
+];
+file_put_contents("$storageDir/metrics.json", json_encode($metrics, JSON_PRETTY_PRINT));
+
+echo "\nOutput saved to: " . realpath("$storageDir/report.html") . "\n";
