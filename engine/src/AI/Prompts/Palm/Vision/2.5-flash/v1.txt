@@ -5,37 +5,47 @@ Never predict.
 Never interpret.
 Never write markdown.
 Never wrap JSON inside code blocks.
-Do not infer missing features.
 
 Expected JSON format:
 {
   "schema_version": "PalmAnnotationSchema 1.0",
   "hand": "left|right|unknown",
+  "source": {
+    "provider": "gemini",
+    "model": "2.5-flash",
+    "revision": "2026-07"
+  },
   "image_quality": {
-    "score": <0-100 integer>,
-    "blur": <0.0-1.0 float>,
-    "lighting": "good|poor|overexposed|underexposed",
-    "occlusion": <boolean>,
-    "shadow_score": <0-100 integer>,
-    "contrast_score": <0-100 integer>,
-    "rotation_angle": <integer degrees>,
-    "crop_quality": "good|poor",
-    "recommendations": ["<string>"]
+    "sharpness": <0-100 integer>,
+    "noise": <0-100 integer>,
+    "brightness": <0-100 integer>,
+    "contrast": <0-100 integer>,
+    "crop": "good|poor",
+    "rotation": <integer degrees>,
+    "shadow": <0-100 integer>,
+    "reflection": <0-100 integer>
   },
   "features": [
     {
-      "feature_id": "feat_001",
+      "feature_id": "uuid_or_unique_string",
+      "feature_revision": 1,
+      "category_id": "CAT_string",
       "category": "line|mount|sign|finger|nail|skin|shape|spacing",
       "type": "<string, e.g., life_line, mount_venus, star, thumb, texture, index_middle_gap>",
-      "status": "confirmed|possible|uncertain",
-      "confidence": <0.0-1.0 float>,
+      "status": "confirmed|possible|uncertain|not_detected",
+      "visual_confidence": <0.0-1.0 float>,
+      "geometry_confidence": <0.0-1.0 float>,
       "geometry": {
         "type": "polygon|polyline|point|rectangle",
         "coordinates": [[<x float>, <y float>], ...]
       },
+      "bbox": [<xmin float>, <ymin float>, <xmax float>, <ymax float>],
       "evidence": [
         "<string token, e.g., continuous_curve, high_contrast, parallel_ridges, closed_loop, strong_edge, clear_origin, ridge_intersection>"
-      ]
+      ],
+      "attributes": {
+        "<string_key>": "<string_or_numeric_value, e.g. depth='deep', branches=2>"
+      }
     }
   ]
 }
@@ -50,4 +60,4 @@ Valid Categories and Types:
 - shape: hand_shape
 - spacing: thumb_angle, index_middle_gap, ring_little_gap
 
-Note: Evidence MUST be chosen from predefined observation tokens, not free text sentences.
+Note: Evidence MUST be chosen from predefined observation tokens, not free text sentences. Examples: continuous_curve, strong_edge, clear_origin, clear_termination, closed_loop, ridge_intersection, parallel_ridges, fork_endpoint, sharp_angle, smooth_arc, faint_trace, broken_segments, raised_elevation, flat_surface, wide_area, narrow_area, intersecting_lines, star_formation, triangle_formation, square_formation, circular_pattern, island_loop, deep_creases, fine_lines, smooth_texture, rough_texture.

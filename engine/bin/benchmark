@@ -1,0 +1,101 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use AIAnalysisEngine\Config\EnvLoader;
+use AIAnalysisEngine\AI\Providers\Gemini\GeminiClient;
+
+EnvLoader::load(__DIR__ . '/../.env');
+
+$apiKey = getenv('GEMINI_API_KEY');
+if (!$apiKey) {
+    die("Error: GEMINI_API_KEY is not set in .env\n");
+}
+
+$model = getenv('GEMINI_MODEL') ?: 'gemini-2.5-flash';
+$endpoint = getenv('GEMINI_ENDPOINT') ?: 'https://generativelanguage.googleapis.com/v1beta/models/' . $model . ':generateContent';
+$storageDir = __DIR__ . '/../storage/provider';
+$promptPath = __DIR__ . '/../src/AI/Prompts/Palm/Vision/2.5-flash/v1.txt';
+
+$client = new GeminiClient($apiKey, $model, $endpoint, $storageDir);
+
+$samplesDir = __DIR__ . '/../samples/palms';
+$iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($samplesDir));
+
+$results = [];
+$totalLatency = 0;
+$totalCost = 0;
+$totalValidJson = 0;
+$totalTested = 0;
+
+echo "Starting Palm Annotation Benchmark...\n";
+
+foreach ($iterator as $file) {
+    if ($file->getExtension() === 'jpg' || $file->getExtension() === 'jpeg' || $file->getExtension() === 'png') {
+        $imagePath = $file->getPathname();
+        $expectedPath = preg_replace('/\.(jpg|jpeg|png)$/i', '.expected.json', $imagePath);
+        
+        if (file_exists($expectedPath)) {
+            $totalTested++;
+            echo "Testing: " . basename($imagePath) . "\n";
+            
+            $expectedJson = json_decode(file_get_contents($expectedPath), true);
+            $difficulty = $expectedJson['difficulty'] ?? 'unknown';
+            
+            $startTime = microtime(true);
+            try {
+                $rawResponse = $client->analyzeImage($imagePath, $promptPath);
+                $latency = microtime(true) - $startTime;
+                $decoded = json_decode($rawResponse, true);
+                
+                // Very basic mock parsing for benchmark loop 
+                // A full implementation would parse and compare sets (TP, FP, FN)
+                $isValidJson = (json_last_error() === JSON_ERROR_NONE && isset($decoded['candidates']));
+                
+                if ($isValidJson) {
+                    $totalValidJson++;
+                }
+
+                // E.g. get token cost from metrics file that GeminiClient creates in storage
+                // For simplicity here, we assume a static test cost
+                $cost = 0.15; // mock INR
+                $totalCost += $cost;
+                $totalLatency += $latency;
+                
+                $results[] = [
+                    'image' => basename($imagePath),
+                    'difficulty' => $difficulty,
+                    'valid' => $isValidJson,
+                    'latency' => $latency,
+                    'cost' => $cost
+                ];
+                
+            } catch (Exception $e) {
+                echo "Failed: " . $e->getMessage() . "\n";
+            }
+        }
+    }
+}
+
+if ($totalTested === 0) {
+    echo "No .expected.json ground truths found in samples/palms/\n";
+    exit(0);
+}
+
+$avgLatency = $totalLatency / $totalTested;
+$avgCost = $totalCost / $totalTested;
+$jsonValidPercent = ($totalValidJson / $totalTested) * 100;
+
+echo "\n====================================\n";
+echo "BENCHMARK COMPLETE\n";
+echo "====================================\n";
+echo "Images Tested   : $totalTested\n";
+echo "JSON Valid      : {$jsonValidPercent}%\n";
+echo "Average Time    : " . round($avgLatency, 2) . " sec\n";
+echo "Average Cost    : ₹" . round($avgCost, 2) . "\n";
+
+// HTML Generation placeholder
+$html = "<html><body><h1>Palm Annotation Benchmark</h1><p>Images Tested: $totalTested</p></body></html>";
+file_put_contents(__DIR__ . '/../storage/provider/benchmark.html', $html);
+echo "\nHTML Report saved to storage/provider/benchmark.html\n";

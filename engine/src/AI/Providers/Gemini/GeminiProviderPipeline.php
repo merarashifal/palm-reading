@@ -46,7 +46,7 @@ class GeminiProviderPipeline
                 'palm',
                 $feat->getType(),
                 $feat->getCategory(), // We map category to 'value' temporarily for inference consumption
-                $feat->getConfidence(),
+                $feat->getVisualConfidence(),
                 1,
                 'image',
                 $provider,
@@ -55,7 +55,11 @@ class GeminiProviderPipeline
                 [
                     'status' => $feat->getStatus(),
                     'evidence' => $feat->getEvidence(),
-                    'geometry' => $feat->getGeometry()
+                    'geometry' => $feat->getGeometry(),
+                    'bbox' => $feat->getBbox(),
+                    'geometry_confidence' => $feat->getGeometryConfidence(),
+                    'feature_revision' => $feat->getRevision(),
+                    'attributes' => $feat->getAttributes()
                 ]
             );
         }
