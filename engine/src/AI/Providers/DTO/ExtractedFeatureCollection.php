@@ -4,40 +4,40 @@ namespace AIAnalysisEngine\AI\Providers\DTO;
 
 class ExtractedFeatureCollection
 {
-    private array $payload;
+    private string $schemaVersion;
+    private ?string $hand;
+    private ?array $imageQuality;
+    
+    /** @var ExtractedFeature[] */
+    private array $features = [];
 
     public function __construct(array $payload)
     {
-        $this->payload = $payload;
+        $this->schemaVersion = $payload['schema_version'] ?? 'unknown';
+        $this->hand = $payload['hand'] ?? null;
+        $this->imageQuality = $payload['image_quality'] ?? null;
+
+        $featuresRaw = $payload['features'] ?? [];
+        foreach ($featuresRaw as $feat) {
+            $this->features[] = new ExtractedFeature(
+                $feat['feature_id'] ?? uniqid('feat_'),
+                $feat['category'] ?? 'unknown',
+                $feat['type'] ?? 'unknown',
+                $feat['status'] ?? 'uncertain',
+                (float)($feat['confidence'] ?? 0.0),
+                $feat['geometry'] ?? ['type' => 'point', 'coordinates' => []],
+                $feat['evidence'] ?? [],
+                $feat['attributes'] ?? []
+            );
+        }
     }
 
-    public function getPayload(): array
-    {
-        return $this->payload;
-    }
-
-    public function getLines(): array
-    {
-        return $this->payload['lines'] ?? [];
-    }
-
-    public function getMounts(): array
-    {
-        return $this->payload['mounts'] ?? [];
-    }
-
-    public function getSigns(): array
-    {
-        return $this->payload['signs'] ?? [];
-    }
-
-    public function getHand(): ?string
-    {
-        return $this->payload['hand'] ?? null;
-    }
-
-    public function getImageQuality(): ?array
-    {
-        return $this->payload['image_quality'] ?? null;
-    }
+    public function getSchemaVersion(): string { return $this->schemaVersion; }
+    public function getHand(): ?string { return $this->hand; }
+    public function getImageQuality(): ?array { return $this->imageQuality; }
+    
+    /**
+     * @return ExtractedFeature[]
+     */
+    public function getFeatures(): array { return $this->features; }
 }
