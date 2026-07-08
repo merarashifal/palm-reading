@@ -1,0 +1,35 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use AIAnalysisEngine\Renderer\HtmlRenderer;
+
+// Mock InferenceResult for the Vertical Slice Demo
+$inferenceResult = [
+    'overall_score' => 91,
+    'strongest_trait' => 'Leadership',
+    'scores' => [
+        'career' => 5,
+        'relationships' => 4,
+    ],
+    'metrics' => [
+        'detected_features' => 63,
+        'explained_insights' => 11,
+        'hidden_insights' => 52
+    ],
+    'rare_discoveries' => [
+        [
+            'title' => 'Rare Star Pattern Found'
+        ]
+    ]
+];
+
+$renderer = new HtmlRenderer();
+$html = $renderer->renderFreeReport($inferenceResult);
+
+$outputPath = __DIR__ . '/../storage/demo_report.html';
+file_put_contents($outputPath, $html);
+
+echo "Beautiful Free Report generated at: " . realpath($outputPath) . "\n";
+echo "Open this file in your browser to see the commercial slice MVP.\n";

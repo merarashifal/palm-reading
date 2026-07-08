@@ -1,0 +1,105 @@
+{
+    "pack_id": "palmistry_v1",
+    "version": "1.0",
+    "domain": "palm",
+    "rules": [
+        {
+            "id": "rule_life_line_strong",
+            "category": "vitality",
+            "condition": {
+                "type": "AND",
+                "conditions": [
+                    {
+                        "feature_type": "life_line",
+                        "operator": "exists"
+                    },
+                    {
+                        "feature_type": "life_line",
+                        "attribute": "depth",
+                        "operator": "equals",
+                        "value": "deep"
+                    }
+                ]
+            },
+            "insight": {
+                "title": "Strong Vitality",
+                "description": "A deep and clear life line indicates robust physical health, strong vitality, and high resilience to stress.",
+                "score_impact": {"vitality": 10},
+                "tags": ["health", "energy"]
+            }
+        },
+        {
+            "id": "rule_heart_line_broken",
+            "category": "relationships",
+            "condition": {
+                "type": "AND",
+                "conditions": [
+                    {
+                        "feature_type": "heart_line",
+                        "operator": "exists"
+                    },
+                    {
+                        "feature_type": "heart_line",
+                        "evidence": "broken_segments",
+                        "operator": "contains"
+                    }
+                ]
+            },
+            "insight": {
+                "title": "Emotional Fluctuations",
+                "description": "Breaks in the heart line suggest periods of emotional transition or significant changes in relationships.",
+                "score_impact": {"relationships": -5},
+                "tags": ["emotions", "love"]
+            }
+        },
+        {
+            "id": "rule_head_line_forked",
+            "category": "career",
+            "condition": {
+                "type": "AND",
+                "conditions": [
+                    {
+                        "feature_type": "head_line",
+                        "operator": "exists"
+                    },
+                    {
+                        "feature_type": "head_line",
+                        "evidence": "fork_endpoint",
+                        "operator": "contains"
+                    }
+                ]
+            },
+            "insight": {
+                "title": "Analytical & Creative Thinking",
+                "description": "A forked head line (writer's fork) indicates a balance between practical logic and creative imagination, highly beneficial for entrepreneurial or writing careers.",
+                "score_impact": {"career": 8},
+                "tags": ["intellect", "business"]
+            }
+        },
+        {
+            "id": "rule_rare_star_jupiter",
+            "category": "rare",
+            "condition": {
+                "type": "AND",
+                "conditions": [
+                    {
+                        "feature_type": "star",
+                        "operator": "exists"
+                    },
+                    {
+                        "feature_type": "star",
+                        "attribute": "location",
+                        "operator": "equals",
+                        "value": "mount_jupiter"
+                    }
+                ]
+            },
+            "insight": {
+                "title": "Rare Star of Leadership",
+                "description": "A star on the Mount of Jupiter is an extremely auspicious mark indicating sudden success, honor, and elevated social standing.",
+                "score_impact": {"career": 15, "leadership": 20},
+                "tags": ["rare", "success"]
+            }
+        }
+    ]
+}
