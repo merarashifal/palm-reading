@@ -25,7 +25,7 @@ This project was started with a clear objective:
 ## 2. The Vision
 Build the world's most trusted explainable knowledge platform capable of transforming any structured expert domain into deterministic digital intelligence. 
 
-Whether it is Palmistry, Numerology, Astrology, Face Reading, Medical Decision Support, Agriculture, or Manufacturing—the engine will democratize expert reasoning without hallucination.
+Whether it is life guidance, healthcare, finance, manufacturing, agriculture, legal advisory, education, or any other structured expert domain, the platform should transform expert knowledge into deterministic digital intelligence.
 
 ## 3. Mission
 Transform traditional expert knowledge into structured, explainable AI that can be trusted, audited, improved, and shared worldwide.
@@ -54,9 +54,7 @@ During development, we discovered that this architecture could never produce det
 
 ### Current Scope
 Today the project is no longer focused solely on Palm Reading. Palm Reading is simply the first commercial implementation. The engine is completely domain independent. Every new domain becomes another Knowledge Pack.
-- Knowledge Authoring
-- Knowledge Versioning
-- Knowledge Distribution
+- Knowledge Authoring, Versioning & Distribution
 - Multi-domain reasoning
 - Explainability
 - Recommendation Engine
@@ -77,7 +75,12 @@ We intentionally rejected:
 - AI chatbots
 - Dynamic reasoning workflows
 
-## 7. Philosophy & The Pipeline Journeys
+## 7. Platform vs Products
+The AI Knowledge Platform is the operating system. Products are applications built on top of it.
+Examples: Palm Reading, Numerology, Face Reading, Medical Decision Support, Agriculture Advisor, Legal Expert System.
+The platform remains unchanged. Only the Knowledge Packs change.
+
+## 8. Philosophy & The Pipeline Journeys
 The core operational loop of the platform is defined by a single, unbreakable maxim:
 
 ```text
@@ -91,18 +94,22 @@ Commerce monetizes.
 ### Knowledge Journey
 `Expert` ➔ `Rule` ➔ `Validator` ➔ `Compiler` ➔ `Knowledge Pack` ➔ `Inference` ➔ `Insight` ➔ `Customer`
 
+### The Knowledge Flywheel
+This is our long-term competitive advantage:
+`Expert` ➔ `Knowledge` ➔ `Compiler` ➔ `Customer` ➔ `Feedback` ➔ `Knowledge Improvement` ➔ `New Version` ➔ `Customer`
+
 ### AI Journey
 `Image` ➔ `Provider` ➔ `Annotation` ➔ `Normalization` ➔ `Inference` ➔ `Renderer`
 
 ### Customer & Commerce Journey
 `Visitor` ➔ `Upload` ➔ `Free Report` ➔ `Premium Purchase` ➔ `Collections` ➔ `Life Intelligence`
 
-## 8. Why Knowledge Packs?
+## 9. Why Knowledge Packs?
 - **Why Knowledge Packs instead of a Database?** Packs treat domains as pluggable, versioned cartridges completely independent of the engine.
 - **Why Compiled instead of Runtime JSON?** Speed and safety. Validating thousands of rules at runtime is slow; compiling them upfront guarantees deterministic execution without crashes.
 - **Why Versioned instead of Live Editing?** To guarantee reproducibility. If a customer paid for a reading on v1.0, they should get the same reading on replay.
 
-## 9. Design Decisions That Must Never Change (Constitutional Rules)
+## 10. Design Decisions That Must Never Change (Constitutional Rules)
 - AI never performs reasoning.
 - Knowledge never lives in code.
 - Providers never know the domain.
@@ -111,7 +118,7 @@ Commerce monetizes.
 - Validation always happens before compilation.
 - Compiled packs are the only runtime source.
 
-## 10. Platform Principles
+## 11. Platform Principles
 ### Engineering Principles
 - **Deterministic**: The same input ALWAYS yields the same output.
 - **Immutable**: Once a report is generated, the traces that built it are permanent.
@@ -128,6 +135,7 @@ Commerce monetizes.
 - **Code executes knowledge.**
 - **AI never owns knowledge.**
 - **Knowledge must be independently reviewable** (an expert should be able to review the knowledge without reading PHP).
+- **Knowledge Quality** improves through validation, benchmarking, ground truth, expert review, customer feedback, and versioning.
 
 ### Customer Principles
 - **Free builds trust.**
@@ -135,7 +143,7 @@ Commerce monetizes.
 - **Recommendations create continuity.**
 - **Reports answer questions.**
 - **Commerce follows value.**
-- **Explainability builds confidence.**
+- **Explainability builds confidence.** (Every important conclusion must answer: *What was observed? Which rule matched? Why was it selected? What confidence was assigned?*)
 
 ### Business Principles
 - **Knowledge is the primary asset.**
@@ -145,7 +153,8 @@ Commerce monetizes.
 - **Reports are products.**
 - **Customers buy confidence, not AI.**
 
-## 11. Project Evolution
+## 12. Project Evolution & What We Achieved
+### Project Evolution
 ```text
 Phase 1: Palm Reader
 ↓
@@ -158,46 +167,77 @@ Phase 4: AI Platform
 Phase 5: Knowledge Marketplace
 ```
 
-## 12. Enterprise Journey & Roadmap
-- **Phase A**: Commercial Vertical Slice
-- **Phase B**: Knowledge Expansion
-- **Phase C**: Knowledge Authoring Studio
-- **Phase D**: Enterprise APIs
-- **Phase E**: Marketplace
+### What We Achieved
+During development, the project fundamentally evolved. We successfully separated:
+- Observation
+- Knowledge
+- Reasoning
+- Rendering
+- Commerce
 
-## 13. Risks
+into completely independent systems. This became the defining architectural achievement of Version 1.
+
+## 13. Project Progress
+### Foundation: ✅ Complete
+- Validation Engine
+- Compiler
+- Knowledge Packs
+- Inference Engine
+- Observability
+- Governance
+
+### Commercial Layer: 🚧 In Progress
+- Gemini Provider
+- Renderer
+- WordPress Plugin
+- Payment
+
+### Enterprise Layer: ⏳ Planned
+- Knowledge Studio
+- Marketplace
+- REST Platform
+- SDKs
+
+## 14. Enterprise Journey & Roadmap
+- **Stream A**: Commercial Product
+- **Stream B**: Knowledge Expansion
+- **Stream C**: Knowledge Studio
+
+## 15. Risks
 - **Knowledge Acquisition**: The hardest part won't be code. It will be finding and onboarding world-class domain experts.
 - **LLM changes**: Mitigated by strict schemas and prompt versioning.
 - **Provider pricing**: Mitigated by cost tracking and provider abstraction.
 
-## 14. Success Metrics
+## 16. Success Metrics & Definitions
+This project succeeds when:
+- Experts trust the knowledge.
+- Customers trust the reports.
+- Developers trust the APIs.
+- Businesses trust the platform.
+
+### Target Metrics
 - **Technical**: 99.9% deterministic output
 - **Knowledge**: 100,000 validated rules
 - **Commercial**: First paying customer
 - **Community**: 1,000 domain experts contributing
 - **Enterprise**: 100 API consumers & 10 supported domains
 
-## 15. Current Status
-- Architecture: ✅ Frozen
-- Knowledge Engine: ✅ Complete
-- Inference: ✅ Complete
-- Observability: ✅ Complete
-- Provider Integration: 🚧 In Progress
-- Commercial Product: 🚧 In Progress
-- Knowledge Authoring Studio: ⏳ Planned
-- Marketplace: ⏳ Planned
+## 17. The First Customer
+The first commercial milestone is intentionally small:
+`One upload.` ➔ `One analysis.` ➔ `One payment.` ➔ `One delighted customer.`
+Scaling comes afterwards.
 
-## 16. Lessons Learned
+## 18. Lessons Learned
 - **Knowledge is the moat.** Not AI. Not prompts. Not UI. *Knowledge*.
 - **Data over Prompts**: Prompts are fragile and opaque. Data structures are stable and queryable.
 - **Determinism over Reasoning**: Humans need consistency. If a reading changes every time a user refreshes the page, trust is destroyed instantly.
 
-## 17. Guiding Rule
+## 19. Guiding Rule
 > **Every new feature must either create Customer Value, Knowledge Value, or Platform Value.**
 > 
 > If it creates none of these, it should not be built.
 
-## 18. Final State
+## 20. Final State
 The final platform will allow:
 - Experts to create knowledge without programming.
 - Businesses to consume knowledge through APIs.
@@ -215,4 +255,4 @@ This platform is built on a simple belief:
 
 Knowledge should be preserved. Knowledge should be explainable. Knowledge should be reusable. Knowledge should be trusted.
 
-Every line of code in this repository exists to serve that purpose.
+Every decision made in this repository should help preserve, improve, and distribute human expertise for generations to come.
