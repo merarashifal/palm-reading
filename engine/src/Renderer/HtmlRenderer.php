@@ -2,112 +2,202 @@
 
 namespace AIAnalysisEngine\Renderer;
 
-use AIAnalysisEngine\Presentation\DTO\ReportModel;
+use AIAnalysisEngine\Presentation\DTO\ComposedReport;
 
 class HtmlRenderer
 {
-    public function render(ReportModel $report): string
+    public function render(ComposedReport $report): string
     {
-        $strength = $report->summary['analysis_strength'] ?? 0;
-        $topTrait = $report->summary['top_trait'] ?? 'N/A';
-        
-        $featuresCount = $report->metrics['features_detected'] ?? 0;
-        $insightsCount = $report->metrics['total_insights'] ?? 0;
-        $premiumCount = $report->cta['locked_insights_count'] ?? 0;
+        // 1. Welcome Hero
+        $welcomeHero = "
+            <div class='section hero'>
+                <h1>Your Palm Analysis</h1>
+                <div class='confidence-block'>
+                    <div class='label'>Analysis Confidence</div>
+                    <div class='score'>{$report->analysisConfidence}%</div>
+                    <div class='stars'>★★★★★</div>
+                </div>
+                <div class='quality-block'>
+                    <div class='label'>Image Quality</div>
+                    <div class='quality-score'>{$report->imageQualityScore}</div>
+                </div>
+                <div class='success-msg'>Analysis completed successfully</div>
+            </div>
+        ";
 
-        $sectionsHtml = '';
-        foreach ($report->sections as $category => $cards) {
-            $sectionsHtml .= "<div class='category-section'><h2>" . ucfirst($category) . "</h2>";
-            foreach ($cards as $card) {
-                $isLocked = $card['visibility'] !== 'free';
-                $lockClass = $isLocked ? 'locked' : '';
-                
-                $sectionsHtml .= "
-                <div class='card {$lockClass}'>
-                    <h3>{$card['title']}</h3>
-                    <div class='stars'>{$card['stars']}</div>
-                    <p>{$card['description']}</p>
-                </div>";
+        // 2. What We Found
+        $stats = "
+            <div class='section stats'>
+                <div class='stat-row'>
+                    <div class='stat-num'>{$report->totalObservations}</div>
+                    <div class='stat-label'>Observations</div>
+                </div>
+                <div class='stat-row'>
+                    <div class='stat-num'>{$report->totalInsights}</div>
+                    <div class='stat-label'>Insights</div>
+                </div>
+                <div class='stat-row'>
+                    <div class='stat-num'>{$report->rareSignsCount}</div>
+                    <div class='stat-label'>Rare Signs</div>
+                </div>
+                <div class='stat-row'>
+                    <div class='stat-num premium'>{$report->hiddenPremiumCount}</div>
+                    <div class='stat-label premium-label'>Hidden Premium Insights</div>
+                </div>
+            </div>
+        ";
+
+        // 3. Your Story
+        $storyHtml = "<div class='section story'>";
+        foreach ($report->storyParagraphs as $question => $answer) {
+            $storyHtml .= "
+                <div class='story-block'>
+                    <h2>{$question}</h2>
+                    <p>{$answer}</p>
+                </div>
+            ";
+        }
+        $storyHtml .= "</div>";
+
+        // 4. Three Biggest Discoveries
+        $discoveriesHtml = "<div class='section discoveries'>";
+        foreach ($report->topThreeInsights as $insight) {
+            $typeIcon = '⭐';
+            if ($insight->type === 'Challenge' || $insight->type === 'Warning') $typeIcon = '⚠';
+            if ($insight->type === 'Rare Discovery') $typeIcon = '💎';
+            
+            $discoveriesHtml .= "
+                <div class='discovery-card'>
+                    <div class='discovery-type'>{$typeIcon} {$insight->type}</div>
+                    <h3>{$insight->headline}</h3>
+                    <p>{$insight->summary}</p>
+                    <p class='details'>{$insight->details}</p>
+                </div>
+            ";
+        }
+        $discoveriesHtml .= "</div>";
+
+        // 5. Blueprints
+        $blueprintsHtml = "<div class='section blueprints'>
+            <h2>Continue Your Analysis</h2>
+            <div class='blueprint-list'>";
+        foreach ($report->promotedBlueprints as $bp) {
+            $blueprintsHtml .= "<div class='blueprint-item'>{$bp} <span>→</span></div>";
+        }
+        $blueprintsHtml .= "</div></div>";
+
+        // 6. Evidence Trail
+        $evidenceHtml = "<div class='section evidence'>
+            <h2>Why did we say this?</h2>
+            <div class='trail'>";
+        $first = true;
+        foreach ($report->evidenceTrail as $key => $val) {
+            if (!$first) {
+                $evidenceHtml .= "<div class='arrow'>↓</div>";
             }
-            $sectionsHtml .= "</div>";
+            $evidenceHtml .= "<div class='trail-node'><strong>{$val}</strong></div>";
+            $first = false;
         }
+        $evidenceHtml .= "</div></div>";
 
-        $highlightsHtml = '';
-        foreach ($report->highlights as $hl) {
-            $isLocked = $hl['visibility'] !== 'free';
-            $lockClass = $isLocked ? 'locked' : '';
-            $highlightsHtml .= "
-            <div class='card rare {$lockClass}'>
-                <h3>⭐ Rare Pattern Found: {$hl['title']}</h3>
-                <p>{$hl['description']}</p>
-            </div>";
-        }
+        // 7. Final Message
+        $finalMessage = "
+            <div class='section final-message'>
+                <h2>Every palm tells a story.</h2>
+                <p>We've only shown you the beginning.</p>
+                <a href='#' class='cta-button'>{$report->dynamicCtaText}</a>
+            </div>
+        ";
 
         return <<<HTML
 <style>
-    body { font-family: 'Inter', sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 20px; }
-    .report-container { max-width: 600px; margin: 0 auto; }
-    .header { text-align: center; margin-bottom: 30px; border-bottom: 1px solid #334155; padding-bottom: 20px;}
-    .header h1 { font-size: 28px; font-weight: 700; background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; }
+    :root {
+        --bg: #000000;
+        --card-bg: #111111;
+        --text: #ffffff;
+        --text-muted: #888888;
+        --accent: #ffffff;
+        --premium: #c4b5fd;
+    }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+    }
+    .report-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+    .section {
+        margin-bottom: 60px;
+        border-bottom: 1px solid #222;
+        padding-bottom: 60px;
+    }
+    .section:last-child {
+        border-bottom: none;
+    }
     
-    .summary-block { display: flex; justify-content: space-between; margin-bottom: 20px; }
-    .score-card { flex: 1; text-align: center; background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #38bdf8; border-radius: 12px; padding: 15px; margin-right: 10px;}
-    .score-card .value { font-size: 36px; color: #38bdf8; font-weight: bold; }
-    .trait-card { flex: 1; text-align: center; background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 15px; }
-    .trait-card .value { font-size: 24px; color: #f1f5f9; font-weight: bold; margin-top: 10px;}
-    
-    .category-section h2 { font-size: 18px; color: #94a3b8; text-transform: uppercase; border-bottom: 1px solid #334155; padding-bottom: 5px;}
-    
-    .card { background: #1e293b; border-radius: 12px; padding: 20px; margin-bottom: 15px; border: 1px solid #334155; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
-    .card h3 { font-size: 16px; margin: 0 0 5px 0; color: #e2e8f0; }
-    .card p { color: #cbd5e1; font-size: 14px; line-height: 1.5; margin-bottom:0;}
-    .card .stars { color: #fbbf24; margin-bottom: 10px; font-size: 18px;}
-    
-    .card.rare { background: linear-gradient(135deg, #4c1d95, #1e1b4b); border: 1px solid #8b5cf6; }
-    .card.rare h3 { color: #c4b5fd; }
-    
-    .card.locked { background: #0f172a; border: 1px dashed #64748b; opacity: 0.8; }
-    .card.locked h3 { color: #64748b; }
-    .card.locked p { color: #94a3b8; font-style: italic; }
-    
-    .cta-card { background: #0f172a; text-align: center; border: 1px solid #475569; margin-top:30px;}
-    .cta-stats { display: flex; justify-content: space-around; margin: 20px 0; }
-    .cta-stat-item span { display: block; font-size: 20px; font-weight: bold; color: #e2e8f0; }
-    .cta-stat-item small { color: #64748b; font-size: 12px; }
-    .btn { display: inline-block; background: #38bdf8; color: #0f172a; padding: 15px 30px; border-radius: 30px; font-weight: bold; text-decoration: none; font-size: 16px; transition: transform 0.2s; }
-    .btn:hover { transform: scale(1.05); }
-    
+    /* Hero */
+    .hero { text-align: center; }
+    .hero h1 { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin-bottom: 40px; }
+    .confidence-block { margin-bottom: 30px; }
+    .confidence-block .label, .quality-block .label { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+    .confidence-block .score { font-size: 72px; font-weight: 800; line-height: 1; margin-bottom: 10px; }
+    .confidence-block .stars { color: var(--text); font-size: 20px; }
+    .quality-block .quality-score { font-size: 24px; font-weight: 600; color: #4ade80; }
+    .success-msg { margin-top: 30px; font-size: 14px; color: var(--text-muted); }
+
+    /* Stats */
+    .stat-row { margin-bottom: 30px; text-align: left; }
+    .stat-num { font-size: 64px; font-weight: 800; line-height: 1; margin-bottom: 5px; }
+    .stat-label { font-size: 20px; color: var(--text-muted); font-weight: 500; }
+    .stat-num.premium { color: var(--premium); }
+    .stat-label.premium-label { color: var(--premium); }
+
+    /* Story */
+    .story-block { margin-bottom: 40px; }
+    .story-block h2 { font-size: 24px; font-weight: 700; margin-bottom: 15px; color: var(--text); letter-spacing: -0.5px; }
+    .story-block p { font-size: 18px; line-height: 1.6; color: #cccccc; margin: 0; }
+
+    /* Discoveries */
+    .discovery-card { background: var(--card-bg); border-radius: 20px; padding: 30px; margin-bottom: 20px; border: 1px solid #222; }
+    .discovery-type { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 15px; font-weight: 600; }
+    .discovery-card h3 { font-size: 28px; font-weight: 700; margin: 0 0 15px 0; letter-spacing: -0.5px; }
+    .discovery-card p { font-size: 16px; line-height: 1.5; color: #bbbbbb; margin: 0 0 15px 0; }
+    .discovery-card .details { color: #888888; font-size: 14px; }
+
+    /* Blueprints */
+    .blueprints h2 { font-size: 28px; font-weight: 700; margin-bottom: 30px; }
+    .blueprint-item { background: var(--card-bg); padding: 20px 25px; border-radius: 16px; margin-bottom: 15px; font-size: 18px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; border: 1px solid #222; cursor: pointer; transition: background 0.2s; }
+    .blueprint-item:hover { background: #1a1a1a; }
+    .blueprint-item span { color: var(--text-muted); }
+
+    /* Evidence */
+    .evidence h2 { font-size: 20px; font-weight: 600; margin-bottom: 30px; text-align: center; color: var(--text-muted); }
+    .trail { text-align: center; }
+    .trail-node { display: inline-block; padding: 10px 20px; background: var(--card-bg); border-radius: 8px; font-size: 16px; border: 1px solid #333; }
+    .arrow { margin: 15px 0; color: #555; font-size: 20px; }
+
+    /* Final CTA */
+    .final-message { text-align: center; padding-top: 20px; }
+    .final-message h2 { font-size: 32px; font-weight: 800; margin: 0 0 10px 0; letter-spacing: -1px; }
+    .final-message p { font-size: 18px; color: var(--text-muted); margin: 0 0 40px 0; }
+    .cta-button { display: block; width: 100%; box-sizing: border-box; background: #ffffff; color: #000000; padding: 20px; border-radius: 30px; text-decoration: none; font-size: 18px; font-weight: 700; transition: transform 0.2s; }
+    .cta-button:active { transform: scale(0.98); }
 </style>
 
 <div class="report-container">
-    <div class="header">
-        <h1>AI Palm Analysis</h1>
-    </div>
-
-    <div class="summary-block">
-        <div class="score-card">
-            <div style="font-size:12px; color:#94a3b8; text-transform:uppercase;">Analysis Strength</div>
-            <div class="value">{$strength}%</div>
-            <div style="color:#fbbf24; font-size: 14px;">★★★★★</div>
-        </div>
-        <div class="trait-card">
-            <div style="font-size:12px; color:#94a3b8; text-transform:uppercase;">Strongest Trait</div>
-            <div class="value">{$topTrait}</div>
-        </div>
-    </div>
-
-    {$sectionsHtml}
-    {$highlightsHtml}
-
-    <div class="card cta-card">
-        <div class="cta-stats">
-            <div class="cta-stat-item"><span>{$featuresCount}</span><small>Features Detected</small></div>
-            <div class="cta-stat-item"><span>{$insightsCount}</span><small>Insights Generated</small></div>
-        </div>
-        
-        <p style="color:#cbd5e1; margin-bottom:20px;">🔒 {$premiumCount} Premium Insights</p>
-        <a href="#" class="btn">Unlock Complete Report</a>
-    </div>
+    {$welcomeHero}
+    {$stats}
+    {$storyHtml}
+    {$discoveriesHtml}
+    {$blueprintsHtml}
+    {$evidenceHtml}
+    {$finalMessage}
 </div>
 HTML;
     }

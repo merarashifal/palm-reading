@@ -2,7 +2,7 @@
 
 namespace AIAnalysisEngine\Inference\Runtime;
 
-use AIAnalysisEngine\AI\Providers\DTO\NormalizedFeatureCollection;
+use AIAnalysisEngine\AI\DTO\NormalizedFeatureCollection;
 use AIAnalysisEngine\Inference\DTO\Insight;
 
 class RuleMatcher
@@ -36,9 +36,11 @@ class RuleMatcher
                     if ($output['type'] === 'insight') {
                         $insights[] = new Insight(
                             id: $rule['rule_id'],
-                            title: $output['title'],
-                            summary: $output['description'],
-                            description: $output['description'],
+                            type: $output['insight_type'] ?? 'Discovery',
+                            headline: $output['headline'] ?? '',
+                            summary: $output['summary'] ?? '',
+                            details: $output['details'] ?? '',
+                            advice: $output['advice'] ?? '',
                             confidence: 0.9, // Mock calculated confidence
                             importance: $rule['importance'] ?? 50,
                             visibility: $rule['visibility'] ?? 'free',

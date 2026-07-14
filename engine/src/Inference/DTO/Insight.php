@@ -5,9 +5,11 @@ namespace AIAnalysisEngine\Inference\DTO;
 class Insight
 {
     public string $id;
-    public string $title;
+    public string $type;
+    public string $headline;
     public string $summary;
-    public string $description;
+    public string $details;
+    public string $advice;
     public float $confidence;
     public int $importance;
     public string $visibility; // e.g. "free", "premium"
@@ -18,9 +20,11 @@ class Insight
 
     public function __construct(
         string $id,
-        string $title,
+        string $type,
+        string $headline,
         string $summary,
-        string $description,
+        string $details,
+        string $advice,
         float $confidence,
         int $importance,
         string $visibility,
@@ -30,9 +34,11 @@ class Insight
         ?string $unlockReason = null
     ) {
         $this->id = $id;
-        $this->title = $title;
+        $this->type = $type;
+        $this->headline = $headline;
         $this->summary = $summary;
-        $this->description = $description;
+        $this->details = $details;
+        $this->advice = $advice;
         $this->confidence = $confidence;
         $this->importance = $importance;
         $this->visibility = $visibility;
@@ -46,9 +52,11 @@ class Insight
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
+            'type' => $this->type,
+            'headline' => $this->headline,
             'summary' => $this->summary,
-            'description' => $this->description,
+            'details' => $this->details,
+            'advice' => $this->advice,
             'confidence' => $this->confidence,
             'importance' => $this->importance,
             'visibility' => $this->visibility,

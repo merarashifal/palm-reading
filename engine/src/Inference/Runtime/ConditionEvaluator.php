@@ -2,7 +2,7 @@
 
 namespace AIAnalysisEngine\Inference\Runtime;
 
-use AIAnalysisEngine\AI\Providers\DTO\NormalizedFeatureCollection;
+use AIAnalysisEngine\AI\DTO\NormalizedFeatureCollection;
 
 class ConditionEvaluator
 {
@@ -49,11 +49,11 @@ class ConditionEvaluator
         }
 
         // Extremely simplified check: just verify if the feature exists in the collection.
-        // A true implementation would iterate through $features->getAllFeatures() and 
+        // A true implementation would iterate through $features->all() and 
         // check $feature->getType() === $featureType and $feature->getAttribute($attribute) === $value.
         
-        $matchedFeatures = array_filter($features->getAllFeatures(), function($f) use ($featureType) {
-            return $f->getType() === $featureType;
+        $matchedFeatures = array_filter($features->all(), function($f) use ($featureType) {
+            return $f->feature === $featureType;
         });
 
         if ($operator === 'exists') {
@@ -62,13 +62,13 @@ class ConditionEvaluator
 
         foreach ($matchedFeatures as $f) {
             if ($operator === 'equals' && $attribute) {
-                $attrs = $f->getAttributes();
+                $attrs = $f->metadata['attributes'] ?? [];
                 if (isset($attrs[$attribute]) && $attrs[$attribute] === $value) {
                     return true;
                 }
             }
             if ($operator === 'contains' && $evidence) {
-                $evidences = $f->getEvidence();
+                $evidences = $f->metadata['evidence'] ?? [];
                 if (in_array($evidence, $evidences)) {
                     return true;
                 }

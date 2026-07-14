@@ -2,7 +2,7 @@
 
 namespace AIAnalysisEngine\Inference\Runtime;
 
-use AIAnalysisEngine\AI\Providers\DTO\NormalizedFeatureCollection;
+use AIAnalysisEngine\AI\DTO\NormalizedFeatureCollection;
 use AIAnalysisEngine\Inference\DTO\InferenceResult;
 
 class InferenceRuntime

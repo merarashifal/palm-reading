@@ -1,6 +1,6 @@
 {
     "pack_id": "palmistry_v1",
-    "version": "1.0",
+    "version": "2.0",
     "domain": "palm",
     "rules": [
         {
@@ -21,8 +21,11 @@
             "outputs": [
                 {
                     "type": "insight",
-                    "title": "Strong Vitality",
-                    "description": "A long and unbroken life line indicates excellent physical health, a strong constitution, and high energy reserves."
+                    "insight_type": "Strength",
+                    "headline": "Enduring Vitality",
+                    "summary": "You possess a deep well of natural energy and physical resilience.",
+                    "details": "A continuous and deeply etched life line reveals a powerful physical constitution and an unwavering zest for life. People with this marking often bounce back remarkably well from exhaustion or illness. You have the stamina required to see long-term projects through to completion.",
+                    "advice": "Channel your abundant energy into consistent routines, but remember to rest proactively before you feel drained."
                 }
             ]
         },
@@ -44,9 +47,11 @@
             "outputs": [
                 {
                     "type": "insight",
-                    "title": "Major Life Transition",
-                    "description": "Breaks in the life line often correspond to significant changes in lifestyle, location, or health status that require adaptation.",
-                    "unlock_reason": "Detailed timeline of transition events available"
+                    "insight_type": "Opportunity",
+                    "headline": "Major Life Transition",
+                    "summary": "A significant shift in your lifestyle, environment, or perspective has fundamentally changed your path.",
+                    "details": "Breaks in the life line are not negative—they are periods of profound reinvention. This indicates a timeline where your old way of living ended and a completely new chapter began. It takes immense adaptability to navigate such shifts, a trait you have cultivated through necessity.",
+                    "advice": "Embrace the changes rather than holding onto past comforts. The new path often leads to greater authentic alignment."
                 }
             ]
         },
@@ -68,8 +73,11 @@
             "outputs": [
                 {
                     "type": "insight",
-                    "title": "Deep Emotional Capacity",
-                    "description": "A deep heart line suggests you experience emotions intensely and form strong, lasting attachments to others."
+                    "insight_type": "Strength",
+                    "headline": "Deep Emotional Capacity",
+                    "summary": "You experience the world with profound emotional intensity and deep empathy.",
+                    "details": "A deep, unblemished heart line shows that when you commit, you do so entirely. You form strong, enduring attachments and often serve as an emotional anchor for the people in your life. While you may feel things more acutely than others, this sensitivity is your greatest asset in forming genuine connections.",
+                    "advice": "Protect your emotional reserves. Because you give so much, you must be intentional about surrounding yourself with people who reciprocate."
                 }
             ]
         },
@@ -91,9 +99,11 @@
             "outputs": [
                 {
                     "type": "insight",
-                    "title": "Emotional Fluctuations",
-                    "description": "Breaks indicate periods of emotional recalibration or significant relationship transitions in your life.",
-                    "unlock_reason": "Relationship compatibility and healing remedies available"
+                    "insight_type": "Guidance",
+                    "headline": "Emotional Recalibration",
+                    "summary": "You have navigated intense emotional transitions that required you to rebuild your trust.",
+                    "details": "Breaks or islands on the heart line point to periods of emotional reassessment. These marks often appear in individuals who have had to completely restructure their understanding of love and commitment. Rather than a weakness, this indicates a heart that has learned to heal and grow more complex over time.",
+                    "advice": "Allow yourself grace during periods of emotional uncertainty. Healing is not linear, and every recalibration makes your emotional foundation stronger."
                 }
             ]
         },
@@ -115,13 +125,11 @@
             "outputs": [
                 {
                     "type": "insight",
-                    "title": "Creative & Analytical Thinker",
-                    "description": "The 'writer's fork' shows a dual ability to think logically while maintaining strong creative imagination."
-                },
-                {
-                    "type": "recommendation",
-                    "product": "career_analysis",
-                    "reason": "Strong entrepreneurial indicators detected"
+                    "insight_type": "Potential",
+                    "headline": "The Dual Thinker",
+                    "summary": "You possess the rare ability to blend strict logic with boundless creativity.",
+                    "details": "A fork at the end of the head line, often called the 'Writer’s Fork', indicates a mind capable of seeing multiple perspectives simultaneously. You can conceptualize abstract, creative ideas and then apply rigorous, practical logic to bring them into reality. This duality makes you exceptional at problem-solving and strategic planning.",
+                    "advice": "Seek out roles or projects that don't force you into a single box. You will thrive most when allowed to be both the architect and the builder."
                 }
             ]
         },
@@ -143,16 +151,18 @@
             "outputs": [
                 {
                     "type": "insight",
-                    "title": "Strong Career Trajectory",
-                    "description": "A deep fate line indicates a clear sense of purpose and consistent forward momentum in professional endeavors.",
-                    "unlock_reason": "Professional success timeline available"
+                    "insight_type": "Strength",
+                    "headline": "Unwavering Purpose",
+                    "summary": "Your career trajectory is marked by a deep sense of calling and consistent momentum.",
+                    "details": "A deeply etched fate line suggests that you are not simply wandering through your professional life; you have a clear sense of direction. You are highly driven, capable of taking on significant responsibility, and naturally gravitate toward leadership. Challenges in your path are viewed as obstacles to overcome rather than reasons to quit.",
+                    "advice": "While your drive is exceptional, remember to periodically evaluate if the mountain you are climbing is still the one you want to conquer."
                 }
             ]
         },
         {
             "rule_id": "fate_line_weak",
             "category": "career",
-            "visibility": "free",
+            "visibility": "premium",
             "importance": 60,
             "priority": 70,
             "score_impact": -5,
@@ -167,8 +177,11 @@
             "outputs": [
                 {
                     "type": "insight",
-                    "title": "Flexible Career Path",
-                    "description": "A faint fate line suggests you prefer flexibility over a rigid corporate ladder, often changing professional interests."
+                    "insight_type": "Opportunity",
+                    "headline": "The Free Spirit",
+                    "summary": "You thrive on adaptability and freedom rather than rigid, predefined career paths.",
+                    "details": "A faint or absent fate line is not a lack of success, but a refusal to be tied down to a single destiny. You are a 'generalist' who enjoys exploring varied interests and multiple career phases. This adaptability makes you incredibly resilient in rapidly changing environments where others might feel lost without a script.",
+                    "advice": "Don't force yourself into traditional corporate ladders if they feel suffocating. Your success lies in your ability to pivot and integrate diverse experiences."
                 }
             ]
         },
@@ -190,9 +203,11 @@
             "outputs": [
                 {
                     "type": "insight",
-                    "title": "Star of Leadership",
-                    "description": "A star on the Mount of Jupiter is an extremely auspicious mark indicating sudden success, honor, and elevated social standing.",
-                    "unlock_reason": "Rare astrological alignment insights available"
+                    "insight_type": "Rare Discovery",
+                    "headline": "The Mark of Influence",
+                    "summary": "A highly auspicious sign indicating unexpected success, honor, and social elevation.",
+                    "details": "The star on the Mount of Jupiter (under the index finger) is one of the most fortunate markings in palmistry. It points to a destiny where you achieve recognition and high standing, often unexpectedly. It reflects a natural charisma and a capacity for leadership that draws others to you effortlessly.",
+                    "advice": "Do not shy away from positions of authority or public recognition. The universe is uniquely aligned to support your ambitions when you step into the spotlight."
                 }
             ]
         },
@@ -214,9 +229,11 @@
             "outputs": [
                 {
                     "type": "insight",
-                    "title": "Mystic Cross",
-                    "description": "This rare mark indicates a natural affinity for the occult, strong intuition, and an analytical approach to spiritual matters.",
-                    "unlock_reason": "Hidden intuition and spiritual path insights available"
+                    "insight_type": "Rare Discovery",
+                    "headline": "The Mystic Cross",
+                    "summary": "You possess an uncanny intuition and a natural affinity for the unseen world.",
+                    "details": "Located in the quadrangle between the head and heart lines, the Mystic Cross is the hallmark of the seeker. You have likely always felt a strong pull toward spirituality, psychology, or the occult. Your intuition is highly calibrated; you often 'know' things about people or situations before any logical evidence presents itself.",
+                    "advice": "Trust your gut instincts over pure logic when making major life decisions. Your intuition is not just a feeling; it is a highly developed perceptive tool."
                 }
             ]
         },
@@ -238,8 +255,11 @@
             "outputs": [
                 {
                     "type": "insight",
-                    "title": "High Passion & Energy",
-                    "description": "A well-developed Mount of Venus indicates a deep love for life, strong passions, and appreciation for beauty and comfort."
+                    "insight_type": "Strength",
+                    "headline": "Fierce Passion",
+                    "summary": "You approach life with an intense, vibrant energy that naturally attracts others.",
+                    "details": "A well-developed Mount of Venus (at the base of the thumb) indicates a deep appreciation for beauty, comfort, and the sensual pleasures of life. You do not do things by halves; when you love, you love deeply, and when you are passionate about a project, you pour your soul into it. This warmth and magnetism make you a highly engaging presence.",
+                    "advice": "Ensure you are directing this immense passion toward people and projects that return the investment, rather than those that simply consume your warmth."
                 }
             ]
         }

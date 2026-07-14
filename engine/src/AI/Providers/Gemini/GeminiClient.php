@@ -2,35 +2,36 @@
 
 namespace AIAnalysisEngine\AI\Providers\Gemini;
 
-use RuntimeException;
+use AIAnalysisEngine\Exception\EngineException;
+use AIAnalysisEngine\AI\Providers\DTO\GeminiExecution;
 
 class GeminiClient
 {
     private string $apiKey;
     private string $model;
     private string $endpoint;
-    private string $storageDir;
+    private string $runDir;
 
-    public function __construct(string $apiKey, string $model, string $endpoint, string $storageDir)
+    public function __construct(string $apiKey, string $model, string $endpoint, string $runDir)
     {
         $this->apiKey = $apiKey;
         $this->model = $model;
         $this->endpoint = $endpoint;
-        $this->storageDir = $storageDir;
+        $this->runDir = $runDir;
         
-        if (!is_dir($this->storageDir)) {
-            mkdir($this->storageDir, 0755, true);
+        if (!is_dir($this->runDir)) {
+            mkdir($this->runDir, 0755, true);
         }
     }
 
     public function analyzeImage(string $imagePath, string $promptPath): string
     {
         if (!file_exists($imagePath)) {
-            throw new RuntimeException("Image file not found: " . $imagePath);
+            throw new EngineException('SYS_002', "Image file not found: " . $imagePath);
         }
         
         if (!file_exists($promptPath)) {
-            throw new RuntimeException("Prompt file not found: " . $promptPath);
+            throw new EngineException('SYS_003', "Prompt file not found: " . $promptPath);
         }
 
         $prompt = file_get_contents($promptPath);
@@ -41,15 +42,6 @@ class GeminiClient
             $mimeType = 'image/jpeg';
         }
         $imageHash = hash('sha256', $imageData);
-
-        // Date-based subfolder
-        $dateFolder = date('Y-m-d');
-        $runId = uniqid('gemini_');
-        $saveDir = $this->storageDir . '/' . $dateFolder . '/' . $runId;
-        
-        if (!is_dir($saveDir)) {
-            mkdir($saveDir, 0755, true);
-        }
 
         $payload = [
             'contents' => [
@@ -72,12 +64,12 @@ class GeminiClient
 
         $requestJson = json_encode($payload, JSON_PRETTY_PRINT);
         
-        // Save prompt and request
-        file_put_contents($saveDir . '/prompt.txt', "Image Hash: $imageHash\n\n" . $prompt);
-        // Don't save the full base64 in request to save space, just structure
+        // Save prompt and request to Run ID dir
+        file_put_contents($this->runDir . '/prompt.txt', "Image Hash: $imageHash\n\n" . $prompt);
+        
         $debugPayload = $payload;
         $debugPayload['contents'][0]['parts'][1]['inline_data']['data'] = '<BASE64_TRUNCATED>';
-        file_put_contents($saveDir . '/request.json', json_encode($debugPayload, JSON_PRETTY_PRINT));
+        file_put_contents($this->runDir . '/request.json', json_encode($debugPayload, JSON_PRETTY_PRINT));
 
         $url = sprintf("%s?key=%s", $this->endpoint, $this->apiKey);
 
@@ -85,7 +77,9 @@ class GeminiClient
         $attempt = 0;
         $response = false;
         $httpCode = 0;
-        $latency = 0;
+        
+        $globalStartTime = microtime(true);
+        $latencyMs = 0;
 
         while ($attempt < $maxRetries) {
             $attempt++;
@@ -97,71 +91,72 @@ class GeminiClient
             curl_setopt($ch, CURLOPT_HTTPHEADER, [
                 'Content-Type: application/json'
             ]);
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10); // 10 seconds to connect
-            curl_setopt($ch, CURLOPT_TIMEOUT, 45); // 45 seconds overall timeout
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 45);
             
             $startTime = microtime(true);
             $response = curl_exec($ch);
-            $latency = microtime(true) - $startTime;
+            $latencyMs = (microtime(true) - $startTime) * 1000;
             $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
 
-            // Retry only on specific transient errors
             if ($response === false || in_array($httpCode, [429, 500, 503])) {
                 if ($attempt < $maxRetries) {
-                    sleep((int)pow(2, $attempt)); // Exponential backoff: 2s, 4s
+                    sleep((int)pow(2, $attempt)); 
                     continue;
                 }
             }
             break;
         }
 
-        if ($response === false || $httpCode >= 400) {
-            $errorDir = $this->storageDir . '/failed/' . $dateFolder;
-            if (!is_dir($errorDir)) {
-                mkdir($errorDir, 0755, true);
-            }
-            file_put_contents($errorDir . '/' . $runId . '_response.txt', "HTTP $httpCode\n$response");
-            throw new RuntimeException("Gemini API request failed. HTTP Code: " . $httpCode);
+        $globalFinishedAt = microtime(true);
+        $totalDurationMs = ($globalFinishedAt - $globalStartTime) * 1000;
+
+        if ($response === false) {
+            throw new EngineException('AI_001', "Gemini API timeout or connection failed.");
+        }
+        
+        if ($httpCode === 429) {
+            throw new EngineException('AI_002', "Gemini API quota exceeded.");
+        }
+        
+        if ($httpCode >= 400) {
+            file_put_contents($this->runDir . '/response_error.txt', "HTTP $httpCode\n$response");
+            throw new EngineException('AI_003', "Gemini API request failed with HTTP $httpCode");
         }
 
         // Save raw response
-        file_put_contents($saveDir . '/response.json', $response);
+        file_put_contents($this->runDir . '/response.json', $response);
         
         // Check if JSON is valid
         $decoded = json_decode($response, true);
         $jsonValid = (json_last_error() === JSON_ERROR_NONE);
 
-        // Extract metrics if valid
+        // Extract metrics
         $promptTokens = $decoded['usageMetadata']['promptTokenCount'] ?? 0;
         $completionTokens = $decoded['usageMetadata']['candidatesTokenCount'] ?? 0;
         
-        // Approximate cost for 2.5-flash: 
-        // $0.075 / 1M prompt tokens, $0.30 / 1M completion tokens
         $costUsd = ($promptTokens / 1000000) * 0.075 + ($completionTokens / 1000000) * 0.30;
-        $costInr = $costUsd * 83.5; // Approx INR conversion
+        $costInr = $costUsd * 83.5;
 
-        $promptVersion = basename($promptPath, '.txt');
+        // Build execution object
+        $execution = new GeminiExecution(
+            $globalStartTime,
+            $globalFinishedAt,
+            $totalDurationMs,
+            $httpCode,
+            $promptTokens,
+            $completionTokens,
+            round($costInr, 4),
+            $attempt - 1
+        );
 
-        file_put_contents($saveDir . '/metrics.json', json_encode([
-            'model' => $this->model,
-            'prompt_version' => $promptVersion,
-            'prompt_path' => $promptPath,
-            'latency_seconds' => $latency,
-            'image_hash' => $imageHash,
-            'json_valid' => $jsonValid,
-            'prompt_tokens' => $promptTokens,
-            'completion_tokens' => $completionTokens,
-            'estimated_cost_inr' => round($costInr, 4)
-        ], JSON_PRETTY_PRINT));
+        // Write execution metrics to run dir (EngineFacade will append its own later)
+        file_put_contents($this->runDir . '/gemini_metrics.json', json_encode($execution->toArray(), JSON_PRETTY_PRINT));
 
         if (!$jsonValid) {
-            $errorDir = $this->storageDir . '/failed/' . $dateFolder;
-            if (!is_dir($errorDir)) {
-                mkdir($errorDir, 0755, true);
-            }
-            file_put_contents($errorDir . '/' . $runId . '_invalid_json.txt', $response);
-            throw new RuntimeException("Gemini returned invalid JSON");
+            file_put_contents($this->runDir . '/response_invalid_json.txt', $response);
+            throw new EngineException('AI_004', "Gemini returned invalid JSON");
         }
 
         return $response;

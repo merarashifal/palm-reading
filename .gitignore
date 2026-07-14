@@ -6,3 +6,7 @@ node_modules/
 uploads/
 logs/
 *.zip
+
+engine/vendor/
+engine/storage/
+engine/composer.phar

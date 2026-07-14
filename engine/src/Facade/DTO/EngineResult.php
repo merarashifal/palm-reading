@@ -2,15 +2,15 @@
 
 namespace AIAnalysisEngine\Facade\DTO;
 
-use AIAnalysisEngine\Presentation\DTO\ReportModel;
+use AIAnalysisEngine\Presentation\DTO\ComposedReport;
 
 class EngineResult
 {
-    public ReportModel $reportModel;
+    public ComposedReport $reportModel;
     public string $html;
     public array $metadata;
 
-    public function __construct(ReportModel $reportModel, string $html, array $metadata = [])
+    public function __construct(ComposedReport $reportModel, string $html, array $metadata = [])
     {
         $this->reportModel = $reportModel;
         $this->html = $html;

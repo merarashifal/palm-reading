@@ -104,6 +104,10 @@ class GeminiProviderPipeline
             );
         }
 
-        return new NormalizedFeatureCollection($features);
+        $collection = new NormalizedFeatureCollection();
+        foreach ($features as $f) {
+            $collection->add($f);
+        }
+        return $collection;
     }
 }
