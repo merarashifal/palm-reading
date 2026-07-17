@@ -35,6 +35,11 @@ class AnalysisRepository
         return $dir;
     }
 
+    public function generateShareToken(): string
+    {
+        return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 8);
+    }
+
     public function saveLifecycle(
         string $reportId,
         string $runId,
@@ -49,10 +54,24 @@ class AnalysisRepository
     ): void {
         $storageDir = $this->getStorageDir($reportId);
 
-        // 1. Metadata
+        // 1. Metadata (Immutable)
         $metadata['report_id'] = $reportId;
         $metadata['run_id'] = $runId;
+        $metadata['share_token'] = $this->generateShareToken();
         file_put_contents($storageDir . '/metadata.json', json_encode($metadata, JSON_PRETTY_PRINT));
+
+        // 1b. State (Mutable)
+        $initialState = [
+            'state' => 'free',
+            'profile_completed' => false,
+            'premium_unlocked' => false,
+            'feedback_submitted' => false,
+            'pdf_downloaded' => false,
+            'share_count' => 0,
+            'created_at' => date('c'),
+            'updated_at' => date('c')
+        ];
+        file_put_contents($storageDir . '/state.json', json_encode($initialState, JSON_PRETTY_PRINT));
 
         // 2. Image
         if (file_exists($imagePath)) {

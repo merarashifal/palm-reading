@@ -7,13 +7,22 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$ppb_page = get_query_var('ppb_page');
-$ppb_report_id = get_query_var('ppb_report_id');
+$ppb_page = sanitize_text_field(get_query_var('ppb_page'));
+$ppb_report_id = sanitize_text_field(get_query_var('ppb_report_id'));
 
-// Mock state for now
 $state = $ppb_page ?: 'landing';
-if ($ppb_page === 'report' && $ppb_report_id) {
-    $state = 'report';
+$reportExists = false;
+
+if ($state === 'report' && $ppb_report_id) {
+    // Check if report exists in storage
+    $reportDir = dirname(PPB_PLUGIN_DIR) . '/engine/storage/analysis/' . $ppb_report_id;
+    if (is_dir($reportDir) && file_exists($reportDir . '/metadata.json')) {
+        $reportExists = true;
+        // Mock loading data for Day 1
+        $reportData = json_decode(file_get_contents($reportDir . '/metadata.json'), true) ?: [];
+    } else {
+        $state = 'empty_state';
+    }
 }
 
 get_header();
@@ -35,6 +44,15 @@ get_header();
             include PPB_PLUGIN_DIR . 'components/evidence_card.php';
             include PPB_PLUGIN_DIR . 'components/unlock_cta.php';
             include PPB_PLUGIN_DIR . 'components/profile_modal.php';
+            break;
+
+        case 'empty_state':
+            $statusType = 'warning';
+            $statusTitle = 'Report Not Found';
+            $statusMessage = 'We couldn\'t find this Personal Palm Blueprint. It may have expired or the link is incorrect.';
+            $statusActionText = 'Start New Analysis';
+            $statusActionUrl = site_url('/upload');
+            include PPB_PLUGIN_DIR . 'components/status_card.php';
             break;
 
         case 'landing':

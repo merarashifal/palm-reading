@@ -52,6 +52,17 @@ class CustomerProfileRepository
         }
 
         file_put_contents($file, json_encode($profile, JSON_PRETTY_PRINT));
+
+        // Update the report's state.json
+        $reportStateFile = $this->storageBasePath . '/analysis/' . $linkedReportId . '/state.json';
+        if (file_exists($reportStateFile)) {
+            $state = json_decode(file_get_contents($reportStateFile), true) ?: [];
+            $state['state'] = 'premium';
+            $state['profile_completed'] = true;
+            $state['premium_unlocked'] = true;
+            $state['updated_at'] = date('c');
+            file_put_contents($reportStateFile, json_encode($state, JSON_PRETTY_PRINT));
+        }
     }
 
     public function getProfile(string $visitorId): ?array
