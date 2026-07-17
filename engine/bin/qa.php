@@ -24,12 +24,18 @@ if (!file_exists($imagePath)) {
     die("Error: Image not found at $imagePath\n");
 }
 
+$language = 'en';
+if ($argc >= 3) {
+    $language = $argv[2];
+}
+
 $config = new EngineConfig(
     $apiKey,
     getenv('GEMINI_MODEL') ?: 'gemini-2.5-flash',
     'Palm/Vision/2.5-flash/v1',
-    __DIR__ . '/../knowledge/palmistry_v1.json',
-    __DIR__ . '/../storage'
+    __DIR__ . '/../knowledge/palmistry_v2.json',
+    __DIR__ . '/../storage',
+    $language
 );
 
 echo "Starting QA Run on: $imagePath\n";

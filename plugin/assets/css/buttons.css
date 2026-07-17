@@ -1,0 +1,44 @@
+.ppb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: var(--font-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: none;
+    text-decoration: none;
+}
+
+.ppb-btn:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+}
+
+.ppb-btn-primary {
+    background-color: var(--primary);
+    color: var(--surface-alt);
+    box-shadow: var(--shadow-sm);
+}
+
+.ppb-btn-primary:hover {
+    background-color: #5b3bd4; /* slightly darker primary */
+    box-shadow: var(--shadow-float);
+    transform: translateY(-1px);
+}
+
+.ppb-btn-secondary {
+    background-color: var(--surface-alt);
+    color: var(--primary);
+    border: 1px solid var(--border);
+}
+
+.ppb-btn-secondary:hover {
+    background-color: var(--primary-light);
+}
+
+.ppb-btn-full {
+    width: 100%;
+}

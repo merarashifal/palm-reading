@@ -8,33 +8,26 @@ use AIAnalysisEngine\Validator\ImageValidator;
 use AIAnalysisEngine\AI\Providers\Gemini\GeminiClient;
 use AIAnalysisEngine\AI\Providers\Gemini\GeminiProviderPipeline;
 use AIAnalysisEngine\Inference\Runtime\InferenceRuntime;
-use AIAnalysisEngine\Presentation\PresentationEngine;
 use AIAnalysisEngine\Facade\DTO\EngineResult;
+use AIAnalysisEngine\Storage\AnalysisRepository;
+use AIAnalysisEngine\Renderer\HtmlRenderer;
+use AIAnalysisEngine\Renderer\PdfRenderer;
 use Throwable;
 
 class EngineFacade
 {
-    /**
-     * Executes the full pipeline from Image to ReportModel.
-     * Does NOT generate HTML. That is left to the client (e.g., WordPress plugin).
-     */
     public static function analyze(string $imagePath, EngineConfig $config): EngineResult
     {
         $startTime = microtime(true);
-        $runId = 'run_' . date('Ymd_His') . '_' . substr(md5(uniqid()), 0, 6);
-        
-        $storageDir = $config->storagePath . "/runs/$runId";
-        if (!is_dir($storageDir)) {
-            mkdir($storageDir, 0777, true);
-        }
+        $repo = new AnalysisRepository($config->storagePath);
+        $reportId = $repo->generateReportId();
+        $runId = $repo->generateRunId();
+        $storageDir = $repo->getStorageDir($reportId);
 
         try {
             // 1. Validate Image
             $validator = new ImageValidator();
             $validator->validate($imagePath);
-
-            // Copy original image for record
-            copy($imagePath, $storageDir . '/image.' . pathinfo($imagePath, PATHINFO_EXTENSION));
 
             // 2. Extract Features via Gemini
             $client = new GeminiClient(
@@ -46,68 +39,113 @@ class EngineFacade
             $pipeline = new GeminiProviderPipeline($client);
             $promptPath = realpath(__DIR__ . '/../../knowledge/' . $config->promptVersion . '.txt');
             if (!$promptPath) {
-                // fallback path if realpath fails
                 $promptPath = dirname(__DIR__, 3) . '/knowledge/' . $config->promptVersion . '.txt';
             }
             
             $features = $pipeline->run($imagePath, $promptPath);
-            file_put_contents($storageDir . '/normalized.json', json_encode($features->all(), JSON_PRETTY_PRINT));
 
             // 3. Inference Runtime
             $runtime = new InferenceRuntime();
-            $inferenceResult = $runtime->run($config->knowledgePackPath, $features);
-            file_put_contents($storageDir . '/inference.json', json_encode($inferenceResult, JSON_PRETTY_PRINT));
+            $inferenceResult = $runtime->run($config->knowledgePackPath, $features, $config->language);
 
             // 4. Presentation Layer
             $composer = new \AIAnalysisEngine\Presentation\ReportComposer();
-            
-            // Re-fetch quality from Gemini if available
             $qualityScore = 'Excellent'; // default
             
-            $reportModel = $composer->compose($inferenceResult, ['image_quality' => $qualityScore]);
-            file_put_contents($storageDir . '/report.json', json_encode($reportModel, JSON_PRETTY_PRINT));
+            $composeMetadata = [
+                'image_quality' => $qualityScore,
+                'gemini_model' => $config->geminiModel,
+                'user_name' => 'Tushar',
+                'raw_features' => $features->all()
+            ];
 
+            // Generate Free Document
+            $freeDocument = $composer->compose($inferenceResult, $composeMetadata, false);
+            
+            // Generate Premium Document
+            $premiumDocument = $composer->compose($inferenceResult, $composeMetadata, true);
+
+            // 5. Renderers
+            $htmlRenderer = new HtmlRenderer();
+            $freeHtml = $htmlRenderer->render($freeDocument);
+            $premiumHtml = $htmlRenderer->render($premiumDocument);
+
+            $pdfPath = $storageDir . '/premium.pdf';
+            if (class_exists('Mpdf\Mpdf')) {
+                $pdfRenderer = new PdfRenderer();
+                $pdfRenderer->renderToFile($premiumDocument, $pdfPath);
+            }
+            
+            $socialRenderer = new \AIAnalysisEngine\Renderer\SocialCardRenderer();
+            $socialRenderer->renderToFiles($premiumDocument, $storageDir);
+
+            // Metrics and Metadata
             $totalTimeMs = round((microtime(true) - $startTime) * 1000);
-
-            // Fetch Gemini Metrics if they exist
             $geminiMetricsPath = $storageDir . '/gemini_metrics.json';
             $geminiMetrics = file_exists($geminiMetricsPath) ? json_decode(file_get_contents($geminiMetricsPath), true) : [];
 
+            $lockedInsights = 0;
+            foreach ($inferenceResult->insights as $insight) {
+                if ($insight->visibility === 'premium') $lockedInsights++;
+            }
+
             $metadata = [
+                'report_id' => $reportId,
                 'run_id' => $runId,
-                'engine_version' => '0.9.0', // RC1
-                'knowledge_pack' => basename($config->knowledgePackPath),
-                'prompt_version' => $config->promptVersion,
-                'gemini_model' => $config->geminiModel,
-                'total_time_ms' => $totalTimeMs,
+                'session_id' => 'ses_' . uniqid(),
+                'visitor_id' => 'vis_' . uniqid(),
+                'language' => $config->language,
+                'created_at' => date('c'),
+                'engine_version' => '1.0.0-beta',
+                'knowledge_version' => basename($config->knowledgePackPath),
+                'renderer_version' => '1.0.0',
+                'report_template' => 'v1',
+                'analysis_status' => 'completed',
                 'features_detected' => count($features->all()),
                 'insights_generated' => count($inferenceResult->insights),
+                'locked_insights' => $lockedInsights,
+                'confidence' => 95,
+                'image_quality' => $qualityScore,
+                'latency' => $totalTimeMs,
+                'total_time_ms' => $totalTimeMs,
                 'gemini_execution' => $geminiMetrics
             ];
             
-            file_put_contents($storageDir . '/metrics.json', json_encode($metadata, JSON_PRETTY_PRINT));
-            
+            // 6. Save Lifecycle
+            $repo->saveLifecycle(
+                $reportId,
+                $runId,
+                $imagePath,
+                $features->all(),
+                $inferenceResult->toArray(),
+                $freeDocument->toArray(),
+                $metadata,
+                $freeHtml,
+                $premiumHtml,
+                file_exists($pdfPath) ? $pdfPath : null
+            );
+
             // Log Success Status
-            $status = [
+            file_put_contents($storageDir . '/status.json', json_encode([
                 'status' => 'success',
                 'stage' => 'complete'
-            ];
-            file_put_contents($storageDir . '/status.json', json_encode($status, JSON_PRETTY_PRINT));
+            ], JSON_PRETTY_PRINT));
 
-            // Return EngineResult without HTML
-            return new EngineResult($reportModel, '', $metadata);
+            // We return EngineResult with the free document as the default for the immediate response
+            return new EngineResult($freeDocument, $freeHtml, $metadata);
 
         } catch (EngineException $e) {
-            self::logFailure($storageDir, $e->getErrorCode(), $e->getMessage(), $e);
+            self::logFailure($storageDir ?? '', $e->getErrorCode(), $e->getMessage(), $e);
             throw $e;
         } catch (Throwable $e) {
-            self::logFailure($storageDir, 'SYS_001', 'Unexpected exception occurred.', $e);
+            self::logFailure($storageDir ?? '', 'SYS_001', 'Unexpected exception occurred.', $e);
             throw new EngineException('SYS_001', 'Unexpected system error: ' . $e->getMessage());
         }
     }
 
     private static function logFailure(string $storageDir, string $errorCode, string $message, Throwable $e): void
     {
+        if (!$storageDir) return;
         $status = [
             'status' => 'failed',
             'error_code' => $errorCode,

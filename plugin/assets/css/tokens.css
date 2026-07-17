@@ -1,0 +1,71 @@
+:root {
+    /* Neutral Scale */
+    --neutral-50:  #F8FAFC;
+    --neutral-100: #F1F5F9;
+    --neutral-200: #E2E8F0;
+    --neutral-300: #CBD5E1;
+    --neutral-400: #94A3B8;
+    --neutral-500: #64748B;
+    --neutral-600: #475569;
+    --neutral-700: #334155;
+    --neutral-800: #1E293B;
+    --neutral-900: #0F172A;
+
+    /* Brand Colors */
+    --primary: #6C4CF1;
+    --secondary: #00B8D9;
+    
+    /* Mapped Semantics */
+    --surface: var(--neutral-50);
+    --surface-alt: #FFFFFF;
+    --border: var(--neutral-200);
+    --text: var(--neutral-800);
+    --text-muted: var(--neutral-500);
+
+    /* States */
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+
+    /* Radii & Shadows */
+    --radius-lg: 20px;
+    --radius-md: 12px;
+    --shadow-card: 0 12px 40px rgba(0,0,0,.04);
+
+    /* Spacing */
+    --space-xl: 48px;
+    --space-lg: 32px;
+    --space-md: 20px;
+    --space-sm: 12px;
+
+    /* Typography */
+    --font-family: Inter, system-ui, -apple-system, sans-serif;
+    --font-xs: 12px;
+    --font-sm: 14px;
+    --font-md: 16px;
+    --font-lg: 20px;
+    --font-xl: 28px;
+    --font-2xl: 36px;
+    --font-3xl: 48px;
+    --line-height: 1.6;
+
+    /* Transitions & Motion */
+    --transition-fast: 150ms ease;
+    --transition: 300ms ease;
+    --transition-slow: 500ms ease;
+
+    /* Z-Index */
+    --z-header: 100;
+    --z-dropdown: 200;
+    --z-overlay: 500;
+    --z-modal: 1000;
+    --z-toast: 1200;
+
+    /* Layout */
+    --container-sm: 640px;
+    --container-md: 860px;
+    --container-lg: 1140px;
+
+    /* Accessibility */
+    --focus-ring: 0 0 0 4px rgba(108,76,241,.18);
+}

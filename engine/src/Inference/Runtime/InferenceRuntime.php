@@ -18,12 +18,12 @@ class InferenceRuntime
         $this->recommendationBuilder = new RecommendationBuilder();
     }
 
-    public function run(string $knowledgePackPath, NormalizedFeatureCollection $features): InferenceResult
+    public function run(string $knowledgePackPath, NormalizedFeatureCollection $features, string $language = 'en'): InferenceResult
     {
         $result = new InferenceResult();
 
         // 1. Match Rules
-        $result->insights = $this->matcher->matchRules($knowledgePackPath, $features);
+        $result->insights = $this->matcher->matchRules($knowledgePackPath, $features, $language);
 
         // 2. Score Insights
         $result->scores = $this->scorer->scoreInsights($result->insights);

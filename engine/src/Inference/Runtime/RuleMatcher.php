@@ -14,7 +14,7 @@ class RuleMatcher
         $this->evaluator = new ConditionEvaluator();
     }
 
-    public function matchRules(string $knowledgePackPath, NormalizedFeatureCollection $features): array
+    public function matchRules(string $knowledgePackPath, NormalizedFeatureCollection $features, string $language = 'en'): array
     {
         if (!file_exists($knowledgePackPath)) {
             throw new \Exception("Knowledge pack not found: $knowledgePackPath");
@@ -34,19 +34,25 @@ class RuleMatcher
                 
                 foreach ($rule['outputs'] as $output) {
                     if ($output['type'] === 'insight') {
+                        // Extract localized text
+                        $langData = $output['languages'][$language] ?? $output['languages']['en'] ?? [];
+                        
                         $insights[] = new Insight(
                             id: $rule['rule_id'],
                             type: $output['insight_type'] ?? 'Discovery',
-                            headline: $output['headline'] ?? '',
-                            summary: $output['summary'] ?? '',
-                            details: $output['details'] ?? '',
-                            advice: $output['advice'] ?? '',
-                            confidence: 0.9, // Mock calculated confidence
+                            headline: $langData['headline'] ?? '',
+                            summary: $langData['summary'] ?? '',
+                            details: $langData['details'] ?? '',
+                            advice: $langData['advice'] ?? '',
+                            cta: $langData['cta'] ?? '',
+                            confidence: $rule['confidence_weight'] ?? 0.9,
                             importance: $rule['importance'] ?? 50,
                             visibility: $rule['visibility'] ?? 'free',
                             category: $rule['category'] ?? 'general',
                             matchedRule: $rule,
                             evidence: [],
+                            remedies: $output['remedies'] ?? [],
+                            evidenceTrail: $output['evidence_trail'] ?? '',
                             unlockReason: $output['unlock_reason'] ?? null
                         );
                     }
