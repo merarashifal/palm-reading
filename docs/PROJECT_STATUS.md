@@ -1,27 +1,31 @@
 # Project Status
 
-## Completed
+# Project Status
+
+## Overall Status: Beta Readiness (100% Launch Blockers Removed)
+
+## Completed (Architecture & Engine)
 - **Architecture**: Core Engine, Schema, Validation Workflow, Compilation Workflow.
 - **Database**: SQL schema for WP Plugin (`001_tables.sql`).
 - **Knowledge Pack**: Palm Reading Long Life Line (16 Rules, Dictionaries).
-- **Engine Foundation (Sprint 1A)**: Contracts, Context, Registry, Logging, PHPUnit, ReferenceValidator.
-- **Language Validation (Sprint 1B)**: Language parity, tier boundaries, duplicate detection, UTF-8 checks.
+- **Engine Foundation**: Contracts, Context, Registry, Logging, PHPUnit, ReferenceValidator.
+- **Language Validation**: Language parity, tier boundaries, duplicate detection, UTF-8 checks.
+- **Inference Runtime**: Dynamic Rule Matching, Evidence accumulation, Replayability.
+- **Renderer**: PDF Generation via mPDF and HTML presentation layer.
+
+## Completed (Product & UX - Beta V1)
+- **WordPress Integration**: Full routing (`/upload`, `/report`, `/r/TOKEN`), Plugin Setup.
+- **Design System**: Centralized Design Tokens (`tokens.css`, `cards.css`, etc.) following a clinical/clean aesthetic.
+- **Lead Capture Funnel**: In-page slide-up modal with Privacy Consent.
+- **Immutable/Mutable Separation**: `metadata.json` (Analysis) vs `state.json` (Journey persistence).
+- **Analytics & Feedback**: Centralized event logging, 4-step embedded feedback UI.
+- **Admin Dashboard**: WordPress UI for Founder metrics and Funnel tracking.
+- **Operational Readiness**: Launch Checklist, Beta Retrospective templates.
 
 ## In Progress
-- **Sprint 1C**: Editorial Validation (Readability, Phrase, Structure, Tone, Reading Time, Consistency).
+- **100-Image QA**: Building structured QA dataset to map Expected vs Actual detections.
+- **Security Audit**: Completing the final checklist items for direct public access.
 
-## Next Sprint
-- **Sprint 1D**: Semantic Validation, Reports (Coverage, Benchmark), CI/CD (GitHub Actions).
-
-## Backlog
-- **Language Normalizer**: Normalize spacing, punctuation, unicode formatting.
-- **Semantic Similarity (Gemini)**: Replace 95% similarity check with Gemini or embeddings.
-- **Editorial AI Reviewer (Gemini QA)**: AI-driven qualitative review.
-- **Knowledge Coverage Dashboard**: UI to view coverage metrics.
-- **Knowledge Diff Viewer**: Compare Knowledge Pack 1.0 -> 1.1.
-- **Plugin Implementation**: WordPress plugin development.
-- **Gemini Vision**: Image upload and extraction pipeline.
-- **Razorpay Integration**: Premium conversion flow.
-
-## Known Issues
-- PHP and Composer are not globally available on standard shared hosting environments. Addressed by building standalone validation architecture that produces raw SQL artifacts for import.
+## Next Phase (Post-Beta)
+- Iterate completely based on real user analytics, feedback, and funnel drop-off.
+- No new features until initial product-market fit is validated through the Founder Dashboard.
