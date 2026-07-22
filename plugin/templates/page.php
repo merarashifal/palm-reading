@@ -15,7 +15,8 @@ $reportExists = false;
 
 if ($state === 'report' && $ppb_report_id) {
     // Check if report exists in storage
-    $reportDir = dirname(PPB_PLUGIN_DIR) . '/engine/storage/analysis/' . $ppb_report_id;
+    $upload_dir = wp_upload_dir();
+    $reportDir = $upload_dir['basedir'] . '/palm-reading/analysis/' . $ppb_report_id;
     if (is_dir($reportDir) && file_exists($reportDir . '/metadata.json')) {
         $reportExists = true;
         // Mock loading data for Day 1

@@ -109,7 +109,8 @@ class PalmReaderPlugin
                 // In a real DB we would look up the report_id by share_token
                 // For file-based beta, we scan the metadata.json (or we could use a fast index)
                 // For now, we mock the redirect or use grep equivalent
-                $storageDir = dirname(PPB_PLUGIN_DIR) . '/engine/storage/analysis';
+                $upload_dir = wp_upload_dir();
+                $storageDir = $upload_dir['basedir'] . '/palm-reading/analysis';
                 $dirs = glob($storageDir . '/*' , GLOB_ONLYDIR);
                 foreach ($dirs as $dir) {
                     $metaPath = $dir . '/metadata.json';
@@ -132,7 +133,8 @@ class PalmReaderPlugin
         $reportId = sanitize_text_field(get_query_var('ppb_report_id'));
         if ($ppb_page === 'report' && $reportId && isset($_GET['download']) && $_GET['download'] === 'pdf') {
             if (\AIAnalysisEngine\Config\Settings::isEnabled('pdf')) {
-                $storageDir = dirname(PPB_PLUGIN_DIR) . '/engine/storage/analysis/' . $reportId;
+                $upload_dir = wp_upload_dir();
+                $storageDir = $upload_dir['basedir'] . '/palm-reading/analysis/' . $reportId;
                 $pdfPath = $storageDir . '/premium.pdf';
                 
                 // Security check
@@ -220,12 +222,13 @@ class PalmReaderPlugin
         }
 
         // Initialize Analytics and get Visitor ID
-        $storagePath = dirname(PPB_PLUGIN_DIR) . '/engine/storage';
+        $upload_dir = wp_upload_dir();
+        $storagePath = $upload_dir['basedir'] . '/palm-reading';
         \AIAnalysisEngine\Analytics\AnalyticsService::init($storagePath);
         $visitorId = \AIAnalysisEngine\Analytics\AnalyticsService::getVisitorId();
 
         // 1. Save Profile
-        require_once dirname(PPB_PLUGIN_DIR) . '/engine/src/Storage/CustomerProfileRepository.php';
+        require_once PPB_PLUGIN_DIR . 'engine/src/Storage/CustomerProfileRepository.php';
         $profileRepo = new \AIAnalysisEngine\Storage\CustomerProfileRepository($storagePath);
         $profileRepo->upsertProfile($visitorId, [
             'mobile' => $mobile,
