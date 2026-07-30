@@ -1,0 +1,155 @@
+{
+    "insights": [
+        {
+            "id": "PALM-VIT-001",
+            "type": "Strength",
+            "headline": "\u0905\u0926\u094d\u092d\u0941\u0924 \u090a\u0930\u094d\u091c\u093e",
+            "summary": "\u0906\u092a\u0915\u0947 \u092a\u093e\u0938 \u092a\u094d\u0930\u093e\u0915\u0943\u0924\u093f\u0915 \u090a\u0930\u094d\u091c\u093e \u0914\u0930 \u0936\u093e\u0930\u0940\u0930\u093f\u0915 \u0938\u0939\u0928\u0936\u0915\u094d\u0924\u093f \u0915\u093e \u090f\u0915 \u0917\u0939\u0930\u093e \u092d\u0902\u0921\u093e\u0930 \u0939\u0948\u0964",
+            "details": "\u090f\u0915 \u0928\u093f\u0930\u0902\u0924\u0930 \u0914\u0930 \u0917\u0939\u0930\u0940 \u091c\u0940\u0935\u0928 \u0930\u0947\u0916\u093e \u090f\u0915 \u092e\u091c\u092c\u0942\u0924 \u0936\u093e\u0930\u0940\u0930\u093f\u0915 \u092c\u0928\u093e\u0935\u091f \u0914\u0930 \u091c\u0940\u0935\u0928 \u0915\u0947 \u092a\u094d\u0930\u0924\u093f \u0905\u091f\u0942\u091f \u0909\u0924\u094d\u0938\u093e\u0939 \u0915\u094b \u0926\u0930\u094d\u0936\u093e\u0924\u0940 \u0939\u0948\u0964 \u0907\u0938 \u091a\u093f\u0939\u094d\u0928 \u0935\u093e\u0932\u0947 \u0932\u094b\u0917 \u0905\u0915\u094d\u0938\u0930 \u0925\u0915\u093e\u0928 \u092f\u093e \u092c\u0940\u092e\u093e\u0930\u0940 \u0938\u0947 \u092c\u0939\u0941\u0924 \u091c\u0932\u094d\u0926\u0940 \u0909\u092c\u0930 \u091c\u093e\u0924\u0947 \u0939\u0948\u0902\u0964 \u0906\u092a\u092e\u0947\u0902 \u0926\u0940\u0930\u094d\u0918\u0915\u093e\u0932\u093f\u0915 \u092a\u0930\u093f\u092f\u094b\u091c\u0928\u093e\u0913\u0902 \u0915\u094b \u092a\u0942\u0930\u093e \u0915\u0930\u0928\u0947 \u0915\u0940 \u0915\u094d\u0937\u092e\u0924\u093e \u0939\u0948\u0964",
+            "advice": "\u0905\u092a\u0928\u0940 \u092a\u094d\u0930\u091a\u0941\u0930 \u090a\u0930\u094d\u091c\u093e \u0915\u094b \u0938\u0941\u0938\u0902\u0917\u0924 \u0926\u093f\u0928\u091a\u0930\u094d\u092f\u093e \u092e\u0947\u0902 \u0932\u0917\u093e\u090f\u0902, \u0932\u0947\u0915\u093f\u0928 \u0925\u0915\u0928\u0947 \u0938\u0947 \u092a\u0939\u0932\u0947 \u0938\u0915\u094d\u0930\u093f\u092f \u0930\u0942\u092a \u0938\u0947 \u0906\u0930\u093e\u092e \u0915\u0930\u0928\u093e \u092f\u093e\u0926 \u0930\u0916\u0947\u0902\u0964",
+            "cta": "\u0905\u092a\u0928\u093e \u0939\u0947\u0932\u094d\u0925 \u092c\u094d\u0932\u0942\u092a\u094d\u0930\u093f\u0902\u091f \u090f\u0915\u094d\u0938\u092a\u094d\u0932\u094b\u0930 \u0915\u0930\u0947\u0902",
+            "confidence": 0.95,
+            "importance": 85,
+            "visibility": "free",
+            "category": "vitality",
+            "matchedRule": {
+                "rule_id": "PALM-VIT-001",
+                "category": "vitality",
+                "visibility": "free",
+                "importance": 85,
+                "confidence_weight": 0.95,
+                "emotion": "confidence",
+                "reading_time": 45,
+                "tags": [
+                    "vitality",
+                    "health"
+                ],
+                "conditions": {
+                    "type": "AND",
+                    "conditions": [
+                        {
+                            "feature_type": "life_line",
+                            "operator": "exists"
+                        },
+                        {
+                            "feature_type": "life_line",
+                            "attribute": "length",
+                            "operator": "equals",
+                            "value": "long"
+                        }
+                    ]
+                },
+                "outputs": [
+                    {
+                        "type": "insight",
+                        "insight_type": "Strength",
+                        "languages": {
+                            "en": {
+                                "headline": "Enduring Vitality",
+                                "summary": "You possess a deep well of natural energy and physical resilience.",
+                                "details": "A continuous and deeply etched life line reveals a powerful physical constitution and an unwavering zest for life. People with this marking often bounce back remarkably well from exhaustion or illness. You have the stamina required to see long-term projects through to completion.",
+                                "advice": "Channel your abundant energy into consistent routines, but remember to rest proactively before you feel drained.",
+                                "cta": "Explore your Health Blueprint"
+                            },
+                            "hi": {
+                                "headline": "\u0905\u0926\u094d\u092d\u0941\u0924 \u090a\u0930\u094d\u091c\u093e",
+                                "summary": "\u0906\u092a\u0915\u0947 \u092a\u093e\u0938 \u092a\u094d\u0930\u093e\u0915\u0943\u0924\u093f\u0915 \u090a\u0930\u094d\u091c\u093e \u0914\u0930 \u0936\u093e\u0930\u0940\u0930\u093f\u0915 \u0938\u0939\u0928\u0936\u0915\u094d\u0924\u093f \u0915\u093e \u090f\u0915 \u0917\u0939\u0930\u093e \u092d\u0902\u0921\u093e\u0930 \u0939\u0948\u0964",
+                                "details": "\u090f\u0915 \u0928\u093f\u0930\u0902\u0924\u0930 \u0914\u0930 \u0917\u0939\u0930\u0940 \u091c\u0940\u0935\u0928 \u0930\u0947\u0916\u093e \u090f\u0915 \u092e\u091c\u092c\u0942\u0924 \u0936\u093e\u0930\u0940\u0930\u093f\u0915 \u092c\u0928\u093e\u0935\u091f \u0914\u0930 \u091c\u0940\u0935\u0928 \u0915\u0947 \u092a\u094d\u0930\u0924\u093f \u0905\u091f\u0942\u091f \u0909\u0924\u094d\u0938\u093e\u0939 \u0915\u094b \u0926\u0930\u094d\u0936\u093e\u0924\u0940 \u0939\u0948\u0964 \u0907\u0938 \u091a\u093f\u0939\u094d\u0928 \u0935\u093e\u0932\u0947 \u0932\u094b\u0917 \u0905\u0915\u094d\u0938\u0930 \u0925\u0915\u093e\u0928 \u092f\u093e \u092c\u0940\u092e\u093e\u0930\u0940 \u0938\u0947 \u092c\u0939\u0941\u0924 \u091c\u0932\u094d\u0926\u0940 \u0909\u092c\u0930 \u091c\u093e\u0924\u0947 \u0939\u0948\u0902\u0964 \u0906\u092a\u092e\u0947\u0902 \u0926\u0940\u0930\u094d\u0918\u0915\u093e\u0932\u093f\u0915 \u092a\u0930\u093f\u092f\u094b\u091c\u0928\u093e\u0913\u0902 \u0915\u094b \u092a\u0942\u0930\u093e \u0915\u0930\u0928\u0947 \u0915\u0940 \u0915\u094d\u0937\u092e\u0924\u093e \u0939\u0948\u0964",
+                                "advice": "\u0905\u092a\u0928\u0940 \u092a\u094d\u0930\u091a\u0941\u0930 \u090a\u0930\u094d\u091c\u093e \u0915\u094b \u0938\u0941\u0938\u0902\u0917\u0924 \u0926\u093f\u0928\u091a\u0930\u094d\u092f\u093e \u092e\u0947\u0902 \u0932\u0917\u093e\u090f\u0902, \u0932\u0947\u0915\u093f\u0928 \u0925\u0915\u0928\u0947 \u0938\u0947 \u092a\u0939\u0932\u0947 \u0938\u0915\u094d\u0930\u093f\u092f \u0930\u0942\u092a \u0938\u0947 \u0906\u0930\u093e\u092e \u0915\u0930\u0928\u093e \u092f\u093e\u0926 \u0930\u0916\u0947\u0902\u0964",
+                                "cta": "\u0905\u092a\u0928\u093e \u0939\u0947\u0932\u094d\u0925 \u092c\u094d\u0932\u0942\u092a\u094d\u0930\u093f\u0902\u091f \u090f\u0915\u094d\u0938\u092a\u094d\u0932\u094b\u0930 \u0915\u0930\u0947\u0902"
+                            }
+                        },
+                        "remedies": [],
+                        "evidence_trail": "Deep and continuous Life Line identified."
+                    }
+                ]
+            },
+            "evidence": [],
+            "remedies": [],
+            "evidenceTrail": "Deep and continuous Life Line identified.",
+            "unlockReason": null
+        },
+        {
+            "id": "PALM-REL-001",
+            "type": "Strength",
+            "headline": "\u0917\u0939\u0930\u0940 \u092d\u093e\u0935\u0928\u093e\u0924\u094d\u092e\u0915 \u0915\u094d\u0937\u092e\u0924\u093e",
+            "summary": "\u0906\u092a \u0926\u0941\u0928\u093f\u092f\u093e \u0915\u094b \u0917\u0939\u0930\u0940 \u092d\u093e\u0935\u0928\u093e\u0924\u094d\u092e\u0915 \u0924\u0940\u0935\u094d\u0930\u0924\u093e \u0914\u0930 \u0938\u0939\u093e\u0928\u0941\u092d\u0942\u0924\u093f \u0915\u0947 \u0938\u093e\u0925 \u0905\u0928\u0941\u092d\u0935 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964",
+            "details": "\u090f\u0915 \u0917\u0939\u0930\u0940 \u0939\u0943\u0926\u092f \u0930\u0947\u0916\u093e \u092f\u0939 \u0926\u0930\u094d\u0936\u093e\u0924\u0940 \u0939\u0948 \u0915\u093f \u091c\u092c \u0906\u092a \u092a\u094d\u0930\u0924\u093f\u092c\u0926\u094d\u0927 \u0939\u094b\u0924\u0947 \u0939\u0948\u0902, \u0924\u094b \u092a\u0942\u0930\u0940 \u0924\u0930\u0939 \u0938\u0947 \u0939\u094b\u0924\u0947 \u0939\u0948\u0902\u0964 \u0906\u092a \u092e\u091c\u092c\u0942\u0924 \u0914\u0930 \u0938\u094d\u0925\u093e\u092f\u0940 \u0932\u0917\u093e\u0935 \u092c\u0928\u093e\u0924\u0947 \u0939\u0948\u0902 \u0914\u0930 \u0905\u0915\u094d\u0938\u0930 \u0905\u092a\u0928\u0947 \u091c\u0940\u0935\u0928 \u092e\u0947\u0902 \u0932\u094b\u0917\u094b\u0902 \u0915\u0947 \u0932\u093f\u090f \u090f\u0915 \u092d\u093e\u0935\u0928\u093e\u0924\u094d\u092e\u0915 \u0938\u0939\u093e\u0930\u093e \u092c\u0928\u0924\u0947 \u0939\u0948\u0902\u0964 \u092f\u0926\u094d\u092f\u092a\u093f \u0906\u092a \u0926\u0942\u0938\u0930\u094b\u0902 \u0915\u0940 \u0924\u0941\u0932\u0928\u093e \u092e\u0947\u0902 \u091a\u0940\u091c\u094b\u0902 \u0915\u094b \u0905\u0927\u093f\u0915 \u0924\u0940\u0935\u094d\u0930\u0924\u093e \u0938\u0947 \u092e\u0939\u0938\u0942\u0938 \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902, \u092f\u0939 \u0938\u0902\u0935\u0947\u0926\u0928\u0936\u0940\u0932\u0924\u093e \u0938\u091a\u094d\u091a\u0947 \u0938\u0902\u092c\u0902\u0927 \u092c\u0928\u093e\u0928\u0947 \u092e\u0947\u0902 \u0906\u092a\u0915\u0940 \u0938\u092c\u0938\u0947 \u092c\u0921\u093c\u0940 \u0938\u0902\u092a\u0924\u094d\u0924\u093f \u0939\u0948\u0964",
+            "advice": "\u0905\u092a\u0928\u0947 \u092d\u093e\u0935\u0928\u093e\u0924\u094d\u092e\u0915 \u092d\u0902\u0921\u093e\u0930 \u0915\u0940 \u0930\u0915\u094d\u0937\u093e \u0915\u0930\u0947\u0902\u0964 \u0915\u094d\u092f\u094b\u0902\u0915\u093f \u0906\u092a \u092c\u0939\u0941\u0924 \u0915\u0941\u091b \u0926\u0947\u0924\u0947 \u0939\u0948\u0902, \u0907\u0938\u0932\u093f\u090f \u0906\u092a\u0915\u094b \u0909\u0928 \u0932\u094b\u0917\u094b\u0902 \u0938\u0947 \u0918\u093f\u0930\u0947 \u0930\u0939\u0928\u0947 \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u0938\u091a\u0947\u0924 \u0930\u0939\u0928\u093e \u091a\u093e\u0939\u093f\u090f \u091c\u094b \u092c\u0926\u0932\u0947 \u092e\u0947\u0902 \u0909\u0924\u0928\u093e \u0939\u0940 \u092a\u094d\u092f\u093e\u0930 \u0926\u0947\u0924\u0947 \u0939\u0948\u0902\u0964",
+            "cta": "\u0905\u092a\u0928\u093e \u0930\u093f\u0932\u0947\u0936\u0928\u0936\u093f\u092a \u092c\u094d\u0932\u0942\u092a\u094d\u0930\u093f\u0902\u091f \u0906\u0917\u0947 \u091c\u093e\u0928\u0947\u0902",
+            "confidence": 0.9,
+            "importance": 70,
+            "visibility": "free",
+            "category": "relationships",
+            "matchedRule": {
+                "rule_id": "PALM-REL-001",
+                "category": "relationships",
+                "visibility": "free",
+                "importance": 70,
+                "confidence_weight": 0.9,
+                "emotion": "empathy",
+                "reading_time": 40,
+                "tags": [
+                    "love",
+                    "emotion"
+                ],
+                "conditions": {
+                    "type": "AND",
+                    "conditions": [
+                        {
+                            "feature_type": "heart_line",
+                            "operator": "exists"
+                        },
+                        {
+                            "feature_type": "heart_line",
+                            "attribute": "depth",
+                            "operator": "equals",
+                            "value": "deep"
+                        }
+                    ]
+                },
+                "outputs": [
+                    {
+                        "type": "insight",
+                        "insight_type": "Strength",
+                        "languages": {
+                            "en": {
+                                "headline": "Deep Emotional Capacity",
+                                "summary": "You experience the world with profound emotional intensity and deep empathy.",
+                                "details": "A deep, unblemished heart line shows that when you commit, you do so entirely. You form strong, enduring attachments and often serve as an emotional anchor for the people in your life. While you may feel things more acutely than others, this sensitivity is your greatest asset in forming genuine connections.",
+                                "advice": "Protect your emotional reserves. Because you give so much, you must be intentional about surrounding yourself with people who reciprocate.",
+                                "cta": "Continue your Relationship Blueprint"
+                            },
+                            "hi": {
+                                "headline": "\u0917\u0939\u0930\u0940 \u092d\u093e\u0935\u0928\u093e\u0924\u094d\u092e\u0915 \u0915\u094d\u0937\u092e\u0924\u093e",
+                                "summary": "\u0906\u092a \u0926\u0941\u0928\u093f\u092f\u093e \u0915\u094b \u0917\u0939\u0930\u0940 \u092d\u093e\u0935\u0928\u093e\u0924\u094d\u092e\u0915 \u0924\u0940\u0935\u094d\u0930\u0924\u093e \u0914\u0930 \u0938\u0939\u093e\u0928\u0941\u092d\u0942\u0924\u093f \u0915\u0947 \u0938\u093e\u0925 \u0905\u0928\u0941\u092d\u0935 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964",
+                                "details": "\u090f\u0915 \u0917\u0939\u0930\u0940 \u0939\u0943\u0926\u092f \u0930\u0947\u0916\u093e \u092f\u0939 \u0926\u0930\u094d\u0936\u093e\u0924\u0940 \u0939\u0948 \u0915\u093f \u091c\u092c \u0906\u092a \u092a\u094d\u0930\u0924\u093f\u092c\u0926\u094d\u0927 \u0939\u094b\u0924\u0947 \u0939\u0948\u0902, \u0924\u094b \u092a\u0942\u0930\u0940 \u0924\u0930\u0939 \u0938\u0947 \u0939\u094b\u0924\u0947 \u0939\u0948\u0902\u0964 \u0906\u092a \u092e\u091c\u092c\u0942\u0924 \u0914\u0930 \u0938\u094d\u0925\u093e\u092f\u0940 \u0932\u0917\u093e\u0935 \u092c\u0928\u093e\u0924\u0947 \u0939\u0948\u0902 \u0914\u0930 \u0905\u0915\u094d\u0938\u0930 \u0905\u092a\u0928\u0947 \u091c\u0940\u0935\u0928 \u092e\u0947\u0902 \u0932\u094b\u0917\u094b\u0902 \u0915\u0947 \u0932\u093f\u090f \u090f\u0915 \u092d\u093e\u0935\u0928\u093e\u0924\u094d\u092e\u0915 \u0938\u0939\u093e\u0930\u093e \u092c\u0928\u0924\u0947 \u0939\u0948\u0902\u0964 \u092f\u0926\u094d\u092f\u092a\u093f \u0906\u092a \u0926\u0942\u0938\u0930\u094b\u0902 \u0915\u0940 \u0924\u0941\u0932\u0928\u093e \u092e\u0947\u0902 \u091a\u0940\u091c\u094b\u0902 \u0915\u094b \u0905\u0927\u093f\u0915 \u0924\u0940\u0935\u094d\u0930\u0924\u093e \u0938\u0947 \u092e\u0939\u0938\u0942\u0938 \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902, \u092f\u0939 \u0938\u0902\u0935\u0947\u0926\u0928\u0936\u0940\u0932\u0924\u093e \u0938\u091a\u094d\u091a\u0947 \u0938\u0902\u092c\u0902\u0927 \u092c\u0928\u093e\u0928\u0947 \u092e\u0947\u0902 \u0906\u092a\u0915\u0940 \u0938\u092c\u0938\u0947 \u092c\u0921\u093c\u0940 \u0938\u0902\u092a\u0924\u094d\u0924\u093f \u0939\u0948\u0964",
+                                "advice": "\u0905\u092a\u0928\u0947 \u092d\u093e\u0935\u0928\u093e\u0924\u094d\u092e\u0915 \u092d\u0902\u0921\u093e\u0930 \u0915\u0940 \u0930\u0915\u094d\u0937\u093e \u0915\u0930\u0947\u0902\u0964 \u0915\u094d\u092f\u094b\u0902\u0915\u093f \u0906\u092a \u092c\u0939\u0941\u0924 \u0915\u0941\u091b \u0926\u0947\u0924\u0947 \u0939\u0948\u0902, \u0907\u0938\u0932\u093f\u090f \u0906\u092a\u0915\u094b \u0909\u0928 \u0932\u094b\u0917\u094b\u0902 \u0938\u0947 \u0918\u093f\u0930\u0947 \u0930\u0939\u0928\u0947 \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u0938\u091a\u0947\u0924 \u0930\u0939\u0928\u093e \u091a\u093e\u0939\u093f\u090f \u091c\u094b \u092c\u0926\u0932\u0947 \u092e\u0947\u0902 \u0909\u0924\u0928\u093e \u0939\u0940 \u092a\u094d\u092f\u093e\u0930 \u0926\u0947\u0924\u0947 \u0939\u0948\u0902\u0964",
+                                "cta": "\u0905\u092a\u0928\u093e \u0930\u093f\u0932\u0947\u0936\u0928\u0936\u093f\u092a \u092c\u094d\u0932\u0942\u092a\u094d\u0930\u093f\u0902\u091f \u0906\u0917\u0947 \u091c\u093e\u0928\u0947\u0902"
+                            }
+                        },
+                        "remedies": [],
+                        "evidence_trail": "Deep Heart Line indicating strong emotional currents."
+                    }
+                ]
+            },
+            "evidence": [],
+            "remedies": [],
+            "evidenceTrail": "Deep Heart Line indicating strong emotional currents.",
+            "unlockReason": null
+        }
+    ],
+    "recommendations": [],
+    "scores": {
+        "overall_score": 50,
+        "categories": {
+            "vitality": 0,
+            "relationships": 0
+        }
+    },
+    "statistics": {
+        "total_insights": 2,
+        "total_recommendations": 0
+    },
+    "metadata": []
+}

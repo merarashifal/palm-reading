@@ -1,0 +1,381 @@
+[
+    {
+        "id": "life_line_01",
+        "analysis": "palm",
+        "feature": "life_line",
+        "value": "line",
+        "confidence": 0.95,
+        "weight": 1,
+        "source": "image",
+        "provider": "gemini",
+        "providerVersion": "PalmAnnotationSchema 1.0",
+        "coordinates": null,
+        "metadata": {
+            "status": "confirmed",
+            "evidence": [
+                "continuous_curve",
+                "strong_edge",
+                "clear_origin"
+            ],
+            "geometry": {
+                "type": "polyline",
+                "coordinates": [
+                    [
+                        0.33,
+                        0.42
+                    ],
+                    [
+                        0.26,
+                        0.5
+                    ],
+                    [
+                        0.24,
+                        0.58
+                    ],
+                    [
+                        0.26,
+                        0.68
+                    ],
+                    [
+                        0.31,
+                        0.76
+                    ],
+                    [
+                        0.38,
+                        0.82
+                    ],
+                    [
+                        0.44,
+                        0.86
+                    ]
+                ]
+            },
+            "bbox": [
+                0.22,
+                0.41,
+                0.45,
+                0.87
+            ],
+            "geometry_confidence": 0.92,
+            "feature_revision": 1,
+            "attributes": {
+                "depth": "deep",
+                "clarity": "clear"
+            }
+        }
+    },
+    {
+        "id": "head_line_01",
+        "analysis": "palm",
+        "feature": "head_line",
+        "value": "line",
+        "confidence": 0.92,
+        "weight": 1,
+        "source": "image",
+        "provider": "gemini",
+        "providerVersion": "PalmAnnotationSchema 1.0",
+        "coordinates": null,
+        "metadata": {
+            "status": "confirmed",
+            "evidence": [
+                "continuous_curve",
+                "strong_edge",
+                "fork_endpoint"
+            ],
+            "geometry": {
+                "type": "polyline",
+                "coordinates": [
+                    [
+                        0.33,
+                        0.42
+                    ],
+                    [
+                        0.42,
+                        0.45
+                    ],
+                    [
+                        0.51,
+                        0.5
+                    ],
+                    [
+                        0.58,
+                        0.55
+                    ],
+                    [
+                        0.65,
+                        0.59
+                    ]
+                ]
+            },
+            "bbox": [
+                0.32,
+                0.41,
+                0.66,
+                0.6
+            ],
+            "geometry_confidence": 0.89,
+            "feature_revision": 1,
+            "attributes": {
+                "depth": "medium",
+                "clarity": "clear"
+            }
+        }
+    },
+    {
+        "id": "heart_line_01",
+        "analysis": "palm",
+        "feature": "heart_line",
+        "value": "line",
+        "confidence": 0.94,
+        "weight": 1,
+        "source": "image",
+        "provider": "gemini",
+        "providerVersion": "PalmAnnotationSchema 1.0",
+        "coordinates": null,
+        "metadata": {
+            "status": "confirmed",
+            "evidence": [
+                "continuous_curve",
+                "strong_edge",
+                "clear_origin"
+            ],
+            "geometry": {
+                "type": "polyline",
+                "coordinates": [
+                    [
+                        0.74,
+                        0.51
+                    ],
+                    [
+                        0.65,
+                        0.45
+                    ],
+                    [
+                        0.57,
+                        0.4
+                    ],
+                    [
+                        0.51,
+                        0.36
+                    ],
+                    [
+                        0.46,
+                        0.35
+                    ]
+                ]
+            },
+            "bbox": [
+                0.45,
+                0.34,
+                0.75,
+                0.52
+            ],
+            "geometry_confidence": 0.91,
+            "feature_revision": 1,
+            "attributes": {
+                "depth": "deep",
+                "clarity": "clear"
+            }
+        }
+    },
+    {
+        "id": "fate_line_01",
+        "analysis": "palm",
+        "feature": "fate_line",
+        "value": "line",
+        "confidence": 0.75,
+        "weight": 1,
+        "source": "image",
+        "provider": "gemini",
+        "providerVersion": "PalmAnnotationSchema 1.0",
+        "coordinates": null,
+        "metadata": {
+            "status": "possible",
+            "evidence": [
+                "broken_segments",
+                "faint_trace"
+            ],
+            "geometry": {
+                "type": "polyline",
+                "coordinates": [
+                    [
+                        0.45,
+                        0.81
+                    ],
+                    [
+                        0.48,
+                        0.69
+                    ],
+                    [
+                        0.5,
+                        0.58
+                    ],
+                    [
+                        0.52,
+                        0.46
+                    ]
+                ]
+            },
+            "bbox": [
+                0.44,
+                0.45,
+                0.53,
+                0.82
+            ],
+            "geometry_confidence": 0.7,
+            "feature_revision": 1,
+            "attributes": {
+                "depth": "shallow",
+                "clarity": "faint"
+            }
+        }
+    },
+    {
+        "id": "mount_venus_01",
+        "analysis": "palm",
+        "feature": "mount_venus",
+        "value": "mount",
+        "confidence": 0.9,
+        "weight": 1,
+        "source": "image",
+        "provider": "gemini",
+        "providerVersion": "PalmAnnotationSchema 1.0",
+        "coordinates": null,
+        "metadata": {
+            "status": "confirmed",
+            "evidence": [
+                "raised_elevation",
+                "wide_area"
+            ],
+            "geometry": {
+                "type": "polygon",
+                "coordinates": [
+                    [
+                        0.18,
+                        0.45
+                    ],
+                    [
+                        0.32,
+                        0.42
+                    ],
+                    [
+                        0.36,
+                        0.56
+                    ],
+                    [
+                        0.44,
+                        0.71
+                    ],
+                    [
+                        0.38,
+                        0.83
+                    ],
+                    [
+                        0.26,
+                        0.8
+                    ],
+                    [
+                        0.19,
+                        0.62
+                    ]
+                ]
+            },
+            "bbox": [
+                0.18,
+                0.42,
+                0.44,
+                0.83
+            ],
+            "geometry_confidence": 0.85,
+            "feature_revision": 1,
+            "attributes": {
+                "prominence": "prominent",
+                "texture": "firm"
+            }
+        }
+    },
+    {
+        "id": "thumb_01",
+        "analysis": "palm",
+        "feature": "thumb",
+        "value": "finger",
+        "confidence": 0.98,
+        "weight": 1,
+        "source": "image",
+        "provider": "gemini",
+        "providerVersion": "PalmAnnotationSchema 1.0",
+        "coordinates": null,
+        "metadata": {
+            "status": "confirmed",
+            "evidence": [
+                "strong_edge"
+            ],
+            "geometry": {
+                "type": "rectangle",
+                "coordinates": [
+                    [
+                        0.06,
+                        0.16
+                    ],
+                    [
+                        0.34,
+                        0.16
+                    ],
+                    [
+                        0.34,
+                        0.46
+                    ],
+                    [
+                        0.06,
+                        0.46
+                    ]
+                ]
+            },
+            "bbox": [
+                0.06,
+                0.16,
+                0.34,
+                0.46
+            ],
+            "geometry_confidence": 0.95,
+            "feature_revision": 1,
+            "attributes": {
+                "length": "average"
+            }
+        }
+    },
+    {
+        "id": "hand_6a55c1ea78a05",
+        "analysis": "palm",
+        "feature": "hand_type",
+        "value": "right",
+        "confidence": 1,
+        "weight": 1,
+        "source": "image",
+        "provider": "gemini",
+        "providerVersion": "PalmAnnotationSchema 1.0",
+        "coordinates": null,
+        "metadata": []
+    },
+    {
+        "id": "qual_6a55c1ea78a10",
+        "analysis": "palm",
+        "feature": "image_quality",
+        "value": "unknown",
+        "confidence": 1,
+        "weight": 1,
+        "source": "image",
+        "provider": "gemini",
+        "providerVersion": "PalmAnnotationSchema 1.0",
+        "coordinates": null,
+        "metadata": {
+            "score": 0,
+            "blur": 0,
+            "shadow_score": 0,
+            "contrast_score": 0,
+            "rotation_angle": 0,
+            "crop_quality": "unknown",
+            "recommendations": []
+        }
+    }
+]

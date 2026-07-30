@@ -1,0 +1,20 @@
+{
+    "run_id": "run_20260714_065752_157f64",
+    "engine_version": "0.9.0",
+    "knowledge_pack": "palmistry_v2.json",
+    "prompt_version": "Palm\/Vision\/2.5-flash\/v1",
+    "gemini_model": "gemini-flash-latest",
+    "total_time_ms": 26054,
+    "features_detected": 8,
+    "insights_generated": 3,
+    "gemini_execution": {
+        "started_at": 1784005072.4621,
+        "finished_at": 1784005098.473412,
+        "duration_ms": 26011.312007904053,
+        "http_code": 200,
+        "prompt_tokens": 1936,
+        "completion_tokens": 1827,
+        "estimated_cost_inr": 0.0579,
+        "retry_count": 0
+    }
+}

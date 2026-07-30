@@ -4,7 +4,7 @@ $workspace = "d:\Antarman\code\palm-reading"
 $pluginDir = Join-Path $workspace "plugin"
 $buildDir = Join-Path $workspace "build"
 $tempDir = Join-Path $buildDir "palm-reading"
-$zipPath = Join-Path $buildDir "palm-reading-beta1.zip"
+$zipPath = Join-Path $buildDir "palm-reading.zip"
 
 Write-Host "Starting build process..."
 
@@ -38,7 +38,9 @@ $devFiles = @(
     "$tempDir\engine\samples",
     "$tempDir\engine\bin",
     "$tempDir\engine\composer.phar",
-    "$tempDir\engine\composer-setup.php"
+    "$tempDir\engine\composer-setup.php",
+    "$tempDir\engine\.env",
+    "$tempDir\engine\.env.example"
 )
 foreach ($file in $devFiles) {
     if (Test-Path $file) {
@@ -48,7 +50,7 @@ foreach ($file in $devFiles) {
 
 # 5. Compress to zip
 Write-Host "Creating zip archive at $zipPath..."
-Compress-Archive -Path "$tempDir" -DestinationPath $zipPath -Force
+Compress-Archive -Path $tempDir -DestinationPath $zipPath -Force
 
 # 6. Cleanup
 Write-Host "Cleaning up..."

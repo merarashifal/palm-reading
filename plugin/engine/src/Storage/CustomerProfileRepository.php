@@ -4,14 +4,14 @@ namespace AIAnalysisEngine\Storage;
 
 class CustomerProfileRepository
 {
-    private string $storageBasePath;
+    private $storageBasePath;
 
-    public function __construct(string $storageBasePath)
+    public function __construct($storageBasePath)
     {
         $this->storageBasePath = $storageBasePath;
     }
 
-    private function getProfilesDir(): string
+    private function getProfilesDir()
     {
         $dir = $this->storageBasePath . '/profiles';
         if (!is_dir($dir)) {
@@ -20,7 +20,7 @@ class CustomerProfileRepository
         return $dir;
     }
 
-    public function generateVisitorId(): string
+    public function generateVisitorId()
     {
         return 'vis_' . strtoupper(substr(md5(uniqid()), 0, 8));
     }
@@ -30,7 +30,7 @@ class CustomerProfileRepository
      * @param array $profileData ['name' => '...', 'mobile' => '...', 'dob' => '...', 'language' => '...']
      * @param string $linkedReportId The report they are unlocking
      */
-    public function upsertProfile(string $visitorId, array $profileData, string $linkedReportId): void
+    public function upsertProfile($visitorId, array $profileData, $linkedReportId)
     {
         $file = $this->getProfilesDir() . '/' . $visitorId . '.json';
         
@@ -40,7 +40,8 @@ class CustomerProfileRepository
         }
 
         $profile['visitor_id'] = $visitorId;
-        $profile['identity'] = array_merge($profile['identity'] ?? [], $profileData);
+        $identity = isset($profile['identity']) ? $profile['identity'] : [];
+        $profile['identity'] = array_merge($identity, $profileData);
         $profile['last_updated'] = date('c');
         
         if (!isset($profile['analyses'])) {
@@ -65,7 +66,7 @@ class CustomerProfileRepository
         }
     }
 
-    public function getProfile(string $visitorId): ?array
+    public function getProfile($visitorId)
     {
         $file = $this->getProfilesDir() . '/' . $visitorId . '.json';
         if (file_exists($file)) {

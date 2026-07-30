@@ -1,0 +1,10 @@
+{
+    "started_at": 1783999555.392588,
+    "finished_at": 1783999594.95252,
+    "duration_ms": 39559.9319934845,
+    "http_code": 200,
+    "prompt_tokens": 1936,
+    "completion_tokens": 1697,
+    "estimated_cost_inr": 0.0546,
+    "retry_count": 0
+}

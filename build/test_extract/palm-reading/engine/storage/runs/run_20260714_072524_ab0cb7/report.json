@@ -1,0 +1,404 @@
+{
+    "components": [
+        {
+            "id": "hero_001",
+            "type": "Hero",
+            "title": "Personal Palm Blueprint",
+            "subtitle": "Hello Tushar,",
+            "icon": "\u2728",
+            "layout": "hero",
+            "style": "premium",
+            "visibility": "free",
+            "importance": 100,
+            "analytics_id": "view_hero",
+            "data": {
+                "patterns_discovered": 43,
+                "message": "These patterns reveal remarkable strengths in leadership, resilience and long-term planning.",
+                "confidence": "\u2605\u2605\u2605\u2605\u2605"
+            }
+        },
+        {
+            "id": "trust_001",
+            "type": "Metric",
+            "title": "Analysis Reliability",
+            "subtitle": "",
+            "icon": "",
+            "layout": "grid",
+            "style": "trust",
+            "visibility": "free",
+            "importance": 90,
+            "analytics_id": "view_trust_panel",
+            "data": {
+                "Palm visibility": "97%",
+                "Image Quality": "Excellent",
+                "Features detected": 43,
+                "Knowledge confidence": "95%",
+                "AI Model": "gemini-flash-latest",
+                "Knowledge Pack": "Palmistry v2"
+            }
+        },
+        {
+            "id": "sec_strengths",
+            "type": "Section",
+            "title": "Where Are Your Greatest Strengths?",
+            "subtitle": "",
+            "icon": "",
+            "layout": "cards",
+            "style": "default",
+            "visibility": "free",
+            "importance": 85,
+            "analytics_id": "view_strengths",
+            "data": [
+                {
+                    "id": "PALM-VIT-001",
+                    "type": "Strength",
+                    "headline": "Enduring Vitality",
+                    "summary": "You possess a deep well of natural energy and physical resilience.",
+                    "details": "A continuous and deeply etched life line reveals a powerful physical constitution and an unwavering zest for life. People with this marking often bounce back remarkably well from exhaustion or illness. You have the stamina required to see long-term projects through to completion.",
+                    "advice": "Channel your abundant energy into consistent routines, but remember to rest proactively before you feel drained.",
+                    "cta": "Explore your Health Blueprint",
+                    "confidence": 0.95,
+                    "importance": 85,
+                    "visibility": "free",
+                    "category": "vitality",
+                    "matchedRule": {
+                        "rule_id": "PALM-VIT-001",
+                        "category": "vitality",
+                        "visibility": "free",
+                        "importance": 85,
+                        "confidence_weight": 0.95,
+                        "emotion": "confidence",
+                        "reading_time": 45,
+                        "tags": [
+                            "vitality",
+                            "health"
+                        ],
+                        "conditions": {
+                            "type": "AND",
+                            "conditions": [
+                                {
+                                    "feature_type": "life_line",
+                                    "operator": "exists"
+                                },
+                                {
+                                    "feature_type": "life_line",
+                                    "attribute": "length",
+                                    "operator": "equals",
+                                    "value": "long"
+                                }
+                            ]
+                        },
+                        "outputs": [
+                            {
+                                "type": "insight",
+                                "insight_type": "Strength",
+                                "languages": {
+                                    "en": {
+                                        "headline": "Enduring Vitality",
+                                        "summary": "You possess a deep well of natural energy and physical resilience.",
+                                        "details": "A continuous and deeply etched life line reveals a powerful physical constitution and an unwavering zest for life. People with this marking often bounce back remarkably well from exhaustion or illness. You have the stamina required to see long-term projects through to completion.",
+                                        "advice": "Channel your abundant energy into consistent routines, but remember to rest proactively before you feel drained.",
+                                        "cta": "Explore your Health Blueprint"
+                                    },
+                                    "hi": {
+                                        "headline": "\u0905\u0926\u094d\u092d\u0941\u0924 \u090a\u0930\u094d\u091c\u093e",
+                                        "summary": "\u0906\u092a\u0915\u0947 \u092a\u093e\u0938 \u092a\u094d\u0930\u093e\u0915\u0943\u0924\u093f\u0915 \u090a\u0930\u094d\u091c\u093e \u0914\u0930 \u0936\u093e\u0930\u0940\u0930\u093f\u0915 \u0938\u0939\u0928\u0936\u0915\u094d\u0924\u093f \u0915\u093e \u090f\u0915 \u0917\u0939\u0930\u093e \u092d\u0902\u0921\u093e\u0930 \u0939\u0948\u0964",
+                                        "details": "\u090f\u0915 \u0928\u093f\u0930\u0902\u0924\u0930 \u0914\u0930 \u0917\u0939\u0930\u0940 \u091c\u0940\u0935\u0928 \u0930\u0947\u0916\u093e \u090f\u0915 \u092e\u091c\u092c\u0942\u0924 \u0936\u093e\u0930\u0940\u0930\u093f\u0915 \u092c\u0928\u093e\u0935\u091f \u0914\u0930 \u091c\u0940\u0935\u0928 \u0915\u0947 \u092a\u094d\u0930\u0924\u093f \u0905\u091f\u0942\u091f \u0909\u0924\u094d\u0938\u093e\u0939 \u0915\u094b \u0926\u0930\u094d\u0936\u093e\u0924\u0940 \u0939\u0948\u0964 \u0907\u0938 \u091a\u093f\u0939\u094d\u0928 \u0935\u093e\u0932\u0947 \u0932\u094b\u0917 \u0905\u0915\u094d\u0938\u0930 \u0925\u0915\u093e\u0928 \u092f\u093e \u092c\u0940\u092e\u093e\u0930\u0940 \u0938\u0947 \u092c\u0939\u0941\u0924 \u091c\u0932\u094d\u0926\u0940 \u0909\u092c\u0930 \u091c\u093e\u0924\u0947 \u0939\u0948\u0902\u0964 \u0906\u092a\u092e\u0947\u0902 \u0926\u0940\u0930\u094d\u0918\u0915\u093e\u0932\u093f\u0915 \u092a\u0930\u093f\u092f\u094b\u091c\u0928\u093e\u0913\u0902 \u0915\u094b \u092a\u0942\u0930\u093e \u0915\u0930\u0928\u0947 \u0915\u0940 \u0915\u094d\u0937\u092e\u0924\u093e \u0939\u0948\u0964",
+                                        "advice": "\u0905\u092a\u0928\u0940 \u092a\u094d\u0930\u091a\u0941\u0930 \u090a\u0930\u094d\u091c\u093e \u0915\u094b \u0938\u0941\u0938\u0902\u0917\u0924 \u0926\u093f\u0928\u091a\u0930\u094d\u092f\u093e \u092e\u0947\u0902 \u0932\u0917\u093e\u090f\u0902, \u0932\u0947\u0915\u093f\u0928 \u0925\u0915\u0928\u0947 \u0938\u0947 \u092a\u0939\u0932\u0947 \u0938\u0915\u094d\u0930\u093f\u092f \u0930\u0942\u092a \u0938\u0947 \u0906\u0930\u093e\u092e \u0915\u0930\u0928\u093e \u092f\u093e\u0926 \u0930\u0916\u0947\u0902\u0964",
+                                        "cta": "\u0905\u092a\u0928\u093e \u0939\u0947\u0932\u094d\u0925 \u092c\u094d\u0932\u0942\u092a\u094d\u0930\u093f\u0902\u091f \u090f\u0915\u094d\u0938\u092a\u094d\u0932\u094b\u0930 \u0915\u0930\u0947\u0902"
+                                    }
+                                },
+                                "remedies": [],
+                                "evidence_trail": "Deep and continuous Life Line identified."
+                            }
+                        ]
+                    },
+                    "evidence": [],
+                    "remedies": [],
+                    "evidenceTrail": "Deep and continuous Life Line identified.",
+                    "unlock_reason": null
+                },
+                {
+                    "id": "PALM-REL-001",
+                    "type": "Strength",
+                    "headline": "Deep Emotional Capacity",
+                    "summary": "You experience the world with profound emotional intensity and deep empathy.",
+                    "details": "A deep, unblemished heart line shows that when you commit, you do so entirely. You form strong, enduring attachments and often serve as an emotional anchor for the people in your life. While you may feel things more acutely than others, this sensitivity is your greatest asset in forming genuine connections.",
+                    "advice": "Protect your emotional reserves. Because you give so much, you must be intentional about surrounding yourself with people who reciprocate.",
+                    "cta": "Continue your Relationship Blueprint",
+                    "confidence": 0.9,
+                    "importance": 70,
+                    "visibility": "free",
+                    "category": "relationships",
+                    "matchedRule": {
+                        "rule_id": "PALM-REL-001",
+                        "category": "relationships",
+                        "visibility": "free",
+                        "importance": 70,
+                        "confidence_weight": 0.9,
+                        "emotion": "empathy",
+                        "reading_time": 40,
+                        "tags": [
+                            "love",
+                            "emotion"
+                        ],
+                        "conditions": {
+                            "type": "AND",
+                            "conditions": [
+                                {
+                                    "feature_type": "heart_line",
+                                    "operator": "exists"
+                                },
+                                {
+                                    "feature_type": "heart_line",
+                                    "attribute": "depth",
+                                    "operator": "equals",
+                                    "value": "deep"
+                                }
+                            ]
+                        },
+                        "outputs": [
+                            {
+                                "type": "insight",
+                                "insight_type": "Strength",
+                                "languages": {
+                                    "en": {
+                                        "headline": "Deep Emotional Capacity",
+                                        "summary": "You experience the world with profound emotional intensity and deep empathy.",
+                                        "details": "A deep, unblemished heart line shows that when you commit, you do so entirely. You form strong, enduring attachments and often serve as an emotional anchor for the people in your life. While you may feel things more acutely than others, this sensitivity is your greatest asset in forming genuine connections.",
+                                        "advice": "Protect your emotional reserves. Because you give so much, you must be intentional about surrounding yourself with people who reciprocate.",
+                                        "cta": "Continue your Relationship Blueprint"
+                                    },
+                                    "hi": {
+                                        "headline": "\u0917\u0939\u0930\u0940 \u092d\u093e\u0935\u0928\u093e\u0924\u094d\u092e\u0915 \u0915\u094d\u0937\u092e\u0924\u093e",
+                                        "summary": "\u0906\u092a \u0926\u0941\u0928\u093f\u092f\u093e \u0915\u094b \u0917\u0939\u0930\u0940 \u092d\u093e\u0935\u0928\u093e\u0924\u094d\u092e\u0915 \u0924\u0940\u0935\u094d\u0930\u0924\u093e \u0914\u0930 \u0938\u0939\u093e\u0928\u0941\u092d\u0942\u0924\u093f \u0915\u0947 \u0938\u093e\u0925 \u0905\u0928\u0941\u092d\u0935 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964",
+                                        "details": "\u090f\u0915 \u0917\u0939\u0930\u0940 \u0939\u0943\u0926\u092f \u0930\u0947\u0916\u093e \u092f\u0939 \u0926\u0930\u094d\u0936\u093e\u0924\u0940 \u0939\u0948 \u0915\u093f \u091c\u092c \u0906\u092a \u092a\u094d\u0930\u0924\u093f\u092c\u0926\u094d\u0927 \u0939\u094b\u0924\u0947 \u0939\u0948\u0902, \u0924\u094b \u092a\u0942\u0930\u0940 \u0924\u0930\u0939 \u0938\u0947 \u0939\u094b\u0924\u0947 \u0939\u0948\u0902\u0964 \u0906\u092a \u092e\u091c\u092c\u0942\u0924 \u0914\u0930 \u0938\u094d\u0925\u093e\u092f\u0940 \u0932\u0917\u093e\u0935 \u092c\u0928\u093e\u0924\u0947 \u0939\u0948\u0902 \u0914\u0930 \u0905\u0915\u094d\u0938\u0930 \u0905\u092a\u0928\u0947 \u091c\u0940\u0935\u0928 \u092e\u0947\u0902 \u0932\u094b\u0917\u094b\u0902 \u0915\u0947 \u0932\u093f\u090f \u090f\u0915 \u092d\u093e\u0935\u0928\u093e\u0924\u094d\u092e\u0915 \u0938\u0939\u093e\u0930\u093e \u092c\u0928\u0924\u0947 \u0939\u0948\u0902\u0964 \u092f\u0926\u094d\u092f\u092a\u093f \u0906\u092a \u0926\u0942\u0938\u0930\u094b\u0902 \u0915\u0940 \u0924\u0941\u0932\u0928\u093e \u092e\u0947\u0902 \u091a\u0940\u091c\u094b\u0902 \u0915\u094b \u0905\u0927\u093f\u0915 \u0924\u0940\u0935\u094d\u0930\u0924\u093e \u0938\u0947 \u092e\u0939\u0938\u0942\u0938 \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902, \u092f\u0939 \u0938\u0902\u0935\u0947\u0926\u0928\u0936\u0940\u0932\u0924\u093e \u0938\u091a\u094d\u091a\u0947 \u0938\u0902\u092c\u0902\u0927 \u092c\u0928\u093e\u0928\u0947 \u092e\u0947\u0902 \u0906\u092a\u0915\u0940 \u0938\u092c\u0938\u0947 \u092c\u0921\u093c\u0940 \u0938\u0902\u092a\u0924\u094d\u0924\u093f \u0939\u0948\u0964",
+                                        "advice": "\u0905\u092a\u0928\u0947 \u092d\u093e\u0935\u0928\u093e\u0924\u094d\u092e\u0915 \u092d\u0902\u0921\u093e\u0930 \u0915\u0940 \u0930\u0915\u094d\u0937\u093e \u0915\u0930\u0947\u0902\u0964 \u0915\u094d\u092f\u094b\u0902\u0915\u093f \u0906\u092a \u092c\u0939\u0941\u0924 \u0915\u0941\u091b \u0926\u0947\u0924\u0947 \u0939\u0948\u0902, \u0907\u0938\u0932\u093f\u090f \u0906\u092a\u0915\u094b \u0909\u0928 \u0932\u094b\u0917\u094b\u0902 \u0938\u0947 \u0918\u093f\u0930\u0947 \u0930\u0939\u0928\u0947 \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u0938\u091a\u0947\u0924 \u0930\u0939\u0928\u093e \u091a\u093e\u0939\u093f\u090f \u091c\u094b \u092c\u0926\u0932\u0947 \u092e\u0947\u0902 \u0909\u0924\u0928\u093e \u0939\u0940 \u092a\u094d\u092f\u093e\u0930 \u0926\u0947\u0924\u0947 \u0939\u0948\u0902\u0964",
+                                        "cta": "\u0905\u092a\u0928\u093e \u0930\u093f\u0932\u0947\u0936\u0928\u0936\u093f\u092a \u092c\u094d\u0932\u0942\u092a\u094d\u0930\u093f\u0902\u091f \u0906\u0917\u0947 \u091c\u093e\u0928\u0947\u0902"
+                                    }
+                                },
+                                "remedies": [],
+                                "evidence_trail": "Deep Heart Line indicating strong emotional currents."
+                            }
+                        ]
+                    },
+                    "evidence": [],
+                    "remedies": [],
+                    "evidenceTrail": "Deep Heart Line indicating strong emotional currents.",
+                    "unlock_reason": null
+                },
+                {
+                    "id": "PALM-CAR-001",
+                    "type": "Potential",
+                    "headline": "The Dual Thinker",
+                    "summary": "You possess the rare ability to blend strict logic with boundless creativity.",
+                    "details": "A fork at the end of the head line, often called the 'Writer\u2019s Fork', indicates a mind capable of seeing multiple perspectives simultaneously. You can conceptualize abstract, creative ideas and then apply rigorous, practical logic to bring them into reality. This duality makes you exceptional at problem-solving and strategic planning.",
+                    "advice": "Seek out roles or projects that don't force you into a single box. You will thrive most when allowed to be both the architect and the builder.",
+                    "cta": "Continue your Career Blueprint",
+                    "confidence": 0.92,
+                    "importance": 80,
+                    "visibility": "free",
+                    "category": "career",
+                    "matchedRule": {
+                        "rule_id": "PALM-CAR-001",
+                        "category": "career",
+                        "visibility": "free",
+                        "importance": 80,
+                        "confidence_weight": 0.92,
+                        "emotion": "inspiration",
+                        "reading_time": 40,
+                        "tags": [
+                            "intellect",
+                            "business"
+                        ],
+                        "conditions": {
+                            "type": "AND",
+                            "conditions": [
+                                {
+                                    "feature_type": "head_line",
+                                    "operator": "exists"
+                                },
+                                {
+                                    "feature_type": "head_line",
+                                    "evidence": "fork_endpoint",
+                                    "operator": "contains"
+                                }
+                            ]
+                        },
+                        "outputs": [
+                            {
+                                "type": "insight",
+                                "insight_type": "Potential",
+                                "languages": {
+                                    "en": {
+                                        "headline": "The Dual Thinker",
+                                        "summary": "You possess the rare ability to blend strict logic with boundless creativity.",
+                                        "details": "A fork at the end of the head line, often called the 'Writer\u2019s Fork', indicates a mind capable of seeing multiple perspectives simultaneously. You can conceptualize abstract, creative ideas and then apply rigorous, practical logic to bring them into reality. This duality makes you exceptional at problem-solving and strategic planning.",
+                                        "advice": "Seek out roles or projects that don't force you into a single box. You will thrive most when allowed to be both the architect and the builder.",
+                                        "cta": "Continue your Career Blueprint"
+                                    },
+                                    "hi": {
+                                        "headline": "\u0926\u094b\u0939\u0930\u0940 \u0938\u094b\u091a \u0915\u093e \u0927\u0928\u0940",
+                                        "summary": "\u0906\u092a\u092e\u0947\u0902 \u0924\u0930\u094d\u0915 \u0914\u0930 \u0930\u091a\u0928\u093e\u0924\u094d\u092e\u0915\u0924\u093e \u0915\u093e \u090f\u0915 \u0926\u0941\u0930\u094d\u0932\u092d \u0914\u0930 \u0905\u0926\u094d\u092d\u0941\u0924 \u0938\u0902\u0924\u0941\u0932\u0928 \u0939\u0948\u0964",
+                                        "details": "\u092e\u0938\u094d\u0924\u093f\u0937\u094d\u0915 \u0930\u0947\u0916\u093e \u0915\u0947 \u0905\u0902\u0924 \u092e\u0947\u0902 \u0926\u094b \u092d\u093e\u0917\u094b\u0902 \u092e\u0947\u0902 \u092c\u0902\u091f\u0928\u093e \u0926\u0930\u094d\u0936\u093e\u0924\u093e \u0939\u0948 \u0915\u093f \u0906\u092a \u090f\u0915 \u0939\u0940 \u0938\u092e\u092f \u092e\u0947\u0902 \u0915\u0908 \u0926\u0943\u0937\u094d\u091f\u093f\u0915\u094b\u0923\u094b\u0902 \u0938\u0947 \u0938\u094b\u091a \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u0964 \u0906\u092a \u0905\u092e\u0942\u0930\u094d\u0924 \u0935\u093f\u091a\u093e\u0930\u094b\u0902 \u0915\u0940 \u0915\u0932\u094d\u092a\u0928\u093e \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902 \u0914\u0930 \u0909\u0928\u094d\u0939\u0947\u0902 \u0935\u093e\u0938\u094d\u0924\u0935\u093f\u0915\u0924\u093e \u092e\u0947\u0902 \u092c\u0926\u0932\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0915\u0920\u094b\u0930 \u0924\u0930\u094d\u0915 \u0915\u093e \u0909\u092a\u092f\u094b\u0917 \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902\u0964",
+                                        "advice": "\u0910\u0938\u0940 \u092d\u0942\u092e\u093f\u0915\u093e\u0913\u0902 \u0915\u0940 \u0924\u0932\u093e\u0936 \u0915\u0930\u0947\u0902 \u091c\u094b \u0906\u092a\u0915\u094b \u0915\u093f\u0938\u0940 \u090f\u0915 \u0938\u093e\u0902\u091a\u0947 \u092e\u0947\u0902 \u0928 \u092c\u093e\u0902\u0927\u0947\u0902\u0964 \u0906\u092a \u0924\u092c \u0938\u092c\u0938\u0947 \u0905\u091a\u094d\u091b\u093e \u092a\u094d\u0930\u0926\u0930\u094d\u0936\u0928 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902 \u091c\u092c \u0906\u092a\u0915\u094b \u0938\u094d\u0935\u0924\u0902\u0924\u094d\u0930 \u0930\u0942\u092a \u0938\u0947 \u0915\u093e\u092e \u0915\u0930\u0928\u0947 \u0915\u0940 \u091b\u0942\u091f \u092e\u093f\u0932\u0924\u0940 \u0939\u0948\u0964",
+                                        "cta": "\u0905\u092a\u0928\u093e \u0915\u0930\u093f\u092f\u0930 \u092c\u094d\u0932\u0942\u092a\u094d\u0930\u093f\u0902\u091f \u0926\u0947\u0916\u0947\u0902"
+                                    }
+                                },
+                                "remedies": [],
+                                "evidence_trail": "Forked endpoint on the Head Line."
+                            }
+                        ]
+                    },
+                    "evidence": [],
+                    "remedies": [],
+                    "evidenceTrail": "Forked endpoint on the Head Line.",
+                    "unlock_reason": null
+                },
+                {
+                    "id": "PALM-VIT-003",
+                    "type": "Strength",
+                    "headline": "Fierce Passion",
+                    "summary": "You approach life with an intense, vibrant energy that naturally attracts others.",
+                    "details": "A well-developed Mount of Venus (at the base of the thumb) indicates a deep appreciation for beauty, comfort, and the sensual pleasures of life. You do not do things by halves; when you love, you love deeply, and when you are passionate about a project, you pour your soul into it. This warmth and magnetism make you a highly engaging presence.",
+                    "advice": "Ensure you are directing this immense passion toward people and projects that return the investment, rather than those that simply consume your warmth.",
+                    "cta": "Continue your Life Blueprint",
+                    "confidence": 0.88,
+                    "importance": 75,
+                    "visibility": "free",
+                    "category": "vitality",
+                    "matchedRule": {
+                        "rule_id": "PALM-VIT-003",
+                        "category": "vitality",
+                        "visibility": "free",
+                        "importance": 75,
+                        "confidence_weight": 0.88,
+                        "emotion": "passion",
+                        "reading_time": 35,
+                        "tags": [
+                            "passion",
+                            "energy"
+                        ],
+                        "conditions": {
+                            "type": "AND",
+                            "conditions": [
+                                {
+                                    "feature_type": "mount_venus",
+                                    "operator": "exists"
+                                },
+                                {
+                                    "feature_type": "mount_venus",
+                                    "attribute": "prominence",
+                                    "operator": "equals",
+                                    "value": "prominent"
+                                }
+                            ]
+                        },
+                        "outputs": [
+                            {
+                                "type": "insight",
+                                "insight_type": "Strength",
+                                "languages": {
+                                    "en": {
+                                        "headline": "Fierce Passion",
+                                        "summary": "You approach life with an intense, vibrant energy that naturally attracts others.",
+                                        "details": "A well-developed Mount of Venus (at the base of the thumb) indicates a deep appreciation for beauty, comfort, and the sensual pleasures of life. You do not do things by halves; when you love, you love deeply, and when you are passionate about a project, you pour your soul into it. This warmth and magnetism make you a highly engaging presence.",
+                                        "advice": "Ensure you are directing this immense passion toward people and projects that return the investment, rather than those that simply consume your warmth.",
+                                        "cta": "Continue your Life Blueprint"
+                                    },
+                                    "hi": {
+                                        "headline": "\u092a\u094d\u0930\u091a\u0902\u0921 \u091c\u0941\u0928\u0942\u0928",
+                                        "summary": "\u0906\u092a \u091c\u0940\u0935\u0928 \u0915\u094b \u090f\u0915 \u0924\u0940\u0935\u094d\u0930, \u091c\u0940\u0935\u0902\u0924 \u090a\u0930\u094d\u091c\u093e \u0915\u0947 \u0938\u093e\u0925 \u091c\u0940\u0924\u0947 \u0939\u0948\u0902 \u091c\u094b \u0938\u094d\u0935\u093e\u092d\u093e\u0935\u093f\u0915 \u0930\u0942\u092a \u0938\u0947 \u0926\u0942\u0938\u0930\u094b\u0902 \u0915\u094b \u0906\u0915\u0930\u094d\u0937\u093f\u0924 \u0915\u0930\u0924\u0940 \u0939\u0948\u0964",
+                                        "details": "\u090f\u0915 \u0905\u091a\u094d\u091b\u0940 \u0924\u0930\u0939 \u0938\u0947 \u0935\u093f\u0915\u0938\u093f\u0924 \u0936\u0941\u0915\u094d\u0930 \u092a\u0930\u094d\u0935\u0924 (\u0905\u0902\u0917\u0942\u0920\u0947 \u0915\u0947 \u0906\u0927\u093e\u0930 \u092a\u0930) \u0938\u0941\u0902\u0926\u0930\u0924\u093e, \u0906\u0930\u093e\u092e \u0914\u0930 \u091c\u0940\u0935\u0928 \u0915\u0947 \u0938\u0941\u0916\u094b\u0902 \u0915\u0947 \u0932\u093f\u090f \u0917\u0939\u0930\u0940 \u092a\u094d\u0930\u0936\u0902\u0938\u093e \u0915\u094b \u0926\u0930\u094d\u0936\u093e\u0924\u093e \u0939\u0948\u0964 \u0906\u092a \u0915\u094b\u0908 \u092d\u0940 \u0915\u093e\u092e \u0906\u0927\u0947-\u0905\u0927\u0942\u0930\u0947 \u092e\u0928 \u0938\u0947 \u0928\u0939\u0940\u0902 \u0915\u0930\u0924\u0947; \u091c\u092c \u0906\u092a \u092a\u094d\u092f\u093e\u0930 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902, \u0924\u094b \u0917\u0939\u0930\u093e\u0908 \u0938\u0947 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902, \u0914\u0930 \u091c\u092c \u0906\u092a \u0915\u093f\u0938\u0940 \u092a\u0930\u093f\u092f\u094b\u091c\u0928\u093e \u0915\u0947 \u092a\u094d\u0930\u0924\u093f \u091c\u0941\u0928\u0942\u0928\u0940 \u0939\u094b\u0924\u0947 \u0939\u0948\u0902, \u0924\u094b \u0909\u0938\u092e\u0947\u0902 \u0905\u092a\u0928\u0940 \u0906\u0924\u094d\u092e\u093e \u0909\u0902\u0921\u0947\u0932 \u0926\u0947\u0924\u0947 \u0939\u0948\u0902\u0964 \u092f\u0939 \u0917\u0930\u094d\u092e\u091c\u094b\u0936\u0940 \u0914\u0930 \u091a\u0941\u0902\u092c\u0915\u0924\u094d\u0935 \u0906\u092a\u0915\u094b \u090f\u0915 \u0905\u0924\u094d\u092f\u0927\u093f\u0915 \u0906\u0915\u0930\u094d\u0937\u0915 \u0935\u094d\u092f\u0915\u094d\u0924\u093f\u0924\u094d\u0935 \u092c\u0928\u093e\u0924\u0947 \u0939\u0948\u0902\u0964",
+                                        "advice": "\u0938\u0941\u0928\u093f\u0936\u094d\u091a\u093f\u0924 \u0915\u0930\u0947\u0902 \u0915\u093f \u0906\u092a \u0907\u0938 \u0905\u092a\u093e\u0930 \u091c\u0941\u0928\u0942\u0928 \u0915\u094b \u0909\u0928 \u0932\u094b\u0917\u094b\u0902 \u0914\u0930 \u092a\u0930\u093f\u092f\u094b\u091c\u0928\u093e\u0913\u0902 \u0915\u0940 \u0913\u0930 \u0928\u093f\u0930\u094d\u0926\u0947\u0936\u093f\u0924 \u0915\u0930 \u0930\u0939\u0947 \u0939\u0948\u0902 \u091c\u094b \u092c\u0926\u0932\u0947 \u092e\u0947\u0902 \u0906\u092a\u0915\u094b \u092d\u0940 \u092e\u0939\u0924\u094d\u0935 \u0926\u0947\u0924\u0947 \u0939\u0948\u0902\u0964",
+                                        "cta": "\u0905\u092a\u0928\u093e \u091c\u0940\u0935\u0928 \u092c\u094d\u0932\u0942\u092a\u094d\u0930\u093f\u0902\u091f \u0906\u0917\u0947 \u0926\u0947\u0916\u0947\u0902"
+                                    }
+                                },
+                                "remedies": [],
+                                "evidence_trail": "Prominent Mount of Venus detected."
+                            }
+                        ]
+                    },
+                    "evidence": [],
+                    "remedies": [],
+                    "evidenceTrail": "Prominent Mount of Venus detected.",
+                    "unlock_reason": null
+                }
+            ]
+        },
+        {
+            "id": "evidence_001",
+            "type": "Evidence",
+            "title": "Why We Believe This",
+            "subtitle": "",
+            "icon": "",
+            "layout": "list",
+            "style": "evidence",
+            "visibility": "free",
+            "importance": 80,
+            "analytics_id": "view_evidence",
+            "data": {
+                "intro": "Your palm shows",
+                "items": [
+                    "\u2713 Deep and continuous Life Line identified.",
+                    "\u2713 Forked endpoint on the Head Line.",
+                    "\u2713 Prominent Mount of Venus detected."
+                ],
+                "outro": "These visual patterns are commonly associated with resilience, leadership and practical thinking."
+            }
+        },
+        {
+            "id": "locked_career",
+            "type": "Section",
+            "title": "Career Direction",
+            "subtitle": "",
+            "icon": "",
+            "layout": "locked_card",
+            "style": "premium",
+            "visibility": "premium",
+            "importance": 90,
+            "analytics_id": "view_locked_career",
+            "data": {
+                "message": "\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 Unlock"
+            }
+        },
+        {
+            "id": "locked_timeline",
+            "type": "Section",
+            "title": "Your Next Five Years",
+            "subtitle": "",
+            "icon": "",
+            "layout": "locked_card",
+            "style": "premium",
+            "visibility": "premium",
+            "importance": 90,
+            "analytics_id": "view_locked_timeline",
+            "data": {
+                "message": "\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588 Unlock"
+            }
+        },
+        {
+            "id": "cta_premium",
+            "type": "CTA",
+            "title": "Continue Your Analysis",
+            "subtitle": "Unlock answers to questions like",
+            "icon": "",
+            "layout": "checklist_cta",
+            "style": "premium",
+            "visibility": "free",
+            "importance": 100,
+            "analytics_id": "view_premium_cta",
+            "data": {
+                "checklist": [
+                    "What career suits me best?",
+                    "When will my biggest opportunities arrive?",
+                    "Which talents remain hidden?",
+                    "Which years are most important?",
+                    "Which remedies strengthen my potential?"
+                ],
+                "button_text": "Continue Your Analysis"
+            }
+        }
+    ],
+    "metadata": []
+}

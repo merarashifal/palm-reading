@@ -1,0 +1,7 @@
+{
+    "status": "failed",
+    "error_code": "SYS_001",
+    "message": "Unexpected exception occurred.",
+    "exception": "Call to undefined method AIAnalysisEngine\\AI\\DTO\\NormalizedFeatureCollection::getAllFeatures()",
+    "trace": "#0 D:\\Antarman\\code\\palm-reading\\engine\\src\\Inference\\Runtime\\ConditionEvaluator.php(20): AIAnalysisEngine\\Inference\\Runtime\\ConditionEvaluator->evaluateSingle(Array, Object(AIAnalysisEngine\\AI\\DTO\\NormalizedFeatureCollection))\n#1 D:\\Antarman\\code\\palm-reading\\engine\\src\\Inference\\Runtime\\RuleMatcher.php(33): AIAnalysisEngine\\Inference\\Runtime\\ConditionEvaluator->evaluate(Array, Object(AIAnalysisEngine\\AI\\DTO\\NormalizedFeatureCollection))\n#2 D:\\Antarman\\code\\palm-reading\\engine\\src\\Inference\\Runtime\\InferenceRuntime.php(26): AIAnalysisEngine\\Inference\\Runtime\\RuleMatcher->matchRules('D:\\\\Antarman\\\\cod...', Object(AIAnalysisEngine\\AI\\DTO\\NormalizedFeatureCollection))\n#3 D:\\Antarman\\code\\palm-reading\\engine\\src\\Facade\\EngineFacade.php(58): AIAnalysisEngine\\Inference\\Runtime\\InferenceRuntime->run('D:\\\\Antarman\\\\cod...', Object(AIAnalysisEngine\\AI\\DTO\\NormalizedFeatureCollection))\n#4 D:\\Antarman\\code\\palm-reading\\engine\\bin\\qa.php(38): AIAnalysisEngine\\Facade\\EngineFacade::analyze('..\/test_palm.pn...', Object(AIAnalysisEngine\\Config\\EngineConfig))\n#5 {main}"
+}

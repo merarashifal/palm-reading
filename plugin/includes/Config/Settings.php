@@ -6,8 +6,8 @@ class Settings
 {
     public static function init()
     {
-        add_action('admin_menu', [self::class, 'addAdminMenu']);
-        add_action('admin_init', [self::class, 'registerSettings']);
+        add_action('admin_menu', array(__CLASS__, 'addAdminMenu'));
+        add_action('admin_init', array(__CLASS__, 'registerSettings'));
     }
 
     public static function addAdminMenu()
@@ -17,7 +17,7 @@ class Settings
             'Palm Blueprint',
             'manage_options',
             'ppb-settings',
-            [self::class, 'renderSettingsPage'],
+            array(__CLASS__, 'renderSettingsPage'),
             'dashicons-palmtree',
             30
         );
@@ -31,7 +31,7 @@ class Settings
         register_setting('ppb_settings_group', 'ppb_feature_analytics');
     }
 
-    public static function isEnabled(string $feature): bool
+    public static function isEnabled($feature)
     {
         return get_option('ppb_feature_' . $feature) === '1';
     }
@@ -79,3 +79,4 @@ class Settings
         <?php
     }
 }
+

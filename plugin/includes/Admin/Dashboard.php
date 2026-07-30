@@ -6,7 +6,7 @@ class Dashboard
 {
     public static function init()
     {
-        add_action('admin_menu', [self::class, 'addDashboardMenu']);
+        add_action('admin_menu', array(__CLASS__, 'addDashboardMenu'));
     }
 
     public static function addDashboardMenu()
@@ -17,14 +17,14 @@ class Dashboard
             'Overview',
             'manage_options',
             'ppb-dashboard',
-            [self::class, 'renderDashboard']
+            array(__CLASS__, 'renderDashboard')
         );
     }
 
     public static function renderDashboard()
     {
         // Mock data for Dashboard v2 based on user request
-        $funnelData = [
+        $funnelData = array(
             'Landing' => '100%',
             'Upload' => '72%',
             'Analysis Complete' => '69%',
@@ -33,7 +33,7 @@ class Dashboard
             'Feedback' => '18%',
             'PDF' => '12%',
             'Share' => '6%'
-        ];
+        );
 
         ?>
         <div class="wrap">
@@ -85,3 +85,4 @@ class Dashboard
         <?php
     }
 }
+

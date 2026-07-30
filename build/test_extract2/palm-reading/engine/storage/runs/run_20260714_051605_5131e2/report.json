@@ -1,0 +1,18 @@
+{
+    "summary": {
+        "analysis_strength": 50,
+        "top_trait": "Unknown"
+    },
+    "metrics": {
+        "total_insights": 0,
+        "features_detected": 0
+    },
+    "cards": [],
+    "sections": [],
+    "highlights": [],
+    "recommendations": [],
+    "cta": {
+        "locked_insights_count": 0
+    },
+    "metadata": []
+}

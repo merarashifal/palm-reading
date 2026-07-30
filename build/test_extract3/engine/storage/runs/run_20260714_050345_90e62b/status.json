@@ -1,0 +1,7 @@
+{
+    "status": "failed",
+    "error_code": "SYS_003",
+    "message": "Prompt file not found: D:\\Antarman\\code\\palm-reading\/knowledge\/Palm\/Vision\/2.5-flash\/v1.txt",
+    "exception": "Prompt file not found: D:\\Antarman\\code\\palm-reading\/knowledge\/Palm\/Vision\/2.5-flash\/v1.txt",
+    "trace": "#0 D:\\Antarman\\code\\palm-reading\\engine\\src\\AI\\Providers\\Gemini\\GeminiProviderPipeline.php(23): AIAnalysisEngine\\AI\\Providers\\Gemini\\GeminiClient->analyzeImage('..\/test_palm.pn...', 'D:\\\\Antarman\\\\cod...')\n#1 D:\\Antarman\\code\\palm-reading\\engine\\src\\Facade\\EngineFacade.php(53): AIAnalysisEngine\\AI\\Providers\\Gemini\\GeminiProviderPipeline->run('..\/test_palm.pn...', 'D:\\\\Antarman\\\\cod...')\n#2 D:\\Antarman\\code\\palm-reading\\engine\\bin\\qa.php(38): AIAnalysisEngine\\Facade\\EngineFacade::analyze('..\/test_palm.pn...', Object(AIAnalysisEngine\\Config\\EngineConfig))\n#3 {main}"
+}

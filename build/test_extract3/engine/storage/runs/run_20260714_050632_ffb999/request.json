@@ -1,0 +1,20 @@
+{
+    "contents": [
+        {
+            "parts": [
+                {
+                    "text": "You are a computer vision feature detector.\nReturn ONLY valid JSON matching the PalmAnnotationSchema 1.0 format below.\nNever explain.\nNever predict.\nNever interpret.\nNever write markdown.\nNever wrap JSON inside code blocks.\n\nExpected JSON format:\n{\n  \"schema_version\": \"PalmAnnotationSchema 1.0\",\n  \"hand\": \"left|right|unknown\",\n  \"source\": {\n    \"provider\": \"gemini\",\n    \"model\": \"2.5-flash\",\n    \"revision\": \"2026-07\"\n  },\n  \"image_quality\": {\n    \"sharpness\": <0-100 integer>,\n    \"noise\": <0-100 integer>,\n    \"brightness\": <0-100 integer>,\n    \"contrast\": <0-100 integer>,\n    \"crop\": \"good|poor\",\n    \"rotation\": <integer degrees>,\n    \"shadow\": <0-100 integer>,\n    \"reflection\": <0-100 integer>\n  },\n  \"features\": [\n    {\n      \"feature_id\": \"uuid_or_unique_string\",\n      \"feature_revision\": 1,\n      \"category_id\": \"CAT_string\",\n      \"category\": \"line|mount|sign|finger|nail|skin|shape|spacing\",\n      \"type\": \"<string, e.g., life_line, mount_venus, star, thumb, texture, index_middle_gap>\",\n      \"status\": \"confirmed|possible|uncertain|not_detected\",\n      \"visual_confidence\": <0.0-1.0 float>,\n      \"geometry_confidence\": <0.0-1.0 float>,\n      \"geometry\": {\n        \"type\": \"polygon|polyline|point|rectangle\",\n        \"coordinates\": [[<x float>, <y float>], ...]\n      },\n      \"bbox\": [<xmin float>, <ymin float>, <xmax float>, <ymax float>],\n      \"evidence\": [\n        \"<string token, e.g., continuous_curve, high_contrast, parallel_ridges, closed_loop, strong_edge, clear_origin, ridge_intersection>\"\n      ],\n      \"attributes\": {\n        \"<string_key>\": \"<string_or_numeric_value, e.g. depth='deep', branches=2>\"\n      }\n    }\n  ]\n}\n\nValid Categories and Types:\n- line: life_line, head_line, heart_line, fate_line, sun_line, mercury_line, marriage_lines, bracelets\n- mount: mount_jupiter, mount_saturn, mount_apollo, mount_mercury, mount_venus, mount_luna, mount_upper_mars, mount_lower_mars\n- sign: cross, star, triangle, square, grille, circle, dot, island, fork, trident\n- finger: thumb, index, middle, ring, little\n- nail: thumb_nail, index_nail, middle_nail, ring_nail, little_nail\n- skin: texture, elasticity, dryness, wrinkles, color\n- shape: hand_shape\n- spacing: thumb_angle, index_middle_gap, ring_little_gap\n\nNote: Evidence MUST be chosen from predefined observation tokens, not free text sentences. Examples: continuous_curve, strong_edge, clear_origin, clear_termination, closed_loop, ridge_intersection, parallel_ridges, fork_endpoint, sharp_angle, smooth_arc, faint_trace, broken_segments, raised_elevation, flat_surface, wide_area, narrow_area, intersecting_lines, star_formation, triangle_formation, square_formation, circular_pattern, island_loop, deep_creases, fine_lines, smooth_texture, rough_texture.\n"
+                },
+                {
+                    "inline_data": {
+                        "mime_type": "image\/jpeg",
+                        "data": "<BASE64_TRUNCATED>"
+                    }
+                }
+            ]
+        }
+    ],
+    "generationConfig": {
+        "response_mime_type": "application\/json"
+    }
+}

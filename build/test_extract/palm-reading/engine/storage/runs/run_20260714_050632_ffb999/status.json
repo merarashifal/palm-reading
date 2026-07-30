@@ -1,0 +1,7 @@
+{
+    "status": "failed",
+    "error_code": "SYS_001",
+    "message": "Unexpected exception occurred.",
+    "exception": "AIAnalysisEngine\\Inference\\Runtime\\InferenceRuntime::run(): Argument #2 ($features) must be of type AIAnalysisEngine\\AI\\Providers\\DTO\\NormalizedFeatureCollection, AIAnalysisEngine\\AI\\DTO\\NormalizedFeatureCollection given, called in D:\\Antarman\\code\\palm-reading\\engine\\src\\Facade\\EngineFacade.php on line 58",
+    "trace": "#0 D:\\Antarman\\code\\palm-reading\\engine\\src\\Facade\\EngineFacade.php(58): AIAnalysisEngine\\Inference\\Runtime\\InferenceRuntime->run('D:\\\\Antarman\\\\cod...', Object(AIAnalysisEngine\\AI\\DTO\\NormalizedFeatureCollection))\n#1 D:\\Antarman\\code\\palm-reading\\engine\\bin\\qa.php(38): AIAnalysisEngine\\Facade\\EngineFacade::analyze('..\/test_palm.pn...', Object(AIAnalysisEngine\\Config\\EngineConfig))\n#2 {main}"
+}

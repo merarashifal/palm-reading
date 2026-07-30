@@ -1,0 +1,57 @@
+.ppb-form-group {
+    margin-bottom: var(--space-md);
+}
+
+.ppb-label {
+    display: block;
+    font-weight: 600;
+    font-size: var(--font-sm);
+    margin-bottom: var(--space-xs);
+    color: var(--text);
+}
+
+.ppb-input,
+.ppb-select {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-family);
+    font-size: var(--font-md);
+    color: var(--text);
+    background-color: var(--surface);
+    transition: all var(--transition-fast);
+    box-sizing: border-box;
+}
+
+.ppb-input:focus,
+.ppb-select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: var(--focus-ring);
+}
+
+.ppb-upload-area {
+    border: 2px dashed var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl) var(--space-md);
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--neutral-50);
+    transition: all var(--transition);
+}
+
+.ppb-upload-area:hover, .ppb-upload-area.drag-active {
+    border-color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+.ppb-upload-icon {
+    font-size: 32px;
+    color: var(--primary);
+    margin-bottom: var(--space-sm);
+}
+
+.ppb-file-input {
+    display: none;
+}
