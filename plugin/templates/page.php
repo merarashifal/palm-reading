@@ -33,18 +33,18 @@ get_header();
     <?php
     switch ($state) {
         case 'upload':
-            include PPB_PLUGIN_DIR . 'components/upload_form.php';
-            include PPB_PLUGIN_DIR . 'components/processing.php';
+            include plugin_dir_path(dirname(__FILE__)) . 'components/upload_form.php';
+            include plugin_dir_path(dirname(__FILE__)) . 'components/processing.php';
             break;
             
         case 'report':
-            include PPB_PLUGIN_DIR . 'components/report_header.php';
-            include PPB_PLUGIN_DIR . 'components/trust_metrics.php';
-            include PPB_PLUGIN_DIR . 'components/top_discovery.php';
-            include PPB_PLUGIN_DIR . 'components/report_cards.php';
-            include PPB_PLUGIN_DIR . 'components/evidence_card.php';
-            include PPB_PLUGIN_DIR . 'components/unlock_cta.php';
-            include PPB_PLUGIN_DIR . 'components/profile_modal.php';
+            include plugin_dir_path(dirname(__FILE__)) . 'components/report_header.php';
+            include plugin_dir_path(dirname(__FILE__)) . 'components/trust_metrics.php';
+            include plugin_dir_path(dirname(__FILE__)) . 'components/top_discovery.php';
+            include plugin_dir_path(dirname(__FILE__)) . 'components/report_cards.php';
+            include plugin_dir_path(dirname(__FILE__)) . 'components/evidence_card.php';
+            include plugin_dir_path(dirname(__FILE__)) . 'components/unlock_cta.php';
+            include plugin_dir_path(dirname(__FILE__)) . 'components/profile_modal.php';
             break;
 
         case 'empty_state':
@@ -53,12 +53,12 @@ get_header();
             $statusMessage = 'We couldn\'t find this Personal Palm Blueprint. It may have expired or the link is incorrect.';
             $statusActionText = 'Start New Analysis';
             $statusActionUrl = site_url('/upload');
-            include PPB_PLUGIN_DIR . 'components/status_card.php';
+            include plugin_dir_path(dirname(__FILE__)) . 'components/status_card.php';
             break;
 
         case 'landing':
         default:
-            include PPB_PLUGIN_DIR . 'components/landing.php';
+            include plugin_dir_path(dirname(__FILE__)) . 'components/landing.php';
             break;
     }
     ?>
