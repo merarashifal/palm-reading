@@ -1,0 +1,37 @@
+{
+    "summary": {
+        "analysis_strength": 75,
+        "top_trait": "Vitality"
+    },
+    "metrics": {
+        "total_insights": 2,
+        "features_detected": 0
+    },
+    "cards": [],
+    "sections": {
+        "vitality": [
+            {
+                "title": "Strong Vitality",
+                "description": "A long and unbroken life line indicates excellent physical health, a strong constitution, and high energy reserves.",
+                "stars": "\u2605\u2605\u2605\u2605\u2605",
+                "visibility": "free",
+                "category": "vitality"
+            }
+        ],
+        "relationships": [
+            {
+                "title": "Deep Emotional Capacity",
+                "description": "A deep heart line suggests you experience emotions intensely and form strong, lasting attachments to others.",
+                "stars": "\u2605\u2605\u2605\u2605\u2606",
+                "visibility": "free",
+                "category": "relationships"
+            }
+        ]
+    },
+    "highlights": [],
+    "recommendations": [],
+    "cta": {
+        "locked_insights_count": 0
+    },
+    "metadata": []
+}

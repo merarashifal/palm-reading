@@ -1,0 +1,178 @@
+<style>
+    :root {
+        --bg: #000000;
+        --card-bg: #111111;
+        --text: #ffffff;
+        --text-muted: #888888;
+        --accent: #ffffff;
+        --premium: #c4b5fd;
+    }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+    }
+    .report-container {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+    .section {
+        margin-bottom: 60px;
+        border-bottom: 1px solid #222;
+        padding-bottom: 60px;
+    }
+    .section:last-child {
+        border-bottom: none;
+    }
+    
+    /* Trust Panel */
+    .trust-panel { background: #1a1a1a; border-radius: 16px; padding: 25px; margin-top: 30px; border: 1px solid #333; }
+    .trust-header { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 20px; font-weight: 700; text-align: left; }
+    .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left; }
+    .trust-label { font-size: 13px; color: #888; margin-bottom: 5px; }
+    .trust-value { font-size: 24px; font-weight: 700; color: #fff; }
+    .quality-good { color: #4ade80; }
+
+    /* Stats */
+    .stat-row { margin-bottom: 30px; text-align: left; }
+    .stat-num { font-size: 56px; font-weight: 800; line-height: 1; margin-bottom: 5px; }
+    .stat-label { font-size: 18px; color: var(--text-muted); font-weight: 500; }
+
+    /* Story */
+    .story-block { margin-bottom: 40px; }
+    .story-block h2 { font-size: 24px; font-weight: 700; margin-bottom: 15px; color: var(--text); letter-spacing: -0.5px; }
+    .story-block p { font-size: 18px; line-height: 1.6; color: #cccccc; margin: 0; }
+
+    /* Discoveries */
+    .discovery-card { background: var(--card-bg); border-radius: 20px; padding: 30px; margin-bottom: 20px; border: 1px solid #222; }
+    .discovery-type { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 15px; font-weight: 600; }
+    .discovery-card h3 { font-size: 28px; font-weight: 700; margin: 0 0 15px 0; letter-spacing: -0.5px; }
+    .discovery-card p { font-size: 16px; line-height: 1.5; color: #bbbbbb; margin: 0 0 15px 0; }
+    .discovery-card .details { color: #888888; font-size: 14px; margin-bottom: 15px; }
+    .discovery-card .advice { font-size: 15px; line-height: 1.5; color: #fff; background: #222; padding: 15px; border-radius: 12px; }
+
+    /* Explainability */
+    .evidence h2 { font-size: 20px; font-weight: 600; margin-bottom: 20px; color: var(--text-muted); }
+    .explainability-box { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 16px; font-size: 16px; line-height: 1.6; border-left: 4px solid #fff; }
+
+    /* Premium Teaser */
+    .premium-teaser { text-align: left; padding: 30px; background: #111; border-radius: 24px; border: 1px solid #333; }
+    .premium-teaser h2 { font-size: 24px; font-weight: 700; margin-bottom: 25px; }
+    .checklist { margin-bottom: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .checklist-item { font-size: 16px; color: #ddd; display: flex; align-items: center; }
+    .cta-button { display: block; width: 100%; box-sizing: border-box; background: #ffffff; color: #000000; padding: 20px; border-radius: 30px; text-decoration: none; font-size: 18px; font-weight: 700; text-align: center; transition: transform 0.2s; }
+    .cta-button:active { transform: scale(0.98); }
+
+    /* Blueprints */
+    .blueprints h2 { font-size: 28px; font-weight: 700; margin-bottom: 30px; }
+    .blueprint-item { background: var(--card-bg); padding: 20px 25px; border-radius: 16px; margin-bottom: 15px; font-size: 18px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; border: 1px solid #222; cursor: pointer; transition: background 0.2s; }
+    .blueprint-item:hover { background: #1a1a1a; }
+    .blueprint-item span { color: var(--text-muted); }
+
+    /* Evidence */
+    .evidence h2 { font-size: 20px; font-weight: 600; margin-bottom: 30px; text-align: center; color: var(--text-muted); }
+    .trail { text-align: center; }
+    .trail-node { display: inline-block; padding: 10px 20px; background: var(--card-bg); border-radius: 8px; font-size: 16px; border: 1px solid #333; }
+    .arrow { margin: 15px 0; color: #555; font-size: 20px; }
+
+    /* Final CTA */
+    .final-message { text-align: center; padding-top: 20px; }
+    .final-message h2 { font-size: 32px; font-weight: 800; margin: 0 0 10px 0; letter-spacing: -1px; }
+    .final-message p { font-size: 18px; color: var(--text-muted); margin: 0 0 40px 0; }
+    .cta-button { display: block; width: 100%; box-sizing: border-box; background: #ffffff; color: #000000; padding: 20px; border-radius: 30px; text-decoration: none; font-size: 18px; font-weight: 700; transition: transform 0.2s; }
+    .cta-button:active { transform: scale(0.98); }
+</style>
+
+<div class="report-container">
+    
+            <div class='section hero'>
+                <h1>Your Palm Analysis</h1>
+                
+                <div class='trust-panel'>
+                    <div class='trust-header'>Analysis Reliability</div>
+                    <div class='trust-grid'>
+                        <div class='trust-item'>
+                            <div class='trust-label'>Palm Visibility</div>
+                            <div class='trust-value'>98%</div>
+                        </div>
+                        <div class='trust-item'>
+                            <div class='trust-label'>Image Quality</div>
+                            <div class='trust-value quality-good'>Excellent</div>
+                        </div>
+                        <div class='trust-item'>
+                            <div class='trust-label'>Features Identified</div>
+                            <div class='trust-value'>64</div>
+                        </div>
+                        <div class='trust-item'>
+                            <div class='trust-label'>Knowledge Confidence</div>
+                            <div class='trust-value'>High</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    
+            <div class='section stats'>
+                <div class='stat-row'>
+                    <div class='stat-num'>2</div>
+                    <div class='stat-label'>Insights Generated</div>
+                </div>
+                <div class='stat-row'>
+                    <div class='stat-num'>0</div>
+                    <div class='stat-label'>Rare Signs Detected</div>
+                </div>
+            </div>
+        
+    <div class='section story'>
+                <div class='story-block'>
+                    <h2>Where do your strengths lie?</h2>
+                    <p>आपके पास प्राकृतिक ऊर्जा और शारीरिक सहनशक्ति का एक गहरा भंडार है। एक निरंतर और गहरी जीवन रेखा एक मजबूत शारीरिक बनावट और जीवन के प्रति अटूट उत्साह को दर्शाती है। इस चिह्न वाले लोग अक्सर थकान या बीमारी से बहुत जल्दी उबर जाते हैं। आपमें दीर्घकालिक परियोजनाओं को पूरा करने की क्षमता है।</p>
+                </div>
+            
+                <div class='story-block'>
+                    <h2>What makes you different?</h2>
+                    <p>Your energy signature is highly individualized, drawing people towards your natural authenticity.</p>
+                </div>
+            
+                <div class='story-block'>
+                    <h2>What should you be careful about?</h2>
+                    <p>While you are naturally resilient, it is important to protect your energy reserves and avoid over-extending yourself.</p>
+                </div>
+            </div>
+    <div class='section discoveries'>
+                <div class='discovery-card'>
+                    <div class='discovery-type'>⭐ Strength</div>
+                    <h3>अद्भुत ऊर्जा</h3>
+                    <p>आपके पास प्राकृतिक ऊर्जा और शारीरिक सहनशक्ति का एक गहरा भंडार है।</p>
+                    <p class='details'>एक निरंतर और गहरी जीवन रेखा एक मजबूत शारीरिक बनावट और जीवन के प्रति अटूट उत्साह को दर्शाती है। इस चिह्न वाले लोग अक्सर थकान या बीमारी से बहुत जल्दी उबर जाते हैं। आपमें दीर्घकालिक परियोजनाओं को पूरा करने की क्षमता है।</p>
+                    <div class='advice'><strong>Advice:</strong> अपनी प्रचुर ऊर्जा को सुसंगत दिनचर्या में लगाएं, लेकिन थकने से पहले सक्रिय रूप से आराम करना याद रखें।</div>
+                </div>
+            
+                <div class='discovery-card'>
+                    <div class='discovery-type'>⭐ Strength</div>
+                    <h3>गहरी भावनात्मक क्षमता</h3>
+                    <p>आप दुनिया को गहरी भावनात्मक तीव्रता और सहानुभूति के साथ अनुभव करते हैं।</p>
+                    <p class='details'>एक गहरी हृदय रेखा यह दर्शाती है कि जब आप प्रतिबद्ध होते हैं, तो पूरी तरह से होते हैं। आप मजबूत और स्थायी लगाव बनाते हैं और अक्सर अपने जीवन में लोगों के लिए एक भावनात्मक सहारा बनते हैं। यद्यपि आप दूसरों की तुलना में चीजों को अधिक तीव्रता से महसूस कर सकते हैं, यह संवेदनशीलता सच्चे संबंध बनाने में आपकी सबसे बड़ी संपत्ति है।</p>
+                    <div class='advice'><strong>Advice:</strong> अपने भावनात्मक भंडार की रक्षा करें। क्योंकि आप बहुत कुछ देते हैं, इसलिए आपको उन लोगों से घिरे रहने के बारे में सचेत रहना चाहिए जो बदले में उतना ही प्यार देते हैं।</div>
+                </div>
+            </div>
+    <div class='section evidence'>
+            <h2>Why did we say this?</h2>
+            <div class='explainability-box'>
+                <p>We identified Deep and continuous Life Line identified., which is commonly associated with अद्भुत ऊर्जा. Detailed evidence is available in the Complete Blueprint.</p>
+            </div>
+        </div>
+    
+            <div class='section premium-teaser'>
+                <h2>Your Complete Report Includes:</h2>
+                <div class='checklist'>
+                    <div class='checklist-item'>✓ Career Blueprint</div><div class='checklist-item'>✓ Business Potential</div><div class='checklist-item'>✓ Marriage Timeline</div><div class='checklist-item'>✓ Financial Patterns</div><div class='checklist-item'>✓ Lucky Years</div><div class='checklist-item'>✓ Hidden Strengths</div><div class='checklist-item'>✓ Weakness Analysis</div><div class='checklist-item'>✓ Remedies</div><div class='checklist-item'>✓ Rare Markings</div><div class='checklist-item'>✓ Life Purpose</div>
+                </div>
+                <a href='#' class='cta-button'>Unlock your Complete Life Blueprint</a>
+            </div>
+        
+</div>

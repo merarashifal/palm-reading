@@ -1,0 +1,7 @@
+{
+    "status": "failed",
+    "error_code": "SYS_001",
+    "message": "Unexpected exception occurred.",
+    "exception": "AIAnalysisEngine\\Facade\\DTO\\EngineResult::__construct(): Argument #1 ($reportModel) must be of type AIAnalysisEngine\\Presentation\\DTO\\ComposedReport, AIAnalysisEngine\\Presentation\\DTO\\ReportDocument given, called in D:\\Antarman\\code\\palm-reading\\engine\\src\\Facade\\EngineFacade.php on line 118",
+    "trace": "#0 D:\\Antarman\\code\\palm-reading\\engine\\src\\Facade\\EngineFacade.php(118): AIAnalysisEngine\\Facade\\DTO\\EngineResult->__construct(Object(AIAnalysisEngine\\Presentation\\DTO\\ReportDocument), '', Array)\n#1 D:\\Antarman\\code\\palm-reading\\engine\\bin\\qa.php(44): AIAnalysisEngine\\Facade\\EngineFacade::analyze('..\/test_palm.pn...', Object(AIAnalysisEngine\\Config\\EngineConfig))\n#2 {main}"
+}

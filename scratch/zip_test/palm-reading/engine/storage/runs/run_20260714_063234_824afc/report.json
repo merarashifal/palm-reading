@@ -1,0 +1,78 @@
+{
+    "analysisConfidence": 60,
+    "imageQualityScore": "Excellent",
+    "openingSentence": "Your palm indicates deep emotional capacity and unusually high resilience.",
+    "totalObservations": 62,
+    "totalInsights": 1,
+    "rareSignsCount": 0,
+    "hiddenPremiumCount": 0,
+    "storyParagraphs": {
+        "Where do your strengths lie?": "You experience the world with profound emotional intensity and deep empathy. A deep, unblemished heart line shows that when you commit, you do so entirely. You form strong, enduring attachments and often serve as an emotional anchor for the people in your life. While you may feel things more acutely than others, this sensitivity is your greatest asset in forming genuine connections.",
+        "What makes you different?": "Your energy signature is highly individualized, drawing people towards your natural authenticity.",
+        "What should you be careful about?": "While you are naturally resilient, it is important to protect your energy reserves and avoid over-extending yourself."
+    },
+    "topThreeInsights": [
+        {
+            "id": "heart_line_deep",
+            "type": "Strength",
+            "headline": "Deep Emotional Capacity",
+            "summary": "You experience the world with profound emotional intensity and deep empathy.",
+            "details": "A deep, unblemished heart line shows that when you commit, you do so entirely. You form strong, enduring attachments and often serve as an emotional anchor for the people in your life. While you may feel things more acutely than others, this sensitivity is your greatest asset in forming genuine connections.",
+            "advice": "Protect your emotional reserves. Because you give so much, you must be intentional about surrounding yourself with people who reciprocate.",
+            "confidence": 0.9,
+            "importance": 70,
+            "visibility": "free",
+            "category": "relationships",
+            "matchedRule": {
+                "rule_id": "heart_line_deep",
+                "category": "relationships",
+                "visibility": "free",
+                "importance": 70,
+                "priority": 80,
+                "score_impact": 10,
+                "tags": [
+                    "love",
+                    "emotion"
+                ],
+                "conditions": {
+                    "type": "AND",
+                    "conditions": [
+                        {
+                            "feature_type": "heart_line",
+                            "operator": "exists"
+                        },
+                        {
+                            "feature_type": "heart_line",
+                            "attribute": "depth",
+                            "operator": "equals",
+                            "value": "deep"
+                        }
+                    ]
+                },
+                "outputs": [
+                    {
+                        "type": "insight",
+                        "insight_type": "Strength",
+                        "headline": "Deep Emotional Capacity",
+                        "summary": "You experience the world with profound emotional intensity and deep empathy.",
+                        "details": "A deep, unblemished heart line shows that when you commit, you do so entirely. You form strong, enduring attachments and often serve as an emotional anchor for the people in your life. While you may feel things more acutely than others, this sensitivity is your greatest asset in forming genuine connections.",
+                        "advice": "Protect your emotional reserves. Because you give so much, you must be intentional about surrounding yourself with people who reciprocate."
+                    }
+                ]
+            },
+            "evidence": [],
+            "unlockReason": null
+        }
+    ],
+    "promotedBlueprints": [
+        "Relationships Blueprint"
+    ],
+    "evidenceTrail": {
+        "Detected": "Major Lines",
+        "Feature": "Head Line",
+        "Marking": "Fork Endpoint",
+        "Rule": "heart_line_deep",
+        "Conclusion": "Deep Emotional Capacity"
+    },
+    "dynamicCtaText": "Unlock your Complete Life Blueprint"
+}

@@ -1,0 +1,28 @@
+{
+    "run_id": "run_20260714_073033_449e1d",
+    "language": "en",
+    "features_detected": 7,
+    "insights_generated": 3,
+    "locked_insights": 0,
+    "confidence": 95,
+    "image_quality": "Excellent",
+    "latency": 23151,
+    "total_time_ms": 23151,
+    "report_version": {
+        "Renderer_Version": "1.0.0",
+        "Knowledge_Version": "palmistry_v2.json",
+        "Prompt_Version": "Palm\/Vision\/2.5-flash\/v1",
+        "Engine_Version": "1.0.0",
+        "Inference_Version": "1.0.0"
+    },
+    "gemini_execution": {
+        "started_at": 1784007033.312115,
+        "finished_at": 1784007056.410199,
+        "duration_ms": 23098.08397293091,
+        "http_code": 200,
+        "prompt_tokens": 1936,
+        "completion_tokens": 1671,
+        "estimated_cost_inr": 0.054,
+        "retry_count": 0
+    }
+}

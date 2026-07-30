@@ -10,12 +10,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-if (!defined('PPB_PLUGIN_DIR')) {
-    define('PPB_PLUGIN_DIR', plugin_dir_path(__FILE__));
-}
-if (!defined('PPB_PLUGIN_URL')) {
-    define('PPB_PLUGIN_URL', plugin_dir_url(__FILE__));
-}
+// Removed global constants to prevent conflicts with old/backup plugin folders
 
 $missing_files = array();
 
@@ -27,7 +22,7 @@ $files_to_require = array(
 
 foreach ($files_to_require as $class_name => $file_path) {
     if (!class_exists($class_name)) {
-        $full_path = PPB_PLUGIN_DIR . $file_path;
+        $full_path = plugin_dir_path(__FILE__) . $file_path;
         if (file_exists($full_path)) {
             require_once $full_path;
         } else {
@@ -86,7 +81,7 @@ if (!class_exists('PalmReaderPlugin')) {
                 add_action('wp_ajax_nopriv_ppb_feedback', array($this, 'handleFeedback'));
                 add_action('wp_ajax_ppb_feedback', array($this, 'handleFeedback'));
             } catch (\Exception $e) {
-                file_put_contents(PPB_PLUGIN_DIR . 'ppb_fatal_error.log', date('Y-m-d H:i:s') . ' Constructor Exception: ' . $e->getMessage() . "\n", FILE_APPEND);
+                file_put_contents(plugin_dir_path(__FILE__) . 'ppb_fatal_error.log', date('Y-m-d H:i:s') . ' Constructor Exception: ' . $e->getMessage() . "\n", FILE_APPEND);
             }
         }
 
@@ -96,7 +91,7 @@ if (!class_exists('PalmReaderPlugin')) {
                 $this->addRewriteRules();
                 flush_rewrite_rules();
             } catch (\Exception $e) {
-                file_put_contents(PPB_PLUGIN_DIR . 'ppb_fatal_error.log', date('Y-m-d H:i:s') . ' Activate Exception: ' . $e->getMessage() . "\n", FILE_APPEND);
+                file_put_contents(plugin_dir_path(__FILE__) . 'ppb_fatal_error.log', date('Y-m-d H:i:s') . ' Activate Exception: ' . $e->getMessage() . "\n", FILE_APPEND);
             }
         }
 
@@ -105,7 +100,7 @@ if (!class_exists('PalmReaderPlugin')) {
             try {
                 flush_rewrite_rules();
             } catch (\Exception $e) {
-                file_put_contents(PPB_PLUGIN_DIR . 'ppb_fatal_error.log', date('Y-m-d H:i:s') . ' Deactivate Exception: ' . $e->getMessage() . "\n", FILE_APPEND);
+                file_put_contents(plugin_dir_path(__FILE__) . 'ppb_fatal_error.log', date('Y-m-d H:i:s') . ' Deactivate Exception: ' . $e->getMessage() . "\n", FILE_APPEND);
             }
         }
 
@@ -184,7 +179,7 @@ if (!class_exists('PalmReaderPlugin')) {
         {
             $ppb_page = get_query_var('ppb_page');
             if ($ppb_page === 'upload' || $ppb_page === 'report') {
-                $custom_template = PPB_PLUGIN_DIR . 'templates/page.php';
+                $custom_template = plugin_dir_path(__FILE__) . 'templates/page.php';
                 if (file_exists($custom_template)) {
                     return $custom_template;
                 }
@@ -198,8 +193,8 @@ if (!class_exists('PalmReaderPlugin')) {
             global $post;
             
             if ($ppb_page || (isset($post) && has_shortcode($post->post_content, 'ppb_landing'))) {
-                wp_enqueue_style('ppb-styles', PPB_PLUGIN_URL . 'assets/css/journey.css', array(), '1.0.0');
-                wp_enqueue_script('ppb-scripts', PPB_PLUGIN_URL . 'assets/js/journey.js', array('jquery'), '1.0.0', true);
+                wp_enqueue_style('ppb-styles', plugin_dir_url(__FILE__) . 'assets/css/journey.css', array(), '1.0.0');
+                wp_enqueue_script('ppb-scripts', plugin_dir_url(__FILE__) . 'assets/js/journey.js', array('jquery'), '1.0.0', true);
                 
                 wp_localize_script('ppb-scripts', 'ppbConfig', array(
                     'ajaxUrl' => admin_url('admin-ajax.php'),
@@ -211,7 +206,7 @@ if (!class_exists('PalmReaderPlugin')) {
         public function renderLanding()
         {
             ob_start();
-            include PPB_PLUGIN_DIR . 'components/landing.php';
+            include plugin_dir_path(__FILE__) . 'components/landing.php';
             return ob_get_clean();
         }
 
@@ -237,7 +232,7 @@ if (!class_exists('PalmReaderPlugin')) {
             \AIAnalysisEngine\Metrics\MetricsService::init($storagePath);
             $visitorId = \AIAnalysisEngine\Metrics\MetricsService::getVisitorId();
 
-            $repoPath = PPB_PLUGIN_DIR . 'engine/src/Storage/CustomerProfileRepository.php';
+            $repoPath = plugin_dir_path(__FILE__) . 'engine/src/Storage/CustomerProfileRepository.php';
             if (!class_exists('AIAnalysisEngine\Storage\CustomerProfileRepository')) {
                 if (file_exists($repoPath)) {
                     require_once $repoPath;

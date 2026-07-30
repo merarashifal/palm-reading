@@ -1,0 +1,109 @@
+{
+    "insights": [
+        {
+            "id": "life_line_long",
+            "title": "Strong Vitality",
+            "summary": "A long and unbroken life line indicates excellent physical health, a strong constitution, and high energy reserves.",
+            "description": "A long and unbroken life line indicates excellent physical health, a strong constitution, and high energy reserves.",
+            "confidence": 0.9,
+            "importance": 85,
+            "visibility": "free",
+            "category": "vitality",
+            "matchedRule": {
+                "rule_id": "life_line_long",
+                "category": "vitality",
+                "visibility": "free",
+                "importance": 85,
+                "priority": 90,
+                "score_impact": 15,
+                "tags": [
+                    "vitality",
+                    "health"
+                ],
+                "conditions": {
+                    "type": "AND",
+                    "conditions": [
+                        {
+                            "feature_type": "life_line",
+                            "operator": "exists"
+                        },
+                        {
+                            "feature_type": "life_line",
+                            "attribute": "length",
+                            "operator": "equals",
+                            "value": "long"
+                        }
+                    ]
+                },
+                "outputs": [
+                    {
+                        "type": "insight",
+                        "title": "Strong Vitality",
+                        "description": "A long and unbroken life line indicates excellent physical health, a strong constitution, and high energy reserves."
+                    }
+                ]
+            },
+            "evidence": [],
+            "unlockReason": null
+        },
+        {
+            "id": "heart_line_deep",
+            "title": "Deep Emotional Capacity",
+            "summary": "A deep heart line suggests you experience emotions intensely and form strong, lasting attachments to others.",
+            "description": "A deep heart line suggests you experience emotions intensely and form strong, lasting attachments to others.",
+            "confidence": 0.9,
+            "importance": 70,
+            "visibility": "free",
+            "category": "relationships",
+            "matchedRule": {
+                "rule_id": "heart_line_deep",
+                "category": "relationships",
+                "visibility": "free",
+                "importance": 70,
+                "priority": 80,
+                "score_impact": 10,
+                "tags": [
+                    "love",
+                    "emotion"
+                ],
+                "conditions": {
+                    "type": "AND",
+                    "conditions": [
+                        {
+                            "feature_type": "heart_line",
+                            "operator": "exists"
+                        },
+                        {
+                            "feature_type": "heart_line",
+                            "attribute": "depth",
+                            "operator": "equals",
+                            "value": "deep"
+                        }
+                    ]
+                },
+                "outputs": [
+                    {
+                        "type": "insight",
+                        "title": "Deep Emotional Capacity",
+                        "description": "A deep heart line suggests you experience emotions intensely and form strong, lasting attachments to others."
+                    }
+                ]
+            },
+            "evidence": [],
+            "unlockReason": null
+        }
+    ],
+    "recommendations": [],
+    "scores": {
+        "overall_score": 75,
+        "categories": {
+            "vitality": 15,
+            "relationships": 10
+        }
+    },
+    "statistics": {
+        "total_insights": 2,
+        "total_recommendations": 0
+    },
+    "metadata": []
+}

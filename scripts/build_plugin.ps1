@@ -50,7 +50,7 @@ foreach ($file in $devFiles) {
 
 # 5. Compress to zip
 Write-Host "Creating zip archive at $zipPath..."
-Compress-Archive -Path $tempDir -DestinationPath $zipPath -Force
+Compress-Archive -Path "$tempDir\*" -DestinationPath $zipPath -Force
 
 # 6. Cleanup
 Write-Host "Cleaning up..."
