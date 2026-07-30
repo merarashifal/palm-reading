@@ -68,7 +68,7 @@ if (!class_exists('PalmReaderPlugin')) {
                 add_action('init', array($this, 'addRewriteRules'));
                 add_filter('query_vars', array($this, 'addQueryVars'));
                 add_action('template_redirect', array($this, 'handleTemplateRedirects'));
-                add_action('template_include', array($this, 'loadTemplates'));
+                add_filter('template_include', array($this, 'loadTemplates'), 99);
                 
                 add_action('wp_enqueue_scripts', array($this, 'enqueueAssets'));
 
@@ -109,6 +109,12 @@ if (!class_exists('PalmReaderPlugin')) {
             add_rewrite_rule('^upload/?$', 'index.php?ppb_page=upload', 'top');
             add_rewrite_rule('^report/([^/]+)/?$', 'index.php?ppb_page=report&ppb_report_id=$matches[1]', 'top');
             add_rewrite_rule('^r/([^/]+)/?$', 'index.php?ppb_page=share&ppb_share_token=$matches[1]', 'top');
+            
+            // Automatically flush rules if our custom routes are missing
+            $rules = get_option('rewrite_rules');
+            if (!is_array($rules) || !isset($rules['^upload/?$'])) {
+                flush_rewrite_rules(false);
+            }
         }
 
         public function addQueryVars($vars)
