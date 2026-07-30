@@ -44,7 +44,7 @@ class Settings
             <form method="post" action="options.php">
                 <?php settings_fields('ppb_settings_group'); ?>
                 <?php do_settings_sections('ppb_settings_group'); ?>
-                
+
                 <h2>Feature Flags</h2>
                 <table class="form-table">
                     <tr valign="top">
@@ -72,7 +72,7 @@ class Settings
                         </td>
                     </tr>
                 </table>
-                
+
                 <?php submit_button(); ?>
             </form>
         </div>

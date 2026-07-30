@@ -218,7 +218,71 @@ if (!class_exists('PalmReaderPlugin')) {
 
         public function handleUpload()
         {
-            wp_send_json_success(array('message' => 'Upload stub'));
+            check_ajax_referer('ppb_nonce');
+
+            if (empty($_FILES['ppb_file']['tmp_name'])) {
+                wp_send_json_error(array('message' => 'No image file received.'));
+            }
+
+            $apiKey = get_option('ppb_gemini_api_key');
+            if (empty($apiKey)) {
+                wp_send_json_error(array('message' => 'AI Engine is not configured. Please contact the administrator.'));
+            }
+
+            // Handle the upload using WordPress built-in function
+            require_once(ABSPATH . 'wp-admin/includes/file.php');
+            $uploadedfile = $_FILES['ppb_file'];
+            $upload_overrides = array('test_form' => false);
+            $movefile = wp_handle_upload($uploadedfile, $upload_overrides);
+
+            if ($movefile && !isset($movefile['error'])) {
+                $imagePath = $movefile['file'];
+                $language = isset($_POST['ppb_language']) ? sanitize_text_field($_POST['ppb_language']) : 'en';
+                $model = get_option('ppb_gemini_model', 'gemini-1.5-flash');
+                
+                $upload_dir = wp_upload_dir();
+                $storagePath = $upload_dir['basedir'] . '/palm-reading';
+
+                // Load required classes if not already autoloaded
+                if (!class_exists('AIAnalysisEngine\Config\EngineConfig')) {
+                    require_once plugin_dir_path(__FILE__) . 'engine/vendor/autoload.php';
+                }
+
+                $knowledgePackPath = plugin_dir_path(__FILE__) . 'engine/knowledge/palmistry_v2.json';
+                if (!file_exists($knowledgePackPath)) {
+                    // Fallback to v1 if v2 is missing
+                    $knowledgePackPath = plugin_dir_path(__FILE__) . 'engine/knowledge/palmistry_v1.json';
+                }
+
+                $config = new \AIAnalysisEngine\Config\EngineConfig(
+                    $apiKey,
+                    $model,
+                    'v1.0.0-beta', // Prompt version
+                    $knowledgePackPath,
+                    $storagePath,
+                    $language
+                );
+
+                try {
+                    $result = \AIAnalysisEngine\Facade\EngineFacade::analyze($imagePath, $config);
+                    
+                    // We don't delete the original image here yet as per open question.
+                    // Instead, we return the report URL.
+                    $reportId = $result->metadata['report_id'];
+                    $reportUrl = site_url('/report/' . $reportId);
+                    
+                    wp_send_json_success(array(
+                        'message' => 'Analysis complete.',
+                        'report_url' => $reportUrl
+                    ));
+                } catch (\AIAnalysisEngine\Exception\EngineException $e) {
+                    wp_send_json_error(array('message' => 'Analysis failed: ' . $e->getMessage()));
+                } catch (\Exception $e) {
+                    wp_send_json_error(array('message' => 'Unexpected error occurred during analysis.'));
+                }
+            } else {
+                wp_send_json_error(array('message' => $movefile['error']));
+            }
         }
 
         public function handleUnlock()
