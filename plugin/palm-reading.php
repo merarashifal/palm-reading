@@ -87,8 +87,6 @@ if (!class_exists('PalmReaderPlugin')) {
                 add_action('wp_ajax_ppb_feedback', array($this, 'handleFeedback'));
             } catch (\Exception $e) {
                 file_put_contents(PPB_PLUGIN_DIR . 'ppb_fatal_error.log', date('Y-m-d H:i:s') . ' Constructor Exception: ' . $e->getMessage() . "\n", FILE_APPEND);
-            } catch (\Error $e) {
-                file_put_contents(PPB_PLUGIN_DIR . 'ppb_fatal_error.log', date('Y-m-d H:i:s') . ' Constructor Error: ' . $e->getMessage() . "\n", FILE_APPEND);
             }
         }
 
@@ -99,8 +97,6 @@ if (!class_exists('PalmReaderPlugin')) {
                 flush_rewrite_rules();
             } catch (\Exception $e) {
                 file_put_contents(PPB_PLUGIN_DIR . 'ppb_fatal_error.log', date('Y-m-d H:i:s') . ' Activate Exception: ' . $e->getMessage() . "\n", FILE_APPEND);
-            } catch (\Error $e) {
-                file_put_contents(PPB_PLUGIN_DIR . 'ppb_fatal_error.log', date('Y-m-d H:i:s') . ' Activate Error: ' . $e->getMessage() . "\n", FILE_APPEND);
             }
         }
 
@@ -110,8 +106,6 @@ if (!class_exists('PalmReaderPlugin')) {
                 flush_rewrite_rules();
             } catch (\Exception $e) {
                 file_put_contents(PPB_PLUGIN_DIR . 'ppb_fatal_error.log', date('Y-m-d H:i:s') . ' Deactivate Exception: ' . $e->getMessage() . "\n", FILE_APPEND);
-            } catch (\Error $e) {
-                file_put_contents(PPB_PLUGIN_DIR . 'ppb_fatal_error.log', date('Y-m-d H:i:s') . ' Deactivate Error: ' . $e->getMessage() . "\n", FILE_APPEND);
             }
         }
 
